@@ -1,0 +1,50 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/person/person",
+    "pages/goodDetail/goodDetail",
+    "pages/address/address",
+    "pages/editAddress/editAddress",
+    "pages/settlement/settlement",
+    "pages/search/search",
+    "pages/login/login",
+    "pages/selectAddress/selectAddress",
+    "pages/Ccart/Ccart",
+    "pages/orderList/orderList"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#00a046",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#515151",
+    "selectedColor": "#00a046",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./dist/icon2/fenlei.png",
+        "selectedIconPath": "./dist/icon2/fenlei-select.png"
+      },
+      {
+        "pagePath": "pages/Ccart/Ccart",
+        "text": "购物车",
+        "iconPath": "./dist/icon2/cart.png",
+        "selectedIconPath": "./dist/icon2/cart-select.png"
+      },
+      {
+        "pagePath": "pages/person/person",
+        "text": "个人中心",
+        "iconPath": "./dist/icon2/person.png",
+        "selectedIconPath": "./dist/icon2/person-select.png"
+      }
+    ]
+  }
+
+}

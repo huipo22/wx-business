@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-search": "../../dist/vant/search/index",
+    "van-card": "../../dist/vant/card/index",
+    "van-image": "../../dist/vant/image/index",
+    "van-divider": "../../dist/vant/divider/index"
+  },
+  "navigationBarTitleText": "搜索"
+}

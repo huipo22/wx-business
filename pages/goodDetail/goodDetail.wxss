@@ -1,0 +1,75 @@
+/* pages/goodDetail/goodDetail.wxss */
+
+.slideImage2 {
+  width: 100%;
+}
+
+.loopS {
+  height: 300px;
+}
+
+.richImg {
+  width: 100%;
+}
+
+.imgBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.row {
+  height: 80rpx;
+}
+
+.col {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.shareBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1rpx solid #eee;
+}
+
+.richImg {
+  width: 100%;
+}
+
+.line {
+  text-decoration: line-through;
+}
+
+.baseline {
+  align-items: baseline;
+}
+
+.title {
+  font-size: 40rpx;
+}
+
+.bottomLine {
+  /* border-bottom: 1rpx solid #ccc; */
+}
+
+.boxmargin {
+  background: #fff;
+  margin: 0 0 20rpx 0;
+}
+
+.cent {
+  align-items: center;
+}
+
+.name {
+  color: #ababab;
+  font-size: 26rpx;
+}

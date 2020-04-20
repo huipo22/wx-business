@@ -1,0 +1,39 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="container">
+  <!-- 搜索框 -->
+  <van-search value="{{inputVal}}" bind:change="inputTyping" placeholder="请输入搜索关键词" style="width:100%" />
+  <!-- 显示 -->
+  <scroll-view scroll-y="true" bindscrolltolower="loadMore" style="height: calc(100vh - 54px);" scroll-with-animation="true">
+    <view>
+      <van-card title="{{item.goods_name}}" desc="{{item.remark}}" class="card" wx:for="{{goodList}}" wx:for-item="item" wx:key="*this" catch:tap="{{item.goods_num==0?'':'goodSelect'}}" data-goodid="{{item.id}}" title-class="cardTitle">
+        <view class="subscrbeImg" slot="thumb">
+          <van-image width="100%" height="100%" src="{{resourse+item.goods_img}}" fit="contain" class="{{item.goods_num==0?'zhezhao':''}}"></van-image>
+        </view>
+        <view slot="bottom" class="cart-bo">
+          <view class="priceBox">
+            <view class="se_price">
+              <rich-text class="" nodes="{{filter.priceFilter(item.present_price)}}"></rich-text>
+              元/{{item.goods_spec}}
+            </view>
+            <view style="text-decoration:line-through;">
+              {{item.original_price}}元/{{item.goods_spec}}
+            </view>
+          </view>
+          <view class="volumn">
+            已售
+            <view class="red">{{item.goods_volume_false}}</view>
+            {{item.goods_spec}}
+          </view>
+          <view class="cartIcon" wx:if="{{item.goods_num!==0}}">
+            <image src="../../dist/icon2/cartLink.png" style="width:30px;height:30px" catch:tap="addCart" data-cart="{{item}}" data-goodid="{{item.id}}" mode="aspectFit" lazy-load="true"></image>
+          </view>
+        </view>
+      </van-card>
+      <view wx:if="{{noneFlag==true}}" class="noneData">
+        <van-divider contentPosition="center" customStyle="color: #bbb;border-color: #bbb;font-size: 14px" class="divider">
+          我是有底线的
+        </van-divider>
+      </view>
+    </view>
+  </scroll-view>
+</view>

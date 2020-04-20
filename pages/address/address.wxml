@@ -1,0 +1,34 @@
+<!-- pages/address/address.wxml -->
+<view class="container">
+  <view class="addressBox">
+    <view class="addressInfo a_margin" wx:for="{{addressList}}" wx:for-item="address" wx:key="*this">
+      <view style="width:100%">
+        <van-row custom-class="row3 addressB" catch:tap="address">
+          <van-row custom-class="row4">
+            <van-col span="23" offset="1" custom-class="col4">
+              {{address.province}}{{address.city}}{{address.county}}{{address.address}}
+            </van-col>
+          </van-row>
+          <van-row custom-class="row4">
+            <van-col span="4" offset="1" custom-class="col3">{{address.name}}</van-col>
+            <van-col span="8" custom-class="col3">{{address.mobile}}</van-col>
+          </van-row>
+        </van-row>
+      </view>
+      <view class="address">
+        <radio class="a_radio" checked="{{address.default}}" bindtap="radioTap" data-id="{{address.id}}">
+          <text class="{{address.default==1?'red':'default'}}">设为默认</text>
+        </radio>
+        <view class="edit" bindtap="editTap" data-info="{{address}}">
+          <text>编辑</text>
+        </view>
+        <view class="delete" bindtap="deleteTap" data-id="{{address.id}}">
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="address_btn" bindtap="newAddress">
+    <text>添加新地址</text>
+  </view>
+</view>

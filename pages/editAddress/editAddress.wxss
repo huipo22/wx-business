@@ -1,0 +1,13 @@
+/* pages/editAddress/editAddress.wxss */
+
+.titleC {
+  flex: .82!important;
+}
+
+.valC {
+  flex: 2.2!important;
+}
+
+picker {
+  display: flex;
+}

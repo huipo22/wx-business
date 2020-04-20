@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-row": "../../dist/vant/row/index",
+    "van-col": "../../dist/vant/col/index"
+  },
+  "navigationBarTitleText": "选择收货地址"
+}

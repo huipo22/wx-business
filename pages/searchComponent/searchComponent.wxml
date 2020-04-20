@@ -1,0 +1,9 @@
+<!-- pages/searchComponent.wxml -->
+<view class="topSearch" bindtap="searchTap">
+    <view class="searchBox">
+        <view class="iconBox">
+            <van-icon name="search" />
+        </view>
+        <view>请输入商品名称</view>
+    </view>
+</view>

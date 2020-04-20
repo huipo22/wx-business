@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "usingComponents": {
+    "van-field": "../../dist/vant/field/index",
+    "van-picker": "../../dist/vant/picker/index",
+    "van-cell": "../../dist/vant/cell/index"
+  },
+  "navigationBarTitleText": "编辑地址"
+}

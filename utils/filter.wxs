@@ -1,0 +1,11 @@
+var filter = {
+    // 价格截取
+    priceFilter:function(value){
+        var first=value.split('.')[0];
+        var second=value.split('.')[1];
+        return '<span class="hh1">'+first+'</span>.<span>'+second+'</span>'
+    }   
+}
+module.exports = {
+    priceFilter: filter.priceFilter,
+}

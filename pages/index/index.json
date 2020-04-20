@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "van-card": "../../dist/vant/card/index",
+    "van-loading": "../../dist/vant/loading/index",
+    "search-com":"../searchComponent/searchComponent",
+    "van-image": "../../dist/vant/image/index",
+    "van-divider": "../../dist/vant/divider/index"
+  },
+  "navigationBarTitleText": "分类"
+}

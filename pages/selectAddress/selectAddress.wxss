@@ -1,0 +1,84 @@
+/* pages/selectAddress/selectAddress.wxss */
+
+.container {
+    width: 100%;
+    height: 100%;
+}
+
+.addressBox {
+    width: 100%;
+    background: #fff;
+    padding: 0;
+}
+
+.addressCon,
+.address {
+    display: flex;
+    height: 80rpx;
+    align-items: center;
+}
+
+.addressCon .name {
+    flex: 1
+}
+
+.btnBox {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.addressInfo {
+    display: flex;
+    align-items: center;
+}
+
+.row {
+    height: 80rpx;
+    border-bottom: 1rpx solid #eee;
+}
+
+.col {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.mobile {
+    justify-content: center;
+}
+
+.sty {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sty view {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.addressB {
+    padding: 10rpx 0;
+    border-bottom: 1rpx solid #ccc;
+}
+
+.col3 {
+    display: flex;
+    align-items: center;
+}
+
+.col4 {
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+
+.row4 {
+    margin: 10rpx 0;
+}

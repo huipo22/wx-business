@@ -1,0 +1,54 @@
+<!-- pages/supermarket.wxml -->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="container">
+  <search-com style="width:100%"></search-com>
+  <!-- 两列布局 -->
+  <view class="Box">
+    <view class="left">
+      <scroll-view scroll-y="true" style="height: 100%;" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+        <view wx:for="{{cateList}}" wx:for-item="item" class="cate" wx:key="*this" wx:for-index="idx" data-index="{{idx}}" wx:for-item="item" class="left_title" class="nav-list f_h1 {{goodIndex==idx?'add-tabing':'add-tab'}}" data-num="{{item.id}}" catch:tap="leftClick">
+          {{item.name}}{{index}}
+        </view>
+      </scroll-view>
+    </view>
+    <view class="right">
+      <!-- 加载框 -->
+      <view class="load" wx:if="{{loadFlag==true}}">
+        <van-loading size="24px" color="#00a046">加载中...</van-loading>
+      </view>
+      <scroll-view scroll-y="true" style="height: 100%;" scroll-with-animation="true" bindscrolltolower="loadMore" wx:else>
+        <view>
+          <van-card title="{{item.goods_name}}" class="card" wx:for="{{rightList}}" wx:for-item="item" wx:key="*this" catch:tap="{{item.goods_num==0?'':'goodSelect'}}" data-goodid="{{item.id}}" mode="aspectFit" class="card" desc="{{item.remark}}" title-class="cardTitle">
+            <view class="subscrbeImg" slot="thumb">
+              <van-image width="100%" height="100%" src="{{resource+item.goods_img}}" fit="contain" class="{{item.goods_num==0?'zhezhao':''}}"></van-image>
+            </view>
+            <view slot="bottom" class="cart-bo">
+              <view class="priceBox">
+                <view class="se_price">
+                  <rich-text class="" nodes="{{filter.priceFilter(item.present_price)}}"></rich-text>
+                  元/{{item.goods_spec}}
+                </view>
+                <view style="text-decoration:line-through;">
+                  {{item.original_price}}元/{{item.goods_spec}}
+                </view>
+              </view>
+              <view class="volumn">
+                已售
+                <view class="red">{{item.goods_volume_false}}</view>
+                {{item.goods_spec}}
+              </view>
+              <view class="cartIcon" wx:if="{{item.goods_num!==0}}">
+                <image src="../../dist/icon2/cartLink.png" style="width:25px;height:25px" catch:tap="addCart" data-cart="{{item}}" data-goodid="{{item.id}}" lazy-load="{{true}}"></image>
+              </view>
+            </view>
+          </van-card>
+          <view wx:if="{{noneFlag==true}}" class="noneData">
+            <van-divider contentPosition="center" customStyle="color: #bbb;border-color: #bbb;font-size: 14px" class="divider">
+              我是有底线的
+            </van-divider>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>
