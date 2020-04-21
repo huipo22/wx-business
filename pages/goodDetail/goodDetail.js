@@ -85,7 +85,7 @@ Page({
             let that = this;
             if (sum !== 0) {
               wx.setTabBarBadge({
-                index: 2,
+                index: 1,
                 text: String(sum)
               })
               that.setData({
@@ -93,7 +93,7 @@ Page({
               })
             } else {
               wx.removeTabBarBadge({
-                index: 2,
+                index: 1,
               });
             }
           }

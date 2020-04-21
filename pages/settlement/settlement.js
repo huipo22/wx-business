@@ -94,15 +94,7 @@ Page({
   // 提交事件
   submitTap() {
     let settResult = this.data.settleData;
-    if (!this.data.radio) {
-      wx.showToast({
-        title: '请选择配送方式',
-        icon: 'none',
-        duration: 1500,
-        mask: false,
-      });
-      return
-    } else if (!settResult.address_info && !this.data.parmsData) {
+    if (!settResult.address_info && !this.data.parmsData) {
       wx.showToast({
         title: '请选择收货地址',
         icon: 'none',
@@ -129,19 +121,19 @@ Page({
         Price = this.data.settlePrice
       }
       // 代理点
-      let postId;
-      if (this.data.selectPerson) {
-        postId = this.data.selectPerson.id
-      } else {
-        postId = 0
-      }
+      // let postId;
+      // if (this.data.selectPerson) {
+      //   postId = this.data.selectPerson.id
+      // } else {
+      //   postId = 0
+      // }
       // 支付接口
       api.wxpay({
         order_id: settResult.order_id,
         address_id: addressId,
         price: Price,
         remark: this.data.remark,
-        post_id: postId
+        post_id: this.data.selectPerson.id
       }, {
         "Token": wx.getStorageSync("token"),
         "Device-Type": "wxapp"
@@ -191,7 +183,7 @@ Page({
                 }
               }
             })
-           
+
           },
           fail(res) {
             console.log('调用支付接口fail', res)

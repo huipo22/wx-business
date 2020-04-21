@@ -3,7 +3,7 @@
   <view class="slideImage2 boxmargin">
     <!-- 轮播图 -->
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" indicator-color="{{indicatorColor}}" indicator-active-color="{{activeColor}}" class="loopS">
-      <block wx:for="{{goodDetailData.banners}}" wx:for-item="imgItem" wx:key="*this">
+      <block wx:for="{{goodDetailData.banners}}" wx:for-item="imgItem" wx:key="index">
         <swiper-item class="imgBox">
           <image src="{{resourse+imgItem.url}}" data-src="{{resourse+imgItem.url}}" class="" bindtap="previewImage" mode="aspectFit" />
         </swiper-item>

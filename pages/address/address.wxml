@@ -1,7 +1,7 @@
 <!-- pages/address/address.wxml -->
 <view class="container">
   <view class="addressBox">
-    <view class="addressInfo a_margin" wx:for="{{addressList}}" wx:for-item="address" wx:key="*this">
+    <view class="addressInfo a_margin" wx:for="{{addressList}}" wx:for-item="address" wx:key="index">
       <view style="width:100%">
         <van-row custom-class="row3 addressB" catch:tap="address">
           <van-row custom-class="row4">

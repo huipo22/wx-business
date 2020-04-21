@@ -1,7 +1,7 @@
 <!-- pages/selectAddress/selectAddress.wxml -->
 <view class="container">
     <view class="addressBox">
-        <view class="addressInfo" wx:for="{{addressList}}" wx:for-item="address" wx:key="*this" bindtap="selectedAddress" data-address="{{address}}">
+        <view class="addressInfo" wx:for="{{addressList}}" wx:for-item="address" wx:key="index" bindtap="selectedAddress" data-address="{{address}}">
             <view>
                 <radio class="a_radio" checked="{{address.default}}" bindtap="radioTap" data-id="{{address.id}}"></radio>
             </view>

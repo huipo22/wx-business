@@ -14,7 +14,7 @@
                         <text></text>
                     </view>
                 </view>
-                <van-card title="{{item.goods_name}}" class="card" wx:key="*this" catch:tap="{{item.goods_num==0||item.goods_status==2?'':'goodSelect'}}" data-goodid="{{item.goods_id}}" mode="aspectFit" class="card" desc="限购{{item.limit_num}}{{item.goods_spec}}" title-class="cardTitle">
+                <van-card title="{{item.goods_name}}" class="card" wx:key="index" catch:tap="{{item.goods_num==0||item.goods_status==2?'':'goodSelect'}}" data-goodid="{{item.goods_id}}" mode="aspectFit" class="card" desc="限购{{item.limit_num}}{{item.goods_spec}}" title-class="cardTitle">
                     <view class="subscrbeImg" slot="thumb">
                         <van-image width="100%" height="100%" src="{{resourse+item.goods_img}}" fit="contain" class="{{item.goods_num==0?'zhezhao':''}}" class="{{item.goods_status==2?'xiajia':''}}"></van-image>
                     </view>

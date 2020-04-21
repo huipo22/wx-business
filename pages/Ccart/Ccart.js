@@ -123,12 +123,12 @@ Page({
                 let sum = res.data.data.sum;
                 if (sum !== 0) {
                     wx.setTabBarBadge({
-                        index: 2,
+                        index: 1,
                         text: String(sum)
                     })
                 } else {
                     wx.removeTabBarBadge({
-                        index: 2,
+                        index: 1,
                     });
                     this.setData({
                         totalMoney: 0,

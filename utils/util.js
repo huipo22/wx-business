@@ -78,18 +78,18 @@ const login = () => {
                   let sum = res.data.data.sum;
                   if (sum !== 0) {
                     wx.setTabBarBadge({
-                      index: 2,
+                      index: 1,
                       text: String(sum)
                     })
                   } else {
                     wx.removeTabBarBadge({
-                      index: 2,
+                      index: 1,
                     });
                   }
                 }
               })
               var pages = getCurrentPages();
-              // console.log(pages)
+              console.log(pages)
               if (pages.length !== 1) {
                 wx.navigateBack({
                   delta: 1
@@ -146,12 +146,12 @@ const queryCart = (app) => {
       let sum = res.data.data.sum;
       if (sum !== 0) {
         wx.setTabBarBadge({
-          index: 2,
+          index: 1,
           text: String(sum)
         })
       } else {
         wx.removeTabBarBadge({
-          index: 2,
+          index: 1,
         });
       }
     }

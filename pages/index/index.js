@@ -12,10 +12,7 @@ Page({
     cateList: null, //left
     rightList: null, //right
     loadFlag: true,
-    // toView: '',
     scrollTop: 0,
-    // status: 0,
-    // flag: false,
     categoryId: null,
     goodIndex: 0,
     page: 1,
@@ -38,20 +35,6 @@ Page({
       url: '../goodDetail/goodDetail?goodId=' + e.currentTarget.dataset.goodid,
     })
   },
-  // 锚点选中
-  getStatus(e) {
-    this.setData({
-      status: e.currentTarget.dataset.index,
-      flag: false,
-    })
-  },
-  // 箭头
-  showPopup() {
-    let flag = this.data.flag
-    this.setData({
-      flag: !flag
-    })
-  },
   // 添加购物车
   addCart(e) {
     util.addCart(e, app, util.queryCart)
@@ -67,10 +50,6 @@ Page({
     }).then((res) => {
       if (res.data.code == 1) {
         if (res.data.data == 0) {
-          // wx.showToast({
-          //   title: '无更多数据',
-          //   duration: 1500,
-          // });
           this.setData({
             noneFlag: true
           })

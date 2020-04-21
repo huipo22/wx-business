@@ -10,9 +10,6 @@ App({
       wx.setStorageSync('shopId', '1')
     }
     this.globalData.shopId = wx.getStorageSync('shopId')
-    // 场景值
-    // console.log(options)
-
     // 登录
     util.login()
     this.autoUpdate()
@@ -86,9 +83,7 @@ App({
     page: 1, //分页默认
     shopId: null, //商家id,
     phone: null,
-    // logoImg:'../../dist/icon/logo.jpg',
     logoImg: 'https://hr.jishanhengrui.com/upload/service/logo.jpg',
-    host: 'https://hr.jishanhengrui.com', //域名
     resource: 'https://hr.jishanhengrui.com/upload/', //图片资源地址
     sum: 0,
   }

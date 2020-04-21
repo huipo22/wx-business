@@ -39,32 +39,6 @@
       </van-row>
     </van-row>
     <view class="orderCon">
-      <van-row custom-class="row">
-        <van-col span="6" custom-class="col" offset="1">配送方式</van-col>
-        <van-col span="12" custom-class="col" offset="5">
-          <van-radio-group value="{{ radio }}" bind:change="onChange" class="radioBox">
-            <van-radio name="1" class="radio" checked-color="#00a046">配送</van-radio>
-            <van-radio name="2" class="radio" checked-color="#00a046">自提</van-radio>
-          </van-radio-group>
-        </van-col>
-      </van-row>
-      <!-- 代收点 -->
-      <van-row custom-class="row7" wx:if="{{selectPerson!==null}}">
-        <van-row custom-class="row6">
-          <van-col span="4" offset="1" custom-class="col">自提点:</van-col>
-          <van-col span="19" custom-class="col">{{selectPerson.user_address}}</van-col>
-        </van-row>
-        <van-row custom-class="row6">
-          <van-col span="4" custom-class="col" offset="1">联系人:</van-col>
-          <van-col span="6" custom-class="col">{{selectPerson.user_true_name}}</van-col>
-          <van-col span="4" custom-class="col">电话:</van-col>
-          <van-col span="9" custom-class="col" catch:tap="phoneCall" data-phone="{{selectPerson.user_phone}}">
-            {{selectPerson.user_phone}}
-          </van-col>
-        </van-row>
-      </van-row>
-    </view>
-    <view class="orderCon">
       <van-row custom-class="row noneLine">
         <van-col custom-class="col orderTitle" span="23" offset="1">订单内容</van-col>
       </van-row>
@@ -99,7 +73,7 @@
           <van-col custom-class="col" span="23" offset="1">商品清单({{imgList.length}})</van-col>
         </van-row>
         <scroll-view scroll-y="true" style="height:80vh">
-          <van-row wx:for="{{settleData.goods_info}}" wx:for-item="good" wx:key="*this" custom-class="goodBox">
+          <van-row wx:for="{{settleData.goods_info}}" wx:for-item="good" wx:key="index" custom-class="goodBox">
             <van-col span="6" custom-class="goodImg">
               <van-image width="50px" height="50px" fit="contain" src="{{resource+good.goods_img}}"></van-image>
             </van-col>

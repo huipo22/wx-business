@@ -96,7 +96,7 @@
 
 .Box {
   width: 100%;
-  height: calc(100% - 120rpx);
+  height: calc(100% - 70rpx);
   display: flex;
   background: transparent;
 }

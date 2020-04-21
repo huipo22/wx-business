@@ -29,8 +29,8 @@
     "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "./dist/icon2/fenlei.png",
-        "selectedIconPath": "./dist/icon2/fenlei-select.png"
+        "iconPath": "./dist/icon2/index.png",
+        "selectedIconPath": "./dist/icon2/index-select.png"
       },
       {
         "pagePath": "pages/Ccart/Ccart",
