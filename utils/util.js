@@ -59,7 +59,7 @@ const login = () => {
             raw_data: wxData.rawData,
             signature: wxData.signature
           }, {
-            'AppId': 'wx1c2c5d708d0c4ea9' // 默认值
+            'AppId': 'wx283539c233d7f39e' // 默认值
           }).then((res) => {
             if (res.data.code == 1) {
               // console.log(res);

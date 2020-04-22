@@ -4,7 +4,7 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"preloadBackgroundData": false,
@@ -26,7 +26,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.8.3",
-	"appid": "wx1c2c5d708d0c4ea9",
+	"appid": "wx283539c233d7f39e",
 	"projectname": "wx-business",
 	"cloudfunctionTemplateRoot": "",
 	"debugOptions": {

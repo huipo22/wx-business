@@ -88,7 +88,17 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {},
+  onShow: function () {
+    // 全局手机号
+    api.globalPhone({
+      shop_id: app.globalData.shopId
+    }).then((res) => {
+      if (res.data.code == 1) {
+        const result = res.data.data;
+        app.globalData.phone = result.user_phone;
+      }
+    })
+  },
   // 加载右侧数据
   loadList(categoryId, index) {
     this.setData({

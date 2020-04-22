@@ -140,7 +140,7 @@ Page({
       }).then((res) => {
         const result = res.data.data;
         let that = this;
-        let paySign = md5.hexMD5('appId=' + result.appid + '&nonceStr=' + result.nonce_str + '&package=' + result.prepay_id + '&signType=MD5&timeStamp=' + result.timeStamp + "&key=n4iif00GHIAS8CFx4XxvWNNfYogZVDbg").toUpperCase();
+        let paySign = md5.hexMD5('appId=' + result.appid + '&nonceStr=' + result.nonce_str + '&package=' + result.prepay_id + '&signType=MD5&timeStamp=' + result.timeStamp + "&key=7a9ccc6408557ee8cdb0a68eb134098d").toUpperCase();
         wx.requestPayment({
           'timeStamp': result.timeStamp + "",
           'nonceStr': result.nonce_str,
