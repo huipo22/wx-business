@@ -1,4 +1,4 @@
-let host = 'https://hr.jishanhengrui.com' // 设置API接口的ip地址和端口
+let host = 'https://shop.jishanhengrui.com' // 设置API接口的ip地址和端口
 let apiList = {
     platform: host + "/api/goods/shop/service", //平台服务
     wheel: host + "/api/goods/shop/wheels", //轮播图

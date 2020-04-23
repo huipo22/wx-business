@@ -83,8 +83,8 @@ App({
     page: 1, //分页默认
     shopId: null, //商家id,
     phone: null,
-    logoImg: 'https://hr.jishanhengrui.com/upload/service/logo.jpg',
-    resource: 'https://hr.jishanhengrui.com/upload/', //图片资源地址
+    logoImg: 'https://shop.jishanhengrui.com/upload/service/logo.jpg',
+    resource: 'https://shop.jishanhengrui.com/upload/', //图片资源地址
     sum: 0,
   }
 })

@@ -121,77 +121,85 @@ Page({
         Price = this.data.settlePrice
       }
       // 代理点
-      // let postId;
-      // if (this.data.selectPerson) {
-      //   postId = this.data.selectPerson.id
-      // } else {
-      //   postId = 0
-      // }
+      let postId;
+      if (this.data.selectPerson) {
+        postId = this.data.selectPerson.id
+      } else {
+        postId = 0
+      }
       // 支付接口
       api.wxpay({
         order_id: settResult.order_id,
         address_id: addressId,
         price: Price,
         remark: this.data.remark,
-        post_id: this.data.selectPerson.id
+        post_id: postId
       }, {
         "Token": wx.getStorageSync("token"),
         "Device-Type": "wxapp"
       }).then((res) => {
-        const result = res.data.data;
-        let that = this;
-        let paySign = md5.hexMD5('appId=' + result.appid + '&nonceStr=' + result.nonce_str + '&package=' + result.prepay_id + '&signType=MD5&timeStamp=' + result.timeStamp + "&key=7a9ccc6408557ee8cdb0a68eb134098d").toUpperCase();
-        wx.requestPayment({
-          'timeStamp': result.timeStamp + "",
-          'nonceStr': result.nonce_str,
-          'package': result.prepay_id,
-          'signType': 'MD5',
-          'paySign': paySign,
-          success(res) {
-            console.log('调用支付接口成功', res)
-            wx.showModal({
-              title: '提示消息',
-              content: '是否推送物流信息',
-              success(res) {
-                if (res.confirm) {
-                  console.log('用户点击确定')
-                  wx.requestSubscribeMessage({
-                    tmplIds: ['_KSK07-1whvjJpj29L55_wnsyi3L68c7EuynLX1fctM'],
-                    success(res) {
-                      console.log(res)
-                      if (res['_KSK07-1whvjJpj29L55_wnsyi3L68c7EuynLX1fctM'] == 'accept') {
-                        console.log('已授权接收订阅消息')
-                        api.wxActivity({
-                          temp_id: '_KSK07-1whvjJpj29L55_wnsyi3L68c7EuynLX1fctM',
-                          order_id: settResult.order_id
-                        }, {
-                          "Token": wx.getStorageSync("token"),
-                          "Device-Type": "wxapp"
-                        }).then(res => {
-                          if (res.data.code == 1) {
-                            console.log(res + "订阅成功")
-                          }
-                        })
+        if (res.data.code == 1) {
+          const result = res.data.data;
+          let that = this;
+          let paySign = md5.hexMD5('appId=' + result.appid + '&nonceStr=' + result.nonce_str + '&package=' + result.prepay_id + '&signType=MD5&timeStamp=' + result.timeStamp + "&key=n4iif00GHIAS8CFx4XxvWNNfYogZVDbg").toUpperCase();
+          wx.requestPayment({
+            'timeStamp': result.timeStamp + "",
+            'nonceStr': result.nonce_str,
+            'package': result.prepay_id,
+            'signType': 'MD5',
+            'paySign': paySign,
+            success(res) {
+              console.log('调用支付接口成功', res)
+              wx.showModal({
+                title: '提示消息',
+                content: '是否推送物流信息',
+                success(res) {
+                  if (res.confirm) {
+                    console.log('用户点击确定')
+                    wx.requestSubscribeMessage({
+                      tmplIds: ['_KSK07-1whvjJpj29L55_wnsyi3L68c7EuynLX1fctM'],
+                      success(res) {
+                        console.log(res)
+                        if (res['_KSK07-1whvjJpj29L55_wnsyi3L68c7EuynLX1fctM'] == 'accept') {
+                          console.log('已授权接收订阅消息')
+                          api.wxActivity({
+                            temp_id: '_KSK07-1whvjJpj29L55_wnsyi3L68c7EuynLX1fctM',
+                            order_id: settResult.order_id
+                          }, {
+                            "Token": wx.getStorageSync("token"),
+                            "Device-Type": "wxapp"
+                          }).then(res => {
+                            if (res.data.code == 1) {
+                              console.log(res + "订阅成功")
+                            }
+                          })
+                        }
                       }
-                    }
-                  })
-                  wx.redirectTo({
-                    url: '../orderList/orderList?active=2'
-                  })
-                } else if (res.cancel) {
-                  console.log('用户点击取消')
+                    })
+                    wx.redirectTo({
+                      url: '../orderList/orderList?active=2'
+                    })
+                  } else if (res.cancel) {
+                    console.log('用户点击取消')
+                  }
                 }
-              }
-            })
+              })
 
-          },
-          fail(res) {
-            console.log('调用支付接口fail', res)
-            wx.redirectTo({
-              url: '../orderList/orderList?active=1'
-            })
-          }
-        })
+            },
+            fail(res) {
+              console.log('调用支付接口fail', res)
+              wx.redirectTo({
+                url: '../orderList/orderList?active=1'
+              })
+            }
+          })
+        } else if (res.data.code == 0) {
+          wx.showToast({
+            title: res.data.msg,
+          })
+          return
+        }
+
       })
     }
   },
@@ -206,13 +214,6 @@ Page({
     this.setData({
       show: false
     });
-  },
-  // 自提点电话
-  phoneCall(e) {
-    const phone = e.currentTarget.dataset.phone;
-    wx.makePhoneCall({
-      phoneNumber: phone, //仅为示例，并非真实的电话号码
-    })
   },
 
   /**
@@ -248,18 +249,18 @@ Page({
         parmsData: wx.getStorageSync("switchData")
       })
     };
-    // 自提点list
-    api.personList().then(res => {
-      if (res.data.code == 1) {
-        const list = res.data.data.map(obj => {
-          return obj.user_address
-        })
-        this.setData({
-          result: res.data.data,
-          columns: list
-        })
-      }
-    })
+    // // 自提点list
+    // api.personList().then(res => {
+    //   if (res.data.code == 1) {
+    //     const list = res.data.data.map(obj => {
+    //       return obj.user_address
+    //     })
+    //     this.setData({
+    //       result: res.data.data,
+    //       columns: list
+    //     })
+    //   }
+    // })
   },
 
   /**
