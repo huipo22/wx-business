@@ -2,19 +2,13 @@
   "pages": [
     "pages/index/index",
     "pages/person/person",
-    "pages/goodDetail/goodDetail",
-    "pages/address/address",
-    "pages/editAddress/editAddress",
-    "pages/settlement/settlement",
-    "pages/search/search",
     "pages/login/login",
-    "pages/selectAddress/selectAddress",
     "pages/Ccart/Ccart",
-    "pages/orderList/orderList"
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#00a046",
+    "navigationBarBackgroundColor": "#ff4000",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": false,
@@ -26,25 +20,25 @@
     "selectedColor": "#00a046",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "./dist/icon2/index.png",
-        "selectedIconPath": "./dist/icon2/index-select.png"
+        "iconPath": "./dist/icon/index.png",
+        "selectedIconPath": "./dist/icon/index-select.png"
       },
       {
         "pagePath": "pages/Ccart/Ccart",
         "text": "购物车",
-        "iconPath": "./dist/icon2/cart.png",
-        "selectedIconPath": "./dist/icon2/cart-select.png"
+        "iconPath": "./dist/icon/cart.png",
+        "selectedIconPath": "./dist/icon/cart-select.png"
       },
       {
         "pagePath": "pages/person/person",
         "text": "个人中心",
-        "iconPath": "./dist/icon2/person.png",
-        "selectedIconPath": "./dist/icon2/person-select.png"
+        "iconPath": "./dist/icon/person.png",
+        "selectedIconPath": "./dist/icon/person-select.png"
       }
     ]
   }
-
 }

@@ -1,51 +1,54 @@
-<!-- pages/person/person.wxml -->
 <view class="container">
-  <view class="bgHeader">
-    <view style="width:100%">
-      <van-row custom-class="row">
-        <van-col span="4" offset="1">
-          <van-image width="50" height="50" src="{{userData.avatarUrl}}" round lazy-load="{{true}}" />
+    <!-- 个人信息 -->
+    <view class="info">
+        <view style="margin-left:6%">
+            <van-image width="3rem" height="3rem" round />
+        </view>
+        <view style="margin-left:3%">一般</view>
+    </view>
+    <!-- 我的订单 -->
+    <van-row>我的订单</van-row>
+    <van-row>
+        <van-col span="6" custom-class="order">
+            <view>
+                <van-image width="3rem" height="3rem" />
+            </view>
+            <view>待付款</view>
         </van-col>
-        <van-col span="18" custom-class="col" offset="1">{{userData.nickName}}</van-col>
-      </van-row>
-    </view>
-  </view>
-  <view class="order">
-    <van-row custom-class="title">
-      <van-col span="23" offset="1" custom-class="titleCol">我的订单</van-col>
+        <van-col span="6" custom-class="order">
+            <view>
+                <van-image width="3rem" height="3rem" />
+            </view>
+            <view>待付款</view>
+        </van-col>
+        <van-col span="6" custom-class="order">
+            <view>
+                <van-image width="3rem" height="3rem" />
+            </view>
+            <view>待付款</view>
+        </van-col>
+        <van-col span="6" custom-class="order">
+            <view>
+                <van-image width="3rem" height="3rem" />
+            </view>
+            <view>待付款</view>
+        </van-col>
     </van-row>
-    <view class="order_list">
-      <view class="order_list_cato" data-num="1" bindtap="orderList">
-        {{smallList[0]}}
-        <van-icon name="credit-pay" info="{{smallList[1]==0?'':smallList[1]}}" size="25px" />
-        <view>待付款</view>
-      </view>
-      <view class="order_list_cato" data-num="2" bindtap="orderList">
-        <van-icon name="debit-pay" info="{{smallList[2]==0?'':smallList[2]}}" size="25px" />
-        <view>待发货</view>
-      </view>
-      <view class="order_list_cato" data-num="3" bindtap="orderList">
-        <van-icon name="pending-payment" info="{{smallList[3]==0?'':smallList[3]}}" size="25px" />
-        <view>待收货</view>
-      </view>
-      <view class="order_list_cato" data-num="4" bindtap="orderList">
-        <van-icon name="certificate" info="{{smallList[4]==0?'':smallList[4]}}" size="25px" />
-        <view>已完成</view>
-      </view>
-      <view class="order_list_cato" data-num="5" bindtap="orderList">
-        <van-icon name="peer-pay" info="{{smallList[5]==0?'':smallList[5]}}" size="25px" />
-        <view>已退款</view>
-      </view>
-    </view>
-  </view>
-  <van-cell-group style="width:100%">
-    <button open-type="contact" class="contact">
-      <van-cell title="在线客服" icon="service-o"></van-cell>
-    </button>
-    <van-cell title="联系商家" icon="contact" bindtap="makePhone"></van-cell>
-    <van-cell title="联系开发小程序" icon="chat-o" bindtap="shopsTap"></van-cell>
-    <!-- 商家地址 -->
-    <van-cell title="门店地址" icon="location-o" catch:tap="shopAddress" />
-    <van-cell title="收货地址" icon="logistics" is-link bindtap="addressTap"></van-cell>
-  </van-cell-group>
+    <!-- cell -->
+    <van-cell-group>
+        <button open-type="contact">
+            <van-cell title="团长信息">
+                <van-icon slot="right-icon" name="search" />
+            </van-cell>
+        </button>
+        <van-cell title="团长申请">
+            <van-icon slot="right-icon" name="search" />
+        </van-cell>
+        <van-cell title="意见反馈">
+            <van-icon slot="right-icon" name="search" />
+        </van-cell>
+        <van-cell title="联系客服">
+            <van-icon slot="right-icon" name="search" is-link />
+        </van-cell>
+    </van-cell-group>
 </view>

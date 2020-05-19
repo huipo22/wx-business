@@ -2,17 +2,7 @@
 let util = require('./utils/util')
 App({
   onLaunch: function (options) {
-    // 这个是通过  小程序码，或者二维码 获取参数 方式
-    if (options && options.shopId) {
-      getApp().globalData.shopId = options.shopId;
-      wx.setStorageSync('shopId', options.shopId)
-    } else {
-      wx.setStorageSync('shopId', '1')
-    }
-    this.globalData.shopId = wx.getStorageSync('shopId')
-    // 登录
-    util.login()
-    this.autoUpdate()
+    console.log(123)
   },
   autoUpdate: function () {
     var self = this
@@ -79,12 +69,6 @@ App({
     })
   },
   globalData: {
-    userInfo: null,
-    page: 1, //分页默认
-    shopId: null, //商家id,
-    phone: null,
-    logoImg: 'https://shop.jishanhengrui.com/upload/service/logo.jpg',
-    resource: 'https://shop.jishanhengrui.com/upload/', //图片资源地址
-    sum: 0,
+   
   }
 })

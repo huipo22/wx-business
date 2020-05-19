@@ -1,12 +1,11 @@
 {
-  "component": true,
   "usingComponents": {
-    "van-icon": "../../dist/vant/icon/index",
-    "van-cell": "../../dist/vant/cell/index",
-    "van-row": "../../dist/vant/row/index",
-    "van-col": "../../dist/vant/col/index",
-    "van-image": "../../dist/vant/image/index",
-    "van-cell-group": "../../dist/vant/cell-group/index"
+    "van-image": "../dist/vant/image/index",
+    "van-row": "../dist/vant/row/index",
+    "van-col": "../dist/vant/col/index",
+    "van-cell": "../dist/vant/cell/index",
+    "van-cell-group": "../dist/vant/cell-group/index",
+    "van-icon": "../dist/vant/icon/index"
   },
   "navigationBarTitleText": "我的"
 }

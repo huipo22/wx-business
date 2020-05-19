@@ -1,205 +1,25 @@
 /**app.wxss**/
 
 page {
-  height: 98%;
-  font-size: 32rpx;
+  height: 100%;
 }
 
-/* search */
-
-.topSearch {
-  width: 90%;
-  height: 40rpx;
-  background: #fff;
-  margin: 20rpx;
-  /* display: flex; */
-  border-radius: 20rpx;
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: space-between; */
+  box-sizing: border-box;
 }
 
-/* 分享按钮镂空 */
+/* button 默认 */
 
-button[plain] {
-  border: 0
+button {
+  padding: 0;
+  text-align: left;
 }
 
 button::after {
   border: none;
-}
-
-.a_radio {
-  flex: 3;
-  padding-left: 4%;
-}
-
-/* 底部按钮 */
-
-.address_btn {
-  width: 100%;
-  height: 100rpx;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 30rpx;
-  background: #00a046;
-  color: #fff;
-  position: fixed;
-  bottom: 0;
-}
-
-/* 默认背景样式*/
-
-radio .wx-radio-input {
-  width: 40rpx;
-  height: 40rpx;
-}
-
-/* 重写 checkbox 样式 */
-
-/* 未选中的 背景样式 */
-
-checkbox .wx-checkbox-input {
-  border-radius: 50%;
-  /* 圆角 */
-  width: 40rpx;
-  /* 背景的宽 */
-  height: 40rpx;
-  /* 背景的高 */
-}
-
-/* 选中后的 背景样式 （红色背景 无边框 可根据UI需求自己修改） */
-
-checkbox .wx-checkbox-input.wx-checkbox-input-checked {
-  border: 1rpx solid #00a046;
-  background: #00a046;
-}
-
-/* 选中后的 对勾样式 （白色对勾 可根据UI需求自己修改） */
-
-checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
-  border-radius: 50%;
-  /* 圆角 */
-  width: 40rpx;
-  /* 选中后对勾大小，不要超过背景的尺寸 */
-  height: 40rpx;
-  /* 选中后对勾大小，不要超过背景的尺寸 */
-  line-height: 40rpx;
-  text-align: center;
-  font-size: 30rpx;
-  /* 对勾大小 30rpx */
-  color: #fff;
-  /* 对勾颜色 白色 */
-  background: transparent;
-  transform: translate(-50%, -50%) scale(1);
-  -webkit-transform: translate(-50%, -50%) scale(1);
-}
-
-.zhezhao::after {
-  content: '已售完';
-  height: 100%;
-  background: #000;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: .5;
-  font-size: 30rpx;
-}
-
-.xiajia::after {
-  content: '已下架';
-  height: 100%;
-  background: #000;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  border-radius: 50%;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: .5;
-  font-size: 30rpx;
-}
-
-.se_price {
-  color: red;
-  display: flex;
-  align-items: flex-end;
-}
-
-/* ::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
-} */
-
-.subscrbeImg {
-  width: 100%;
-  height: 100%;
-}
-
-.hh1 {
-  font-size: 50rpx;
-}
-
-.goodName {
-  font-size: 26rpx;
-}
-
-.van-card {
-  border-bottom: 1rpx solid #eee !important;
-}
-
-.noneData {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  /* height: 80rpx; */
-  color: #ccc;
-  /* font-size: 30rpx; */
-}
-
-.cardTitle {
-  font-size: 29rpx !important;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-  /* height: 60rpx; */
-  width: 90%;
-}
-
-.volumn {
-  font-size: 24rpx;
-  display: flex;
-  align-items: flex-end;
-  flex: 1;
-  /* justify-content: center; */
-  /* justify-content: flex-end;
-  padding-right: 30rpx; */
-}
-
-.red {
-  color: red;
-}
-
-/* 收货地址 编辑 删除 */
-
-.address {
-  display: flex;
-  padding: 10rpx 0;
-}
-
-.address>.edit, .address>.delete {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.divider {
-  width: 90%;
 }
