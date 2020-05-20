@@ -2,11 +2,32 @@
     height: 240rpx;
     display: flex;
     align-items: center;
-    background: green;
+    background: #ff704d;
     color: #fff;
+    font-size: 32rpx;
+}
+.myOrder{
+    width: 100%;
 }
 .order{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
+.orderTitle{
+    background: #fff;
+    font-size: 32rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1rpx solid #eee;
+    padding-left: 5%;
+}
+.row{
+    background: #fff;
+    font-size: 24rpx;
+    color: #999999;
+    padding: 15rpx 0;
+    box-sizing: border-box;
+}
+/* e0620d */

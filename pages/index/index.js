@@ -6,11 +6,19 @@ Page({
         vertical: false,
         autoplay: false,
         interval: 2000,
-        duration: 500
+        duration: 500,
+        step:true,//步进器状态切换
     },
+    // 商品详情
     detailtap(){
         wx.navigateTo({
             url: '../detail/detail',
+        });
+    },
+    // 切换代理点
+    switchDot(){
+        wx.navigateTo({
+            url: '../switch/switch',
         });
     }
 })

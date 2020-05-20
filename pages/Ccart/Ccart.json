@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-
+    "van-image": "../dist/vant/image/index",
+    "van-stepper": "../dist/vant/stepper/index"
   },
   "navigationBarTitleText": "购物车"
 }

@@ -10,6 +10,11 @@ Page({
   onShow() {
    
   },
+  listTap(){
+    wx.navigateTo({
+      url: '../orderList/orderList',
+  });
+  },
   /**
    * 用户点击右上角分享
    */

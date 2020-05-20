@@ -4,11 +4,14 @@
     "pages/person/person",
     "pages/login/login",
     "pages/Ccart/Ccart",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/settle/settle",
+    "pages/orderList/orderList",
+    "pages/switch/switch"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#ff4000",
+    "navigationBarBackgroundColor": "#ff704d",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": false,

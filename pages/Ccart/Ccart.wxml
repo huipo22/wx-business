@@ -1,0 +1,26 @@
+<view class="container">
+    <!-- 团长 -->
+    <view class="title">
+        <view>联系人 稷山-旺旺 18632655623</view>
+        <view>自提地址 下迪村-山西省运城市稷山县</view>
+    </view>
+    <!-- 购物车 -->
+    <view class="cart">
+        <view class="imgBox">
+            <van-image width="4rem" height="4rem" />
+        </view>
+        <view class="imgCon">
+            <view>海南直采黄金凤梨</view>
+            <view>[约1.9斤±0.2]</view>
+            <view>8.80x1</view>
+        </view>
+        <view class="stepBox">
+            <van-stepper value="{{ 1 }}" button-size="50rpx" plus-class="plus" minus-class="minus" custom-class="step" input-class="inputt" bind:change="onChange" />
+        </view>
+    </view>
+    <!-- bottom -->
+    <view class="bottom">
+        <view class="total">共8.80</view>
+        <view class="btn" catch:tap="btnTap">选好了</view>
+    </view>
+</view>

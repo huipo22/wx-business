@@ -1,0 +1,99 @@
+/* pages/settle/settle.wxss */
+
+.head {
+    display: flex;
+    height: 80rpx;
+    align-items: center;
+    background: #ffffff;
+}
+
+.head>.name {
+    flex: 1;
+    height: 100%;
+    font-size: 34rpx;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.head>.name1 {
+    flex: 1;
+    border: 1rpx solid #eee;
+}
+
+.head>.phone {
+    flex: 2;
+    border: 1rpx solid #eee;
+    margin-left: 2%;
+    margin-right: 5%;
+    box-sizing: border-box;
+}
+
+/* order */
+
+.order>.title {
+    height: 80rpx;
+    border-bottom: 1rpx solid #eee;
+    display: flex;
+    align-items: center;
+}
+
+.orderCon {
+    display: flex;
+}
+
+.orderCon>.img, .orderRight {
+    flex: 1;
+}
+
+.orderCon>.orderMid {
+    flex: 2;
+}
+
+.orderMid, .orderRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.orderCon>.img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* bottom */
+
+.bottom {
+    width: 100%;
+    height: 80rpx;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.bottom>.total {
+    flex: 2;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 5%;
+}
+
+.botColor {
+    color: #ff704d;
+}
+
+.bottom>.btn {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #00a046;
+    color: #fff;
+}

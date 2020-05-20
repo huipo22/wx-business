@@ -1,2 +1,38 @@
-<!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<!-- pages/detail/detail.wxml -->
+<view class="container">
+    <!-- loop -->
+    <view class="loop">
+        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+            <block wx:for="{{background}}" wx:key="*this">
+                <swiper-item>
+                    <view class="swiper-item">{{item}}</view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <!-- middle -->
+    <view class="middle">
+        <view class="title">
+            <view class="name">商品名称</view>
+            <view class="share">分享</view>
+        </view>
+        <view class="desc">
+            <view class="time">提货时间:05月20日</view>
+            <view class="right">已售73份. 仅剩2940份</view>
+        </view>
+    </view>
+    <!-- 详情 -->
+    <view class="detail">
+        <view class="title">商品详情</view>
+        <view class="rich"></view>
+    </view>
+    <!-- 底部 -->
+    <van-goods-action>
+        <van-goods-action-icon icon="chat-o" text="客服" />
+        <van-goods-action-icon icon="cart-o" text="购物车" info="5" />
+        <view class="btnBox">
+            <view class="btn add">加入购物车</view>
+            <view class="btn submit">立即购买</view>
+        </view>
+    </van-goods-action>
+</view>

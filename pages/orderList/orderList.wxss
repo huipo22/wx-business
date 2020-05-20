@@ -1,0 +1,4 @@
+/* pages/orderList/orderList.wxss */
+.van-tabs__line {
+    height: 2rpx!important;
+}

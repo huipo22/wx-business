@@ -1,5 +1,21 @@
 <view class="container">
     <!-- 定位信息 -->
+    <view class="titleBox">
+        <view class="tuanImg">
+            <van-image width="40" height="40" />
+        </view>
+        <view class="tuanInfo">
+            <view class="titleName">狼山酒店便利店</view>
+            <view class="titleDesc defaultColor descSize">最专业社区团购平台</view>
+        </view>
+        <view class="tuanSwitch" catch:tap="switchDot">
+            <!-- <van-image width="20" height="20" src="../../dist/icon/qiehuan.png"/> -->
+            <image style="width:44rpx;height:44rpx" src="../../dist/icon/qiehuan.png" />
+        </view>
+        <view class="shareInfo">
+            
+        </view>
+    </view>
     <!-- loop -->
     <view class="loop">
         <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
@@ -23,16 +39,28 @@
             <view class="good" catch:tap="detailtap">
                 <image style="width:100%" mode="center" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
             </view>
-            <view>百草味乐享零食大礼包</view>
+            <view class="goodName">百草味乐享零食大礼包百草味乐享零食大礼包百草味乐享零食大礼包</view>
+            <view class="goodCon">
+                <view class="desc">
+                    <view class="time">预售时间:05月20日</view>
+                    <view class="descCon defaultColor descSize">已售73份</view>
+                </view>
+                <view class="desc">
+                    <view class="time">预售时间:05月20日</view>
+                    <view class="descCon defaultColor descSize">限量2940份</view>
+                </view>
+            </view>
             <view class="goodBottom">
                 <view>
-                    ¥
-                    <text>0.06</text>
-                    <text>¥0.06</text>
+                    <text>¥</text>
+                    <text class="price"> 0.06</text>
+                    <text class="orPrice defaultColor middleLine">¥0.06</text>
                 </view>
                 <view class="addBtn">
-                    <van-button round size="small" type="danger" custom-class="add">加入购物车</van-button>
-                    <van-stepper value="{{ 1 }}" button-size="50rpx" plus-class="plus" minus-class="minus" custom-class="step" bind:change="onChange" />
+                    <van-button round size="small" type="danger" custom-class="add" wx:if="{{step}}">
+                        加入购物车
+                    </van-button>
+                    <van-stepper value="{{ 1 }}" wx:else button-size="50rpx" plus-class="plus" minus-class="minus" custom-class="step" input-class="inputt" bind:change="onChange" />
                 </view>
             </view>
         </view>

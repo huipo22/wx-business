@@ -2,6 +2,8 @@
 
 page {
   height: 100%;
+  background: #eee;
+  font-size: 32rpx;
 }
 
 .container {
@@ -22,4 +24,36 @@ button {
 
 button::after {
   border: none;
+}
+
+/* 边距 */
+
+.mr {
+  margin: 20rpx 0;
+  box-sizing: border-box;
+}
+.mb{
+  margin-bottom: 20rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+/*修改步进器 */
+
+.step>.plus, .step>.minus {
+  border-radius: 50%;
+  border: 1rpx solid red;
+}
+
+.step>.plus {
+  background: red;
+  color: #fff;
+}
+
+.step>.minus {
+  color: red;
+  background: transparent;
+}
+
+.step>.inputt {
+  background: transparent;
 }

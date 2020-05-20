@@ -1,0 +1,35 @@
+/* pages/switch/switch.wxss */
+
+.listCon {
+    display: flex;
+    background: #fff;
+    border-bottom: 1rpx solid #eee;
+    align-items: center;
+    height: 120rpx;
+    font-size: 26rpx;
+}
+
+.listCon>.left {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.listCon>.middle, .right {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.listCon>.right {
+    align-items: center;
+}
+
+.listCon>.middle {
+    flex: 2;
+}
+
+.listCon>.right {
+    flex: 1;
+}

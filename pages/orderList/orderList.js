@@ -1,16 +1,11 @@
-// pages/detail/detail.js
+// pages/orderList/orderList.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: false,
-    vertical: false,
-    autoplay: false,
-    interval: 2000,
-    duration: 500
+
   },
 
   /**
