@@ -8,12 +8,19 @@
             <view class="titleName">狼山酒店便利店</view>
             <view class="titleDesc defaultColor descSize">最专业社区团购平台</view>
         </view>
-        <view class="tuanSwitch" catch:tap="switchDot">
-            <!-- <van-image width="20" height="20" src="../../dist/icon/qiehuan.png"/> -->
-            <image style="width:44rpx;height:44rpx" src="../../dist/icon/qiehuan.png" />
-        </view>
         <view class="shareInfo">
-            
+            <view class="share defaultColor descSize">
+                <view>
+                    <image style="width:44rpx;height:44rpx" src="../../dist/icon/qiehuan.png" />
+                </view>
+                <view>分享</view>
+            </view>
+            <view class="person defaultColor descSize" catch:tap="switchDot">
+                <view>
+                    <image style="width:44rpx;height:44rpx" src="../../dist/icon/qiehuan.png" />
+                </view>
+                <view>附近团长</view>
+            </view>
         </view>
     </view>
     <!-- loop -->
@@ -29,38 +36,46 @@
     <!-- tab -->
     <view>
         <scroll-view scroll-x="true" id="tab">
-            <block wx:for="{{3}}" wx:key="index">
-                <view wx:for-item="item" wx:key="index" class="viewName {{active==item.id?'activeTab':''}}">
-                    {{index}}
+            <block wx:for="{{activeArea}}" wx:key="index">
+                <view wx:for-item="item" wx:key="index" class="viewName {{active==item.id?'activeTab':''}}" catch:tap="activeTap" data-cateId="{{item.id}}">
+                    {{item.name}}
                 </view>
             </block>
         </scroll-view>
-        <view class="goodList">
-            <view class="good" catch:tap="detailtap">
-                <image style="width:100%" mode="center" src="https://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"></image>
-            </view>
-            <view class="goodName">百草味乐享零食大礼包百草味乐享零食大礼包百草味乐享零食大礼包</view>
-            <view class="goodCon">
-                <view class="desc">
-                    <view class="time">预售时间:05月20日</view>
-                    <view class="descCon defaultColor descSize">已售73份</view>
+        <view class="goodList" wx:for="{{activeList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+            <view class="goodS" catch:tap="detailtap" data-goodId="{{item.id}}">
+                <view class="good">
+                    <image style="width:100%" mode="widthFix" src="{{imgAddress+item.goods_img}}"></image>
                 </view>
-                <view class="desc">
-                    <view class="time">预售时间:05月20日</view>
-                    <view class="descCon defaultColor descSize">限量2940份</view>
+                <view class="goodName">{{item.goods_name}}</view>
+                <view class="goodCon">
+                    <view class="desc">
+                        <view class="time">预售时间:{{todayDate}}</view>
+                        <view class="descCon defaultColor descSize">
+                            已售{{item.goods_volume_false}}{{item.goods_spec}}
+                        </view>
+                    </view>
+                    <view class="desc">
+                        <view class="time">提货时间:{{tomorrowDate}}</view>
+                        <view class="descCon defaultColor descSize">
+                            限量{{item.limit_num}}{{item.goods_spec}}
+                        </view>
+                    </view>
                 </view>
-            </view>
-            <view class="goodBottom">
-                <view>
-                    <text>¥</text>
-                    <text class="price"> 0.06</text>
-                    <text class="orPrice defaultColor middleLine">¥0.06</text>
-                </view>
-                <view class="addBtn">
-                    <van-button round size="small" type="danger" custom-class="add" wx:if="{{step}}">
-                        加入购物车
-                    </van-button>
-                    <van-stepper value="{{ 1 }}" wx:else button-size="50rpx" plus-class="plus" minus-class="minus" custom-class="step" input-class="inputt" bind:change="onChange" />
+                <view class="goodBottom">
+                    <view class="priceBox">
+                        <view>¥</view>
+                        <view class="price">{{item.present_price}}</view>
+                        <view class="orPrice defaultColor middleLine">
+                            ¥{{item.original_price}}
+                        </view>
+                    </view>
+                    <view class="addBtn" catch:tap="addCart" data-goodId="{{item.id}}">
+                        <van-button round size="small" type="danger" custom-class="add" wx:if="{{step}}">
+                            加入购物车
+                        </van-button>
+                        <van-stepper value="{{ 1 }}" wx:else button-size="50rpx" plus-class="plus" minus-class="minus" custom-class="step" input-class="inputt" bind:change="onChange" />
+                    </view>
                 </view>
             </view>
         </view>

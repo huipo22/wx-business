@@ -3,6 +3,42 @@
 .loop {
     width: 100%;
     background: #fff;
+    position: relative;
+}
+
+.topBottom {
+    z-index: 99999;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80rpx;
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    background: red;
+    padding: 0 0 15rpx 15rpx;
+    box-sizing: border-box;
+}
+
+.topBottom>.left {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+
+}
+.topBottom>.right{
+    align-items: flex-end;
+}
+.prePrice {
+    font-size: 42rpx;
+    padding: 0 15rpx;
+}
+.van-count-down{
+    color: #fff!important;
+}
+.topBottom>.right {
+    flex: 1;
 }
 
 .swiper-item {
@@ -24,6 +60,7 @@
     align-items: center;
     justify-content: center;
     color: #fff;
+    font-size: 36rpx;
 }
 
 .add {
@@ -34,14 +71,23 @@
     background: green;
 }
 
+.wid {
+    width: 60px !important;
+}
+
 /* middle */
 
-.middle>.title, .desc {
+.middle>.title,
+.desc {
     display: flex;
     height: 80rpx;
     background: #fff;
-    border-bottom: 1rpx solid #eeee;
     align-items: center;
+}
+
+.middle>.desc {
+    border-top: 1rpx solid #eee;
+    border-bottom: 1rpx solid #eee;
 }
 
 .middle>.title>.name {
@@ -58,15 +104,17 @@
     align-items: center;
 }
 
-.middle>.desc>.time, .right {
+.middle>.desc>.time,
+.right {
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
+
 }
 
 .middle {
-    margin-bottom: 15rpx;
+    margin-bottom: 10rpx;
 }
 
 /* 详情 */
@@ -79,4 +127,9 @@
     height: 80rpx;
     display: flex;
     align-items: center;
+}
+
+.richImg {
+    width: 100%;
+    height: auto;
 }

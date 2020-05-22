@@ -7,7 +7,7 @@
         <view style="margin-left:3%">一般</view>
     </view>
     <!-- 我的订单 -->
-    <view class="myOrder mr">
+    <view class="myOrder mb">
         <van-row custom-class="orderTitle">我的订单</van-row>
         <van-row custom-class="row">
             <van-col span="6" custom-class="order" catch:tap="listTap">

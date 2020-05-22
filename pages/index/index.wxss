@@ -1,5 +1,13 @@
 .container {}
 
+.share, .person {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .defaultColor {
     color: #999999
 }
@@ -8,17 +16,20 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 2.5;
+    flex: 3;
 }
 
-.tuanSwitch, .tuanImg {
+.tuanImg {
     flex: 1;
     display: flex;
-    align-items: center;
+    justify-content: center;
 }
 
 .shareInfo {
     flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .descSize {
@@ -30,6 +41,7 @@
     background: #fff;
     margin: 15rpx;
     box-sizing: border-box;
+    padding: 15rpx 0;
 }
 
 /* loop */
@@ -45,11 +57,15 @@
 
 #tab {
     background: #fff;
+    height: 60rpx;
+    line-height: 50rpx;
+    white-space: nowrap;
+    width: 100%;
 }
 
 .viewName {
     display: inline-block;
-    width: 25%;
+    width: 28%;
     height: 100%;
     text-align: center;
     /* line-height: 80rpx */
@@ -97,9 +113,7 @@
     font-size: 46rpx;
 }
 
-.middleLine {
-    text-decoration: line-through;
-}
+
 
 .time {
     color: #ffb380;
@@ -126,4 +140,13 @@
 .addBtn {
     display: flex;
     align-items: center;
+}
+
+.priceBox {
+    flex: 1;
+    display: flex;
+    align-items: baseline;
+}
+.activeTab{
+    color: red;
 }

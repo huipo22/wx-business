@@ -26,17 +26,29 @@ button::after {
   border: none;
 }
 
+/* 中划线 */
+
+.middleLine {
+  text-decoration: line-through;
+}
+
 /* 边距 */
 
 .mr {
-  margin: 20rpx 0;
+  margin: 15rpx 0;
   box-sizing: border-box;
 }
-.mb{
-  margin-bottom: 20rpx;
+
+.mb {
+  margin-bottom: 15rpx;
   box-sizing: border-box;
   background: #fff;
 }
+
+.pleft {
+  padding-left: 20rpx;
+}
+
 /*修改步进器 */
 
 .step>.plus, .step>.minus {

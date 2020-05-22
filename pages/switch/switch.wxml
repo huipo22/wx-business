@@ -1,18 +1,27 @@
-<!--pages/switch/switch.wxml-->
+<!-- pages/switch/switch.wxml -->
 <view class="container">
-    <view class="title">附近自提点</view>
+    <view class="addressInfo">
+        <view>您当前的位置</view>
+        <view class="address">
+            <view class="left">{{addressInfo}}</view>
+            <view class="right" catch:tap="openAddress">
+                <view>精准定位</view>
+            </view>
+        </view>
+    </view>
+    <view class="title pleft">附近自提点</view>
     <view class="list">
         <view class="listCon">
-            <view class="left">
-                <van-image width="3rem" height="3rem"/>
+            <view class="left pleft">
+                <van-image width="3rem" height="3rem" />
             </view>
-            <view class="middle">
+            <view class="middle pleft">
                 <view class="top">稷山-李静 175888888</view>
                 <view class="bottom">稷山县信合小区</view>
             </view>
             <view class="right">
                 <view class="top">
-                   <van-image width="1rem" height="1rem"/>
+                    <van-image width="1rem" height="1rem" />
                 </view>
                 <view class="desc">小于300m</view>
                 <view class="bottom">

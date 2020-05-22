@@ -1,8 +1,8 @@
 <view class="container">
     <!-- 团长 -->
     <view class="title">
-        <view>联系人 稷山-旺旺 18632655623</view>
-        <view>自提地址 下迪村-山西省运城市稷山县</view>
+        <view class="top">联系人 稷山-旺旺 18632655623</view>
+        <view class="top">自提地址 下迪村-山西省运城市稷山县</view>
     </view>
     <!-- 购物车 -->
     <view class="cart">

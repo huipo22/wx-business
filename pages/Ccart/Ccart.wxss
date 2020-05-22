@@ -4,11 +4,23 @@
     font-size: 32rpx;
     box-sizing: border-box;
     padding: 15rpx 20rpx;
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title>.top {
+    flex: 1;
+    display: flex;
+    align-items: center;
 }
 
 .cart {
     background: #fff;
-    display: flex
+    display: flex;
+    padding: 15rpx;
+    height: 160rpx;
 }
 
 .imgBox, .stepBox {
@@ -26,6 +38,7 @@
     flex-direction: column;
     justify-content: space-between;
     flex: 2;
+    padding-left: 2%;
 }
 
 /* bottom */
@@ -49,7 +62,8 @@
     padding-left: 15%;
     color: #ff704d;
 }
-.bottom>.btn{
+
+.bottom>.btn {
     flex: 1;
     height: 100%;
     display: flex;

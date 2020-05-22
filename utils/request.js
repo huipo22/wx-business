@@ -62,8 +62,27 @@ const apiRequest = (url, method, data, header) => { //接收所需要的参数�
     });
     return promise; //注意，这里返回的是promise对象
 }
-
+//活动区域
+let activeArea = (data) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.activeArea, 'post', data))
+    })
+}
+// 活动分类
+let activeList = (data) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.activeList, 'get', data))
+    })
+}
+// 商品详情
+let detail = (data) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.detail, 'get', data))
+    })
+}
 //最后需要将具体调用的函数暴露出，给具体业务调用
 export default {
-   
+    activeArea: activeArea,
+    activeList: activeList,
+    detail:detail,
 }

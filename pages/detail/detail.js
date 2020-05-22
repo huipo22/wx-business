@@ -1,23 +1,62 @@
 // pages/detail/detail.js
+const app = getApp();
+import util from '../../utils/util'
+let api = require('../../utils/request').default;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
-    indicatorDots: false,
-    vertical: false,
     autoplay: false,
-    interval: 2000,
-    duration: 500
+    duration: 500,
+    detailData: null,
+    imgAddress: app.globalData.imgAddress,
+    tomorrowDay: null,
+    rich: null,
+    count: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  // 首页链接
+  homeLink(){
+    wx.switchTab({
+      url: '/pages/index/index',
+    });
+  },
+  // 购车车链接
+  cartLink(){
+    wx.switchTab({
+      url: '/pages/Ccart/Ccart',
+    });
+  },
   onLoad: function (options) {
-
+    //明天的时间
+    var day3 = new Date();
+    day3.setTime(day3.getTime() + 24 * 60 * 60 * 1000);
+    var s3 = (day3.getMonth() + 1) + "月" + day3.getDate() + "日";
+    this.setData({
+      tomorrowDay: s3
+    })
+    const goodId = options.goodId;
+    api.detail({
+      goods_id: goodId
+    }).then(result => {
+      let rich = result.goods_detail.replace(/\<p><img/gi, '<img class="richImg" ')
+      let count = new Date(result.pt_start_time * 1000).getTime() + result.pt_houres * 3600 * 1000
+      // 倒计时
+      let nowTime = new Date().getTime()
+      // 结束时间
+      let endTime = new Date(count).getTime()
+      console.log(endTime)
+      this.setData({
+        detailData: result,
+        rich: rich,
+        count: endTime-nowTime
+      })
+    })
   },
 
   /**

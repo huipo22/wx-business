@@ -2,7 +2,11 @@
 let util = require('./utils/util')
 App({
   onLaunch: function (options) {
-    console.log(123)
+    if(!wx.getStorageSync("locationInfo")){
+      wx.navigateTo({
+        url: '/pages/switch/switch',
+      });
+    }
   },
   autoUpdate: function () {
     var self = this
@@ -69,6 +73,8 @@ App({
     })
   },
   globalData: {
-   
+    shopId: 1,
+    imgAddress: "https://shop.jishanhengrui.com/upload/",
+    locationInfo: null,
   }
 })

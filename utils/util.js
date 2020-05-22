@@ -131,5 +131,5 @@ module.exports = {
   addCart: addCart,
   cartLink: cartLink,
   queryCart: queryCart,
-  getCurrentPageArgs: getCurrentPageArgs
+  getCurrentPageArgs: getCurrentPageArgs,
 }

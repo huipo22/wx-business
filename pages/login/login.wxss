@@ -1,4 +1,7 @@
 /* pages/login/login.wxss */
+.container {
+    background: #fff
+}
 
 .loginBox {
     width: 100%;
@@ -42,4 +45,5 @@
     font-size: 35rpx;
     background: #00a046;
     color: #fff;
+    text-align: center;
 }
