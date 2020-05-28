@@ -4,14 +4,19 @@
     <view class="head mr">
         <view class="name">收货人:</view>
         <input type="text" value="{{pName}}" class="name1" bindblur="nameBlur" />
-        <input type="text" value="{{pPhone}}" class="phone" placeholder="请输入手机号" bindblur="phoneBlur"/>
+        <view wx:if="{{flag}}" class="phone">
+            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phonestyle" type="primary">
+                获取手机号
+            </button>
+        </view>
+        <input type="text" value="{{pPhone}}" wx:else class="phone" placeholder="请输入手机号" bindblur="phoneBlur" />
     </view>
     <!-- 订单信息 -->
     <view class="order mb">
         <view class="title">订单信息</view>
         <view class="orderCon" wx:for="{{orderInfo.goods_info}}" wx:for-item="item" wx:key="index">
             <view class="img">
-                <van-image width="3rem" height="3rem"  src="{{imgAddress+item.goods_img}}"/>
+                <van-image width="3rem" height="3rem" src="{{imgAddress+item.goods_img}}" />
             </view>
             <view class="orderMid">
                 <view class="title">{{item.goods_name}}</view>

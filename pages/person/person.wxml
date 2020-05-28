@@ -10,27 +10,27 @@
     <view class="myOrder mb">
         <van-row custom-class="orderTitle">我的订单</van-row>
         <van-row custom-class="row">
-            <van-col span="6" custom-class="order" catch:tap="listTap">
+            <van-col span="6" custom-class="order" data-num="1" bindtap="orderList">
                 <view>
-                    <van-image width="1.5rem" height="1.5rem" src="{{order1}}" />
+                    <van-icon name="{{order1}}" info="{{smallList[1]==0?'':smallList[1]}}" size="25px" />
                 </view>
                 <view>待付款</view>
             </van-col>
-            <van-col span="6" custom-class="order">
+            <van-col span="6" custom-class="order" data-num="2" bindtap="orderList">
                 <view>
-                    <van-image width="1.5rem" height="1.5rem" src="{{order2}}" />
+                    <van-icon name="{{order2}}" info="{{smallList[2]==0?'':smallList[2]}}" size="25px" />
                 </view>
                 <view>待配送</view>
             </van-col>
-            <van-col span="6" custom-class="order">
+            <van-col span="6" custom-class="order" data-num="3" bindtap="orderList">
                 <view>
-                    <van-image width="1.5rem" height="1.5rem" src="{{order3}}" />
+                    <van-icon name="{{order3}}" info="{{smallList[3]==0?'':smallList[3]}}" size="25px" />
                 </view>
                 <view>待提货</view>
             </van-col>
-            <van-col span="6" custom-class="order">
+            <van-col span="6" custom-class="order" data-num="4" bindtap="orderList">
                 <view>
-                    <van-image width="1.5rem" height="1.5rem" src="{{order4}}" />
+                    <van-icon name="{{order4}}" info="{{smallList[4]==0?'':smallList[4]}}" size="25px" />
                 </view>
                 <view>已完成</view>
             </van-col>

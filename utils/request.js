@@ -140,6 +140,30 @@ let setDefault=(data, header) => {
         resolve(apiRequest(apiList.setDefault, 'post', data, header))
     })
 }
+//手机号授权
+let phoneGet = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.phoneGet, 'post', data, header))
+    })
+}
+// 获取订单
+let getOrder = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.getOrder, 'post', data, header))
+    })
+}
+// 取消订单
+let orderRefund = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.orderRefund, 'post', data, header))
+    })
+}
+// 个人中心徽章
+let personOrderInfo = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.personOrderInfo, 'get', data, header))
+    })
+}
 //最后需要将具体调用的函数暴露出，给具体业务调用
 export default {
     activeArea: activeArea,
@@ -154,5 +178,9 @@ export default {
     createOrder:createOrder,
     locationList:locationList,
     wxpay:wxpay,
-    setDefault:setDefault
+    setDefault:setDefault,
+    phoneGet:phoneGet,
+    getOrder:getOrder,
+    orderRefund:orderRefund,
+    personOrderInfo:personOrderInfo
 }

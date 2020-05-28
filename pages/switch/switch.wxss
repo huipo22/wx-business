@@ -6,6 +6,8 @@
     align-items: center;
     /* height: 200rpx; */
     justify-content: center;
+    background: #fff;
+    padding: 20rpx;
 }
 
 .address {
@@ -62,13 +64,16 @@
     justify-content: center;
 }
 
-.listCon>.middle>.top, .bottom {
+.listCon>.middle>.top,
+.bottom {
     flex: 1;
     display: flex;
     align-items: center;
 }
 
-.listCon>.right>.top, .bottom, .desc {
+.listCon>.right>.top,
+.bottom,
+.desc {
     flex: 1;
     display: flex;
     align-items: center;
@@ -150,7 +155,8 @@
     align-items: center;
     justify-content: center;
 }
-.btnBox>.title{
+
+.btnBox>.title {
     height: 60rpx;
     display: flex;
     align-items: center;

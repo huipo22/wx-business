@@ -3,15 +3,17 @@
     <view class="shareBox" wx:if="{{shareFlag}}">
         <view class="topBox">
             <view class="imgS">
-                <view class="img">
-                    <image src="../../dist/icon/tihuodian.png" style="width:80rpx;height:80rpx" />
-                </view>
-                <view>分享好友</view>
+                <button open-type="share" class="weixinBox">
+                    <view class="img">
+                        <image src="../../dist/icon/weixin.png" style="width:80rpx;height:80rpx" />
+                    </view>
+                    <view>分享好友</view>
+                </button>
             </view>
             <view class="imgS" catch:tap="poster">
                 <view class="img">
                     <poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
-                        <image src="../../dist/icon/tihuodian.png" style="width:80rpx;height:80rpx" />
+                        <image src="../../dist/icon/haibao.png" style="width:80rpx;height:80rpx" />
                     </poster>
                 </view>
                 <view>生成海报</view>

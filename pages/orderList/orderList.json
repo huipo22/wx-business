@@ -1,7 +1,14 @@
 {
   "usingComponents": {
-    "van-tab": "../dist/vant/tab/index",
-    "van-tabs": "../dist/vant/tabs/index"
+    "van-tab": "../../dist/vant/tab/index",
+    "van-tabs": "../../dist/vant/tabs/index",
+    "van-card": "../../dist/vant/card/index",
+    "van-row": "../../dist/vant/row/index",
+    "van-col": "../../dist/vant/col/index",
+    "van-image": "../../dist/vant/image/index",
+    "van-button": "../../dist/vant/button/index",
+    "van-popup": "../../dist/vant/popup/index",
+    "van-loading": "../../dist/vant/loading/index"
   },
-  "navigationBarTitleText": "我的订单"
+  "navigationBarTitleText": "订单列表"
 }
