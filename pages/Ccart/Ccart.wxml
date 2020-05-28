@@ -1,26 +1,34 @@
 <view class="container">
     <!-- 团长 -->
     <view class="title">
-        <view class="top">联系人 稷山-旺旺 18632655623</view>
-        <view class="top">自提地址 下迪村-山西省运城市稷山县</view>
+        <view class="top">联系人 {{postInfo.user_true_name}} - {{postInfo.user_phone}}</view>
+        <view class="top">自提地址 {{postInfo.user_address}}</view>
     </view>
     <!-- 购物车 -->
-    <view class="cart">
-        <view class="imgBox">
-            <van-image width="4rem" height="4rem" />
-        </view>
-        <view class="imgCon">
-            <view>海南直采黄金凤梨</view>
-            <view>[约1.9斤±0.2]</view>
-            <view>8.80x1</view>
-        </view>
-        <view class="stepBox">
-            <van-stepper value="{{ 1 }}" button-size="50rpx" plus-class="plus" minus-class="minus" custom-class="step" input-class="inputt" bind:change="onChange" />
+    <view>
+        <view class="cart" wx:for="{{carts}}" wx:for-item="item" wx:key="index" wx:for-index="index">
+            <view class="imgBox">
+                <van-image width="4rem" height="4rem" src="{{imgAddress+item.goods_img}}" />
+            </view>
+            <view class="imgCon">
+                <view>{{item.goods_name}}</view>
+                <view class="titleDesc defaultColor descSize">{{item.goods_spec}}</view>
+                <view>{{item.present_price}}</view>
+            </view>
+            <view class="stepBox">
+                <view class='sub' catch:tap='quantityChange' id='dec' data-index="{{index}}">
+                    -
+                </view>
+                <view class='number'>{{item.num}}</view>
+                <view class='add' catch:tap='quantityChange' id='inc' data-index="{{index}}">
+                    +
+                </view>
+            </view>
         </view>
     </view>
     <!-- bottom -->
     <view class="bottom">
-        <view class="total">共8.80</view>
-        <view class="btn" catch:tap="btnTap">选好了</view>
+        <view class="total">共{{totalMoney}}</view>
+        <view class="btn {{carts.length==0?'disabled':''}}" catch:tap="endTap">选好了</view>
     </view>
 </view>

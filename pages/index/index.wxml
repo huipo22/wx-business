@@ -1,25 +1,44 @@
 <view class="container">
+    <!-- 分享区域 -->
+    <view class="shareBox" wx:if="{{shareFlag}}">
+        <view class="topBox">
+            <view class="imgS">
+                <view class="img">
+                    <image src="../../dist/icon/tihuodian.png" style="width:80rpx;height:80rpx" />
+                </view>
+                <view>分享好友</view>
+            </view>
+            <view class="imgS" catch:tap="poster">
+                <view class="img">
+                    <poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
+                        <image src="../../dist/icon/tihuodian.png" style="width:80rpx;height:80rpx" />
+                    </poster>
+                </view>
+                <view>生成海报</view>
+            </view>
+        </view>
+        <view class="cancel" catch:tap="cancelShare">取消</view>
+    </view>
     <!-- 定位信息 -->
     <view class="titleBox">
-        <view class="tuanImg">
-            <van-image width="40" height="40" />
+        <view class="post" catch:tap="switchDot" wx:if="{{addressInfo}}">
+            <view class="tuanImg">
+                <van-image width="40" height="40" src="{{imgAddress+addressInfo.avatar}}" round />
+            </view>
+            <view class="tuanInfo">
+                <view class="titleName">{{addressInfo.user_true_name}}</view>
+                <view class="titleDesc defaultColor descSize">{{addressInfo.user_address}}</view>
+            </view>
         </view>
-        <view class="tuanInfo">
-            <view class="titleName">狼山酒店便利店</view>
-            <view class="titleDesc defaultColor descSize">最专业社区团购平台</view>
+        <view class="postE" catch:tap="switchDot" wx:else>
+            <view>选择团长</view>
         </view>
         <view class="shareInfo">
-            <view class="share defaultColor descSize">
+            <view class="share defaultColor descSize" catch:tap="shareBtn">
                 <view>
-                    <image style="width:44rpx;height:44rpx" src="../../dist/icon/qiehuan.png" />
+                    <image style="width:44rpx;height:44rpx" src="../../dist/icon/share.png" />
                 </view>
                 <view>分享</view>
-            </view>
-            <view class="person defaultColor descSize" catch:tap="switchDot">
-                <view>
-                    <image style="width:44rpx;height:44rpx" src="../../dist/icon/qiehuan.png" />
-                </view>
-                <view>附近团长</view>
             </view>
         </view>
     </view>
@@ -70,11 +89,10 @@
                             ¥{{item.original_price}}
                         </view>
                     </view>
-                    <view class="addBtn" catch:tap="addCart" data-goodId="{{item.id}}">
-                        <van-button round size="small" type="danger" custom-class="add" wx:if="{{step}}">
+                    <view class="addBtn">
+                        <van-button round size="small" type="danger" custom-class="add" catch:tap="addCart" data-goodId="{{item.id}}" wx:if="{{!item.num}}">
                             加入购物车
                         </van-button>
-                        <van-stepper value="{{ 1 }}" wx:else button-size="50rpx" plus-class="plus" minus-class="minus" custom-class="step" input-class="inputt" bind:change="onChange" />
                     </view>
                 </view>
             </view>

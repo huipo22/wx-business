@@ -80,9 +80,79 @@ let detail = (data) => {
         resolve(apiRequest(apiList.detail, 'get', data))
     })
 }
+// 微信登录
+let wxLogin = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.wxLogin, 'post', data, header))
+    })
+}
+// 添加购物车
+let cartAdd = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.cartAdd, 'post', data, header))
+    })
+}
+// 查询购物车
+let cartIndex = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.cartIndex, 'get', data, header))
+    })
+}
+// 购物车删除
+let cartDelete = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.cartDelete, 'post', data, header))
+    })
+}
+// 购物车数量查询
+let cartNum = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.cartNum, 'get', data, header))
+    })
+}
+// 购物车加减
+let cartAction = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.cartAction, 'post', data, header))
+    })
+}
+// 创建订单
+let createOrder = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.createOrder, 'post', data, header))
+    })
+}
+// 自提点列表
+let locationList = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.locationList, 'get', data, header))
+    })
+}
+// 支付
+let wxpay = (data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.wxpay, 'post', data, header))
+    })
+}
+// 默认自提点
+let setDefault=(data, header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.setDefault, 'post', data, header))
+    })
+}
 //最后需要将具体调用的函数暴露出，给具体业务调用
 export default {
     activeArea: activeArea,
     activeList: activeList,
     detail:detail,
+    wxLogin:wxLogin,
+    cartAdd: cartAdd,
+    cartIndex: cartIndex,
+    cartDelete: cartDelete,
+    cartNum: cartNum,
+    cartAction:cartAction,
+    createOrder:createOrder,
+    locationList:locationList,
+    wxpay:wxpay,
+    setDefault:setDefault
 }

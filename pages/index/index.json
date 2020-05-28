@@ -2,6 +2,7 @@
   "usingComponents": {
     "van-button": "../dist/vant/button/index",
     "van-stepper": "../dist/vant/stepper/index",
-    "van-image": "../dist/vant/image/index"
+    "van-image": "../dist/vant/image/index",
+    "poster": "../dist/miniprogram_dist/poster"
   }
 }

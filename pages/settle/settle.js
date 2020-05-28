@@ -1,18 +1,55 @@
 // pages/settle/settle.js
+const app = getApp();
+import util from '../../utils/util'
+let api = require('../../utils/request').default;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    orderInfo: null,
+    imgAddress: app.globalData.imgAddress,
+    pName: '',
+    pPhone: ''
   },
-
+  // 收货人名字
+  nameBlur(e) {
+    let name = e.detail.value
+    this.setData({
+      pName: name
+    })
+  },
+  // 收货人手机号
+  phoneBlur(e) {
+    let phone = e.detail.value
+    this.setData({
+      pPhone: phone
+    })
+  },
+  // 结算事件
+  btnTap(){
+    const settResult=this.data.orderInfo
+    api.wxpay({
+      order_id: settResult.order_id,
+      address_id: addressId,
+      price: Price,
+      remark: this.data.remark,
+      postId:wx.getStorageSync("postInfo".id),//自提点id
+      name:this.data.pName,//本人姓名
+      phone:this.data.pPhone,//本人手机
+    }, {
+      "Token": wx.getStorageSync("token"),
+      "Device-Type": "wxapp"
+    }).then((result) => {})
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      orderInfo: JSON.parse(options.data)
+    })
   },
 
   /**

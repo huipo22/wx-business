@@ -31,3 +31,7 @@
     box-sizing: border-box;
 }
 /* e0620d */
+.van-icon--image{
+    width: 1.2em!important;
+    height: 1.2em!important;
+}

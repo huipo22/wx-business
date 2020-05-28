@@ -2,9 +2,9 @@
     <!-- 个人信息 -->
     <view class="info">
         <view style="margin-left:6%">
-            <van-image width="3rem" height="3rem" round />
+            <van-image width="3rem" height="3rem" round src="{{userData.avatarUrl}}" />
         </view>
-        <view style="margin-left:3%">一般</view>
+        <view style="margin-left:3%">{{userData.nickName}}</view>
     </view>
     <!-- 我的订单 -->
     <view class="myOrder mb">
@@ -12,25 +12,25 @@
         <van-row custom-class="row">
             <van-col span="6" custom-class="order" catch:tap="listTap">
                 <view>
-                    <van-image width="2.5rem" height="2.5rem" />
+                    <van-image width="1.5rem" height="1.5rem" src="{{order1}}" />
                 </view>
                 <view>待付款</view>
             </van-col>
             <van-col span="6" custom-class="order">
                 <view>
-                    <van-image width="2.5rem" height="2.5rem" />
+                    <van-image width="1.5rem" height="1.5rem" src="{{order2}}" />
                 </view>
                 <view>待配送</view>
             </van-col>
             <van-col span="6" custom-class="order">
                 <view>
-                    <van-image width="2.5rem" height="2.5rem" />
+                    <van-image width="1.5rem" height="1.5rem" src="{{order3}}" />
                 </view>
                 <view>待提货</view>
             </van-col>
             <van-col span="6" custom-class="order">
                 <view>
-                    <van-image width="2.5rem" height="2.5rem" />
+                    <van-image width="1.5rem" height="1.5rem" src="{{order4}}" />
                 </view>
                 <view>已完成</view>
             </van-col>
@@ -39,10 +39,10 @@
     <!-- cell -->
     <van-cell-group>
         <button open-type="contact">
-            <van-cell title="团长信息" icon="location-o" ></van-cell>
+            <van-cell title="团长信息" icon="{{tuanInfo}}"></van-cell>
         </button>
-        <van-cell title="团长申请"></van-cell>
-        <van-cell title="意见反馈"></van-cell>
-        <van-cell title="联系客服"></van-cell>
+        <van-cell title="团长申请" icon="{{tuanReq}}"></van-cell>
+        <van-cell title="意见反馈" icon="{{oneKefu}}"></van-cell>
+        <van-cell title="联系客服" icon="{{Kefu}}"></van-cell>
     </van-cell-group>
 </view>

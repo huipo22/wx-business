@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "van-image": "../dist/vant/image/index"
+    "van-image": "../dist/vant/image/index",
+    "van-button": "../dist/vant/button/index"
   }
 }

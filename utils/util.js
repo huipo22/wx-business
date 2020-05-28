@@ -48,6 +48,26 @@ const login = () => {
             wx.setStorageSync('sessionKey', result.sessionKey)
             // 查询购物车
             queryCart()
+            api.locationList({
+              from: wx.getStorageSync('locationString')
+            }, {
+              "Token": wx.getStorageSync("token"),
+              "Device-Type": "wxapp"
+            }).then(result => {
+              let addressId = result[0].id
+              api.setDefault({
+                post_id: addressId
+              }, {
+                "Token": wx.getStorageSync("token"),
+                "Device-Type": "wxapp"
+              }).then(result => {
+                // wx.setStorageSync("postInfo", result)
+                wx.setStorage({
+                  key:"postInfo",
+                  data:result
+                })
+              })
+            })
             // 授权完返回上一页
             var pages = getCurrentPages();
             if (pages.length !== 1) {
@@ -82,7 +102,7 @@ const addCart = (e) => {
   })
 }
 // tab 购物车徽章
-const queryCart = (currentObj) => {
+const queryCart = () => {
   const app = getApp();
   api.cartNum({
     shop_id: app.globalData.shopId,
@@ -94,17 +114,12 @@ const queryCart = (currentObj) => {
     let sum = result.sum;
     if (sum !== 0) {
       wx.setTabBarBadge({
-        index: 2,
+        index: 1,
         text: String(sum)
       })
-      if (currentObj) {
-        currentObj.setData({
-          cartInfo: sum
-        })
-      }
     } else {
       wx.removeTabBarBadge({
-        index: 2,
+        index: 1,
       });
     }
   })

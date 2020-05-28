@@ -1,5 +1,5 @@
 <!-- pages/detail/detail.wxml -->
-<view class="container">
+<view class="container" wx:if="{{flag}}">
     <!-- loop -->
     <view class="loop">
         <swiper style="height:220px" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
@@ -47,9 +47,9 @@
     <!-- 底部 -->
     <van-goods-action>
         <van-goods-action-icon icon="home-o" icon-class="wid" text="首页" catch:tap="homeLink"/>
-        <van-goods-action-icon icon="cart-o" text="购物车" info="5" catch:tap="cartLink"/>
+        <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartInfo==0?'':cartInfo}}" catch:tap="cartLink"/>
         <view class="btnBox">
-            <view class="btn add">加入购物车</view>
+            <view class="btn add" catch:tap="addCart" data-goodId="{{detailData.id}}">加入购物车</view>
             <!-- <view class="btn submit">立即购买</view> -->
         </view>
     </van-goods-action>

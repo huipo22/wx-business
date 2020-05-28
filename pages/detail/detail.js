@@ -15,22 +15,44 @@ Page({
     tomorrowDay: null,
     rich: null,
     count: null,
+    cartInfo: 0,
+    flag:false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   // 首页链接
-  homeLink(){
+  homeLink() {
     wx.switchTab({
       url: '/pages/index/index',
     });
   },
   // 购车车链接
-  cartLink(){
+  cartLink() {
     wx.switchTab({
       url: '/pages/Ccart/Ccart',
     });
+  },
+  // 加入购物车
+  addCart(e) {
+    let goodId = e.currentTarget.dataset.goodid;
+    api.cartAdd({
+      goods_id: goodId,
+      shop_id: app.globalData.shopId
+    }, {
+      Token: wx.getStorageSync('token'),
+      "Device-Type": 'wxapp',
+    }).then((result) => {
+      wx.showToast({
+        title: '加入购物车成功',
+        icon: "none",
+        duration: 1000
+      })
+      // 查询购物车
+      util.queryCart(this)
+      this.cartQ(app)
+    })
   },
   onLoad: function (options) {
     //明天的时间
@@ -54,7 +76,8 @@ Page({
       this.setData({
         detailData: result,
         rich: rich,
-        count: endTime-nowTime
+        count: endTime - nowTime,
+        flag:true
       })
     })
   },
@@ -65,26 +88,40 @@ Page({
   onReady: function () {
 
   },
-
+  // 查询购物车
+  cartQ(app) {
+    let that = this;
+    api.cartNum({
+      shop_id: app.globalData.shopId
+    }, {
+      Token: wx.getStorageSync('token'),
+      "Device-Type": 'wxapp',
+    }).then((result) => {
+      that.setData({
+        cartInfo: result.sum
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // 查询购物车数量
+    this.cartQ(app)
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    util.queryCart()
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    util.queryCart()
   },
 
   /**

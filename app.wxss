@@ -14,7 +14,13 @@ page {
   justify-content: space-between; */
   box-sizing: border-box;
 }
-
+/* 默认样式 */
+.descSize {
+  font-size: 28rpx;
+}
+.defaultColor {
+  color: #999999
+}
 /* button 默认 */
 
 button {
@@ -68,4 +74,34 @@ button::after {
 
 .step>.inputt {
   background: transparent;
+}
+
+/* 步进器 */
+
+.stepBox view {
+  height: 50rpx;
+  width: 50rpx;
+  margin-left: 20rpx;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.stepBox .sub {
+  color: #000;
+  border: 1px solid #888;
+  border-radius: 50%;
+}
+
+.stepBox .number {
+  font-size: 32rpx;
+  font-family: ArialMT;
+  color: rgba(3, 3, 3, 1);
+  align-items: center;
+}
+
+.stepBox .add {
+  color: rgb(102, 193, 140);
+  border: 1px solid rgb(102, 193, 140);
+  border-radius: 50%;
 }

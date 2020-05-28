@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 160rpx;
+    /* height: 200rpx; */
     justify-content: center;
 }
 
@@ -45,7 +45,7 @@
     background: #fff;
     border-bottom: 1rpx solid #eee;
     align-items: center;
-    height: 130rpx;
+    height: 150rpx;
     font-size: 26rpx;
 }
 
@@ -55,7 +55,7 @@
     height: 100%;
 }
 
-.listCon>.middle, .right {
+.listCon>.middle {
     display: flex;
     height: 80%;
     flex-direction: column;
@@ -68,8 +68,13 @@
     align-items: center;
 }
 
-.listCon>.right {
+.listCon>.right>.top, .bottom, .desc {
+    flex: 1;
+    display: flex;
     align-items: center;
+}
+
+.listCon>.right {
     font-size: 24rpx;
 }
 
@@ -79,4 +84,75 @@
 
 .listCon>.right {
     flex: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.listCon>.right>.bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.listCon>.right>.bottom>.btn {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    background: red;
+    color: #fff;
+    justify-content: center;
+    border-radius: 10rpx;
+    padding: 5rpx;
+}
+
+.errorBox {
+    display: flex;
+    justify-content: center;
+}
+
+.errorBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60rpx;
+    width: 80%;
+    font-size: 26rpx;
+    color: red;
+}
+
+.setting {
+    width: 60%;
+    height: 60rpx;
+    text-align: center;
+    line-height: 60rpx;
+    font-size: 32rpx;
+}
+
+.postA {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.postA>.address {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.btnBox>.title{
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

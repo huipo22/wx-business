@@ -1,7 +1,14 @@
 <!-- pages/switch/switch.wxml -->
 <view class="container">
-    <view class="addressInfo">
-        <view>您当前的位置</view>
+    <view class="addressInfo" wx:if="{{postInfo}}">
+        <view class="postA">
+            <view class="img">
+                <van-image width="2.5rem" height="2.5rem" round src="{{imgAddress+postInfo.avatar}}" />
+            </view>
+            <view class="name">{{postInfo.user_true_name}}</view>
+            <view class="address">{{postInfo.user_address}}</view>
+        </view>
+        <view class="defaultColor descSize">您当前的位置</view>
         <view class="address">
             <view class="left">{{addressInfo}}</view>
             <view class="right" catch:tap="openAddress">
@@ -9,25 +16,40 @@
             </view>
         </view>
     </view>
+    <view wx:else class="btnBox">
+        <view class="title defaultColor descSize">您当前的位置</view>
+        <view class="address" wx:if="{{addressInfo}}">
+            <view class="left">{{addressInfo}}</view>
+            <view class="right" catch:tap="openAddress">
+                <view>精准定位</view>
+            </view>
+        </view>
+        <button open-type="openSetting" catchtap="changeModalCancel" class="setting" wx:else>
+            前去设置
+        </button>
+    </view>
     <view class="title pleft">附近自提点</view>
-    <view class="list">
-        <view class="listCon">
+    <view class="list" wx:if="{{locationList.length!==0}}">
+        <view class="listCon" wx:for="{{locationList}}" wx:for-item="item" wx:key="index">
             <view class="left pleft">
-                <van-image width="3rem" height="3rem" />
+                <van-image width="2.5rem" height="2.5rem" round src="{{imgAddress+item.avatar}}" />
             </view>
             <view class="middle pleft">
-                <view class="top">稷山-李静 175888888</view>
-                <view class="bottom">稷山县信合小区</view>
+                <view class="top">{{item.user_true_name}} {{item.user_phone}}</view>
+                <view class="bottom">{{item.user_address}}</view>
             </view>
             <view class="right">
                 <view class="top">
-                    <van-image width="1rem" height="1rem" />
+                    <image class="" src="../../dist/icon/tihuodian.png" mode="aspectFit" lazy-load="false" style="width:1rem;height:1rem" />
                 </view>
-                <view class="desc">小于300m</view>
-                <view class="bottom">
-                    <van-button>设为默认</van-button>
+                <view class="desc">{{item.distance}}m</view>
+                <view class="bottom" catch:tap="setDefault" data-addressId="{{item.id}}" wx:if="{{postInfo.id!==item.id}}">
+                    <view class="btn">设为默认</view>
                 </view>
             </view>
         </view>
+    </view>
+    <view wx:else class="errorBox">
+        <view catch:tap="linkLogin" class="errorBtn">地址获取失败</view>
     </view>
 </view>

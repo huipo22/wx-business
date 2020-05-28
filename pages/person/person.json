@@ -7,5 +7,5 @@
     "van-cell-group": "../dist/vant/cell-group/index",
     "van-icon": "../dist/vant/icon/index"
   },
-  "navigationBarTitleText": "我的"
+  "navigationBarTitleText": "个人中心"
 }

@@ -8,8 +8,9 @@
     align-items: center;
 }
 
-.defaultColor {
-    color: #999999
+.post {
+    flex: 2;
+    display: flex;
 }
 
 .tuanInfo {
@@ -26,14 +27,10 @@
 }
 
 .shareInfo {
-    flex: 2;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.descSize {
-    font-size: 28rpx;
 }
 
 .titleBox {
@@ -113,8 +110,6 @@
     font-size: 46rpx;
 }
 
-
-
 .time {
     color: #ffb380;
 }
@@ -147,6 +142,53 @@
     display: flex;
     align-items: baseline;
 }
-.activeTab{
+
+.activeTab {
     color: red;
+}
+
+/* 底部分享box */
+
+.shareBox {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #fff;
+    z-index: 99;
+}
+
+.topBox {
+    display: flex;
+}
+
+.topBox>.imgS {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60rpx;
+}
+
+.postE {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.postE>view {
+    background: red;
+    color: #fff;
+    width: 60%;
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30rpx;
 }

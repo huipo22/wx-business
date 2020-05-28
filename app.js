@@ -7,6 +7,7 @@ App({
         url: '/pages/switch/switch',
       });
     }
+    util.login()
   },
   autoUpdate: function () {
     var self = this
