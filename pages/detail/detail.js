@@ -17,6 +17,7 @@ Page({
     count: null,
     cartInfo: 0,
     flag:false,
+    isflag:false
   },
 
   /**
@@ -72,13 +73,21 @@ Page({
       let nowTime = new Date().getTime()
       // 结束时间
       let endTime = new Date(count).getTime()
-      console.log(endTime)
       this.setData({
         detailData: result,
         rich: rich,
         count: endTime - nowTime,
         flag:true
       })
+      if((endTime-nowTime<=0)){
+        this.setData({
+          isflag:true
+        })
+      }else{
+        this.setData({
+          isflag:false
+        })
+      }
     })
   },
 

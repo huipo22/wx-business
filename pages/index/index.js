@@ -2,147 +2,69 @@
 const app = getApp();
 import util from '../../utils/util'
 let api = require('../../utils/request').default;
+import Poster from '../../dist/miniprogram_dist/poster/poster';
+let postInfo = wx.getStorageSync("postInfo")
 const posterConfig = {
     jdConfig: {
         width: 750,
-        height: 1000,
-        backgroundColor: '#fff',
-        debug: false,
+        height: 1100,
+        backgroundColor: '#000',
+        debug: true,
         pixelRatio: 1,
         blocks: [{
                 width: 690,
-                height: 808,
+                height: 500,
                 x: 30,
                 y: 183,
                 borderWidth: 2,
-                borderColor: '#f0c2a0',
+                borderColor: '#fff',
                 borderRadius: 20,
             },
-            {
-                width: 634,
-                height: 74,
-                x: 59,
-                y: 770,
-                backgroundColor: '#fff',
-                opacity: 0.5,
-                zIndex: 100,
-            },
+
         ],
         texts: [{
                 x: 113,
                 y: 61,
                 baseLine: 'middle',
-                text: '伟仔',
+                text: postInfo.user_true_name,
                 fontSize: 32,
-                color: '#8d8d8d',
+                color: '#fff',
             },
             {
                 x: 30,
                 y: 113,
                 baseLine: 'top',
-                text: '发现一个好物，推荐给你呀',
+                text: postInfo.user_address,
                 fontSize: 38,
-                color: '#080808',
-            },
-            {
-                x: 92,
-                y: 810,
-                fontSize: 38,
-                baseLine: 'middle',
-                text: '标题标题标题标题标题标题标题标题标题',
-                width: 570,
-                lineNum: 1,
-                color: '#8d8d8d',
-                zIndex: 200,
-            },
-            {
-                x: 59,
-                y: 895,
-                baseLine: 'middle',
-                text: [{
-                        text: '2人拼',
-                        fontSize: 28,
-                        color: '#ec1731',
-                    },
-                    {
-                        text: '¥99',
-                        fontSize: 36,
-                        color: '#ec1731',
-                        marginLeft: 30,
-                    }
-                ]
-            },
-            {
-                x: 522,
-                y: 895,
-                baseLine: 'middle',
-                text: '已拼2件',
-                fontSize: 28,
-                color: '#929292',
-            },
-            {
-                x: 59,
-                y: 945,
-                baseLine: 'middle',
-                text: [{
-                        text: '商家发货&售后',
-                        fontSize: 28,
-                        color: '#929292',
-                    },
-                    {
-                        text: '七天退货',
-                        fontSize: 28,
-                        color: '#929292',
-                        marginLeft: 50,
-                    },
-                    {
-                        text: '运费险',
-                        fontSize: 28,
-                        color: '#929292',
-                        marginLeft: 50,
-                    },
-                ]
+                color: '#fff',
             },
             {
                 x: 360,
-                y: 1065,
+                y: 750,
                 baseLine: 'top',
                 text: '长按识别小程序码',
                 fontSize: 38,
-                color: '#080808',
+                color: '#fff',
             },
-            {
-                x: 360,
-                y: 1123,
-                baseLine: 'top',
-                text: '超值好货一起拼',
-                fontSize: 28,
-                color: '#929292',
-            },
+
         ],
         images: [{
-                width: 62,
-                height: 62,
+                width: 80,
+                height: 80,
                 x: 30,
                 y: 30,
                 borderRadius: 62,
-                url:"https://shop.jishanhengrui.com/upload/admin/20200526/9fb20871d438a991a733976deeb73571.jpg",
+                url: "https://shop.jishanhengrui.com/upload/admin/20200526/9fb20871d438a991a733976deeb73571.jpg",
             },
+
             {
-                width: 634,
-                height: 634,
-                x: 59,
-                y: 210,
-                url:"https://shop.jishanhengrui.com/upload/admin/20200526/9fb20871d438a991a733976deeb73571.jpg",
-            },
-            {
-                width: 220,
-                height: 220,
+                width: 200,
+                height: 200,
                 x: 92,
-                y: 1020,
-                url:"https://shop.jishanhengrui.com/upload/admin/20200526/9fb20871d438a991a733976deeb73571.jpg",
+                y: 700,
+                url: "https://shop.jishanhengrui.com/upload/admin/20200526/9fb20871d438a991a733976deeb73571.jpg",
             },
-           
+
         ]
 
     },
@@ -161,20 +83,37 @@ Page({
         imgAddress: app.globalData.imgAddress,
         addressInfo: null,
         shareFlag: false,
-        posterConfig: posterConfig.jdConfig,
+        imgUrls: [], //轮播图
+    },
+    onCreatePoster() {
+        // setData配置数据
+        this.setData({
+            posterConfig: posterConfig.jdConfig
+        }, () => {
+            Poster.create();
+        });
+        this.setData({
+            showSave: true,
+            shareFlag: false
+        })
+        console.log(Poster)
     },
     onPosterSuccess(e) {
         const {
             detail
         } = e;
-        wx.previewImage({
-            current: detail,
-            urls: [detail]
+        // wx.previewImage({
+        //     current: detail,
+        //     urls: [detail]
+        // })
+        this.setData({
+            aImg: detail
         })
     },
     onPosterFail(err) {
         console.error(err);
     },
+
     // 商品详情
     detailtap(e) {
         const goodId = e.currentTarget.dataset.goodid;
@@ -225,8 +164,9 @@ Page({
     },
     onShow() {
         this.setData({
-            addressInfo: wx.getStorageSync("postInfo")
+            postInfo: wx.getStorageSync("postInfo")
         })
+        this.wheel()
     },
     onLoad() {
         //今天的时间
@@ -254,4 +194,83 @@ Page({
         })
     },
     onReady() {},
+    downloadfile() {
+        var that = this;
+        wx.saveImageToPhotosAlbum({
+            filePath: that.data.aImg,
+            success(res) {
+                wx.showToast("保存至相册成功")
+                wx.previewImage({
+                    current: that.data.aImg,
+                    urls: [that.data.aImg]
+                })
+            },
+            fail() {
+                wx.showToast("保存至相册失败")
+            }
+        })
+    },
+    saveImg() {
+        var that = this;
+        wx.getSetting({
+            success(res) {
+                wx.hideLoading();
+                if (!res.authSetting['scope.writePhotosAlbum']) {
+                    //请求授权
+                    wx.authorize({
+                        scope: 'scope.writePhotosAlbum',
+                        success() {
+                            //获得授权，开始下载
+                            that.downloadfile()
+                        },
+                        fail() {
+                            wx.showModal({
+                                title: '',
+                                content: '保存到系统相册需要授权',
+                                confirmText: '授权',
+                                success(res) {
+                                    if (res.confirm) {
+                                        wx.openSetting({
+                                            success(res) {
+                                                if (res.authSetting['scope.writePhotosAlbum'] === true) {
+                                                    that.downloadfile()
+                                                }
+                                            }
+                                        })
+                                    }
+                                },
+                                fail() {
+                                    wx.showToast({
+                                        title: '打开设置页失败',
+                                        icon: 'none',
+                                    })
+                                }
+                            })
+                        }
+                    })
+                } else {
+                    //已有授权
+                    that.downloadfile()
+                }
+            },
+            fail() {
+                wx.hideLoading();
+                wx.showToast({
+                    title: '获取授权失败',
+                    icon: 'none',
+                })
+            }
+        })
+    },
+    // 轮播图
+    wheel() {
+        const that = this;
+        api.wheel({
+            shop_id: app.globalData.shopId
+        }).then((result) => {
+            that.setData({
+                imgUrls: result
+            })
+        })
+    },
 })

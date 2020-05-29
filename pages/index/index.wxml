@@ -1,4 +1,9 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class="container">
+    <view class="saveImg" wx:if="{{showSave}}" class="saveBtns" catch:tap="saveImg">
+        <view class="text">保存到本地</view>
+    </view>
+    <poster id="poster" config="{{posterConfig}}" wx:if="{{showSave}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
     <!-- 分享区域 -->
     <view class="shareBox" wx:if="{{shareFlag}}">
         <view class="topBox">
@@ -10,11 +15,9 @@
                     <view>分享好友</view>
                 </button>
             </view>
-            <view class="imgS" catch:tap="poster">
+            <view class="imgS" bind:tap="onCreatePoster" bind:fail="onPosterFail">
                 <view class="img">
-                    <poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
-                        <image src="../../dist/icon/haibao.png" style="width:80rpx;height:80rpx" />
-                    </poster>
+                    <image src="../../dist/icon/haibao.png" style="width:80rpx;height:80rpx" />
                 </view>
                 <view>生成海报</view>
             </view>
@@ -23,13 +26,13 @@
     </view>
     <!-- 定位信息 -->
     <view class="titleBox">
-        <view class="post" catch:tap="switchDot" wx:if="{{addressInfo}}">
+        <view class="post" catch:tap="switchDot" wx:if="{{postInfo}}">
             <view class="tuanImg">
-                <van-image width="40" height="40" src="{{imgAddress+addressInfo.avatar}}" round />
+                <van-image width="40" height="40" src="{{imgAddress+postInfo.avatar}}" round />
             </view>
             <view class="tuanInfo">
-                <view class="titleName">{{addressInfo.user_true_name}}</view>
-                <view class="titleDesc defaultColor descSize">{{addressInfo.user_address}}</view>
+                <view class="titleName">{{postInfo.user_true_name}}</view>
+                <view class="titleDesc defaultColor descSize">{{postInfo.user_address}}</view>
             </view>
         </view>
         <view class="postE" catch:tap="switchDot" wx:else>
@@ -47,9 +50,11 @@
     <!-- loop -->
     <view class="loop">
         <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-            <block wx:for="{{background}}" wx:key="*this">
+            <block wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
                 <swiper-item>
-                    <view class="swiper-item">{{item}}</view>
+                    <view class="swiper-item">
+                        <image src="{{imgAddress+item.url}}" mode="aspectFit top"/>
+                    </view>
                 </swiper-item>
             </block>
         </swiper>
@@ -92,7 +97,7 @@
                         </view>
                     </view>
                     <view class="addBtn">
-                        <van-button round size="small" type="danger" custom-class="add" catch:tap="addCart" data-goodId="{{item.id}}" wx:if="{{!item.num}}">
+                        <van-button round size="small" type="danger" custom-class="add" catch:tap="addCart" data-goodId="{{item.id}}" wx:if="{{!filter.countEnd(item.pt_start_time,item.pt_houres)}}">
                             加入购物车
                         </van-button>
                     </view>

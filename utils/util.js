@@ -45,29 +45,27 @@ const login = () => {
           }).then((result) => {
             // 存缓存 token sessionKey
             wx.setStorageSync('token', result.token)
+            wx.setStorageSync('user_name',result.user.user_nickname)
             wx.setStorageSync('sessionKey', result.sessionKey)
             // 查询购物车
             queryCart()
-            api.locationList({
-              from: wx.getStorageSync('locationString')
-            }, {
-              "Token": wx.getStorageSync("token"),
-              "Device-Type": "wxapp"
-            }).then(result => {
-              let addressId = result[0].id
+            //默认进来最近的为自提点
+            if (!result.user.post_id) {
+              setDefault()
+            }else{
               api.setDefault({
-                post_id: addressId
+                post_id: result.user.post_id
               }, {
                 "Token": wx.getStorageSync("token"),
                 "Device-Type": "wxapp"
               }).then(result => {
-                // wx.setStorageSync("postInfo", result)
+                console.log(result)
                 wx.setStorage({
-                  key:"postInfo",
-                  data:result
+                  key: "postInfo",
+                  data: result
                 })
               })
-            })
+            }
             // 授权完返回上一页
             var pages = getCurrentPages();
             if (pages.length !== 1) {
@@ -79,6 +77,29 @@ const login = () => {
         }
       })
     }
+  })
+}
+// 设置自提点
+const setDefault = () => {
+  api.locationList({
+    from: wx.getStorageSync('locationString')
+  }, {
+    "Token": wx.getStorageSync("token"),
+    "Device-Type": "wxapp"
+  }).then(result => {
+    let addressId = result[0].id
+    api.setDefault({
+      post_id: addressId
+    }, {
+      "Token": wx.getStorageSync("token"),
+      "Device-Type": "wxapp"
+    }).then(result => {
+      console.log(result)
+      wx.setStorage({
+        key: "postInfo",
+        data: result
+      })
+    })
   })
 }
 // 加入购物车接口
@@ -147,4 +168,5 @@ module.exports = {
   cartLink: cartLink,
   queryCart: queryCart,
   getCurrentPageArgs: getCurrentPageArgs,
+  setDefault: setDefault,
 }

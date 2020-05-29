@@ -164,6 +164,12 @@ let personOrderInfo = (data, header) => {
         resolve(apiRequest(apiList.personOrderInfo, 'get', data, header))
     })
 }
+// 轮播图
+let wheel = (data) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.wheel, 'get', data))
+    })
+}
 //最后需要将具体调用的函数暴露出，给具体业务调用
 export default {
     activeArea: activeArea,
@@ -182,5 +188,6 @@ export default {
     phoneGet:phoneGet,
     getOrder:getOrder,
     orderRefund:orderRefund,
-    personOrderInfo:personOrderInfo
+    personOrderInfo:personOrderInfo,
+    wheel:wheel
 }

@@ -20,7 +20,7 @@
                 </view>
             </view>
             <view class="right">
-                <van-count-down style="color:#fff" time="{{ count }}" format="DD 天 HH 时 mm 分 ss 秒"/>
+                <van-count-down style="color:#fff" time="{{ count }}" format="{{isflag==true?'已结束':'DD 天 HH 时 mm 分 ss 秒'}}"/>
             </view>
         </view>
     </view>
@@ -49,7 +49,7 @@
         <van-goods-action-icon icon="home-o" icon-class="wid" text="首页" catch:tap="homeLink"/>
         <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartInfo==0?'':cartInfo}}" catch:tap="cartLink"/>
         <view class="btnBox">
-            <view class="btn add" catch:tap="addCart" data-goodId="{{detailData.id}}">加入购物车</view>
+            <view class="btn add {{isflag==true?'disabled':''}}" catch:tap="isflag==true?'':'addCart'" data-goodId="{{detailData.id}}">加入购物车</view>
             <!-- <view class="btn submit">立即购买</view> -->
         </view>
     </van-goods-action>

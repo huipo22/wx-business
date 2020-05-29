@@ -100,6 +100,9 @@ Page({
       order_id: order.id,
       price: order.pay_price,
       post_id: order.post_id,
+      post_id: wx.getStorageSync("postInfo").id,
+      user_name: wx.getStorageSync('user_name'), //本人姓名
+      user_phone: wx.getStorageSync('user_phone'), //本人手机
     }, {
       "Token": wx.getStorageSync("token"),
       "Device-Type": "wxapp"
@@ -123,46 +126,6 @@ Page({
           console.log('调用支付接口fail', res)
         }
       })
-    })
-  },
-  // 退款
-  backPay(e) {
-    let that = this
-    wx.showModal({
-      title: '提示',
-      content: '是否需要退款',
-      success(res) {
-        if (res.confirm) {
-          api.orderRefund({
-            order_id: Number(e.target.id),
-            shop_id: app.globalData.shopId
-          }, {
-            "Token": wx.getStorageSync("token"),
-            "Device-Type": "wxapp"
-          }).then((result) => {
-            that.setData({
-              orderList: result
-            })
-            wx.showModal({
-              title: '提示',
-              content: '退款成功',
-              showCancel: false,
-              success(res) {
-                if (res.confirm) {
-                  that.setData({
-                    orderActive: 4,
-                  })
-                  that.loadOrdernData(4)
-                }
-              }
-            })
-          })
-
-        } else if (res.cancel) {
-          console.log('用户点击取消');
-          return
-        }
-      }
     })
   },
   goodLink(e) {
@@ -195,10 +158,7 @@ Page({
       this.setData({
         orderActive: Number(options.active)
       })
-      // this.loadOrdernData(Number(options.active))
-    } else {
-      // this.loadOrdernData(1)
-    }
+    } else {}
   },
 
 

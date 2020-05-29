@@ -25,10 +25,7 @@
                                 </van-col>
                             </van-row>
                             <van-row custom-class="bottomRow">
-                                <van-col span="6" offset="1" custom-class="bottomCol">
-                                    {{"配送费￥"+order.express_price}}
-                                </van-col>
-                                <van-col span="6" offset="1" custom-class="bottomCol redColor">
+                                <van-col span="13" offset="1" custom-class="bottomCol redColor">
                                     合计:￥{{order.pay_price}}
                                 </van-col>
                                 <!-- 1 -->

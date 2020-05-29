@@ -5,7 +5,7 @@
         <view class="top">自提地址 {{postInfo.user_address}}</view>
     </view>
     <!-- 购物车 -->
-    <view>
+    <view style="margin-top:120rpx;margin-bottom:80rpx;box-sizing:border-box">
         <view class="cart" wx:for="{{carts}}" wx:for-item="item" wx:key="index" wx:for-index="index">
             <view class="imgBox">
                 <van-image width="4rem" height="4rem" src="{{imgAddress+item.goods_img}}" />

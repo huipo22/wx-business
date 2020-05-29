@@ -11,7 +11,7 @@ Page({
     addressInfo: '',
     locationList: [],
     imgAddress: app.globalData.imgAddress,
-    postInfo: ''
+    postInfo: '',
   },
   // 精准定位
   openAddress() {
@@ -129,22 +129,21 @@ Page({
     })
   },
   onShow: function () {
-    let that = this
-    setTimeout(function () {
-      console.log(123)
-      wx.getStorage({
-        key: 'postInfo',
-        success(res) {
-          console.log(res)
-          that.setData({
-            addressInfo: wx.getStorageSync("locationInfo"),
-            postInfo: res.data
-          })
-        }
-      })
-    }, 100)
     if (wx.getStorageSync("locationInfo")) {
       this.getLocation()
+      let that = this
+      setTimeout(function () {
+        wx.getStorage({
+          key: 'postInfo',
+          success(res) {
+            console.log(res)
+            that.setData({
+              addressInfo: wx.getStorageSync("locationInfo"),
+              postInfo: res.data
+            })
+          }
+        })
+      }, 1000)
     } else {
       this.default()
     }

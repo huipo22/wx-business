@@ -22,7 +22,7 @@ Page({
         encrypted_data: e.detail.encryptedData,
         iv: e.detail.iv
       }, {}).then(result => {
-        wx.setStorageSync('userPhone', result.phoneNumber);
+        wx.setStorageSync('user_phone', result.phoneNumber);
         this.setData({
           pPhone: result.phoneNumber,
           flag: false,
@@ -35,6 +35,7 @@ Page({
     this.setData({
       pName: name
     })
+    wx.setStorageSync('user_name', that.data.pName)
   },
   // 收货人手机号
   phoneBlur(e) {
@@ -42,6 +43,7 @@ Page({
     this.setData({
       pPhone: phone
     })
+    wx.setStorageSync('user_phone', that.data.pPhone)
   },
   // 结算事件
   btnTap() {
@@ -56,6 +58,7 @@ Page({
       "Token": wx.getStorageSync("token"),
       "Device-Type": "wxapp"
     }).then((result) => {
+      let that = this
       let paySign = md5.hexMD5('appId=' + result.appid + '&nonceStr=' + result.nonce_str + '&package=' + result.prepay_id + '&signType=MD5&timeStamp=' + result.timeStamp + "&key=n4iif00GHIAS8CFx4XxvWNNfYogZVDbg").toUpperCase();
       wx.requestPayment({
         'timeStamp': result.timeStamp + "",
@@ -65,6 +68,7 @@ Page({
         'paySign': paySign,
         success(res) {
           console.log('调用支付接口成功', res)
+
           wx.redirectTo({
             url: '../orderList/orderList?active=2'
           })
@@ -82,10 +86,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getStorageSync("userPhone")) {
+    if (wx.getStorageSync("user_phone")) {
       this.setData({
         flag: false,
-        pPhone: wx.getStorageSync("userPhone")
+        pPhone: wx.getStorageSync("user_phone")
       })
     } else {
       this.setData({
