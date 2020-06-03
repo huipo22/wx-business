@@ -18,6 +18,7 @@ let apiList = {
     orderRefund: host + "/api/goods/order/order_refund", //取消订单
     personOrderInfo: host + "/api/home/index/statistical", //个人中心订单徽章
     wheel: host + "/api/goods/shop/wheels", //轮播图
+    createCode:host+"/api/home/index/create_code",
 }
 
 module.exports = apiList; //暴露出来

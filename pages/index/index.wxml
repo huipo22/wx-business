@@ -3,103 +3,105 @@
     <view class="saveImg" wx:if="{{showSave}}" class="saveBtns" catch:tap="saveImg">
         <view class="text">保存到本地</view>
     </view>
-    <poster id="poster" config="{{posterConfig}}" wx:if="{{showSave}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
-    <!-- 分享区域 -->
-    <view class="shareBox" wx:if="{{shareFlag}}">
-        <view class="topBox">
-            <view class="imgS">
-                <button open-type="share" class="weixinBox">
+    <poster id="poster" config="{{posterConfig}}" wx:if="{{showSave}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" catch:tap="closeHaibao"></poster>
+    <view wx:else>
+        <!-- 分享区域 -->
+        <view class="shareBox" wx:if="{{shareFlag}}">
+            <view class="topBox">
+                <view class="imgS">
+                    <button open-type="share" class="weixinBox">
+                        <view class="img">
+                            <image src="../../dist/icon/weixin.png" style="width:80rpx;height:80rpx" />
+                        </view>
+                        <view>分享好友</view>
+                    </button>
+                </view>
+                <view class="imgS" bind:tap="onCreatePoster" bind:fail="onPosterFail">
                     <view class="img">
-                        <image src="../../dist/icon/weixin.png" style="width:80rpx;height:80rpx" />
+                        <image src="../../dist/icon/haibao.png" style="width:80rpx;height:80rpx" />
                     </view>
-                    <view>分享好友</view>
-                </button>
-            </view>
-            <view class="imgS" bind:tap="onCreatePoster" bind:fail="onPosterFail">
-                <view class="img">
-                    <image src="../../dist/icon/haibao.png" style="width:80rpx;height:80rpx" />
+                    <view>生成海报</view>
                 </view>
-                <view>生成海报</view>
             </view>
+            <view class="cancel" catch:tap="cancelShare">取消</view>
         </view>
-        <view class="cancel" catch:tap="cancelShare">取消</view>
-    </view>
-    <!-- 定位信息 -->
-    <view class="titleBox">
-        <view class="post" catch:tap="switchDot" wx:if="{{postInfo}}">
-            <view class="tuanImg">
-                <van-image width="40" height="40" src="{{imgAddress+postInfo.avatar}}" round />
-            </view>
-            <view class="tuanInfo">
-                <view class="titleName">{{postInfo.user_true_name}}</view>
-                <view class="titleDesc defaultColor descSize">{{postInfo.user_address}}</view>
-            </view>
-        </view>
-        <view class="postE" catch:tap="switchDot" wx:else>
-            <view>选择团长</view>
-        </view>
-        <view class="shareInfo">
-            <view class="share defaultColor descSize" catch:tap="shareBtn">
-                <view>
-                    <image style="width:44rpx;height:44rpx" src="../../dist/icon/share.png" />
+        <!-- 定位信息 -->
+        <view class="titleBox">
+            <view class="post" wx:if="{{postInfo}}">
+                <view class="tuanImg">
+                    <van-image width="40" height="40" src="{{imgAddress+postInfo.avatar}}" round />
                 </view>
-                <view>分享</view>
+                <view class="tuanInfo">
+                    <view class="titleName">{{postInfo.user_true_name}}</view>
+                    <view class="titleDesc descSize">{{postInfo.user_address}}</view>
+                </view>
             </view>
-        </view>
-    </view>
-    <!-- loop -->
-    <view class="loop">
-        <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
-            <block wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
-                <swiper-item>
-                    <view class="swiper-item">
-                        <image src="{{imgAddress+item.url}}" mode="aspectFit top"/>
+            <view class="postE" catch:tap="switchDot" wx:else>
+                <view>请选择团长</view>
+                <van-icon name="arrow" size="13px" />
+            </view>
+            <view class="shareInfo">
+                <view class="share descSize" catch:tap="shareBtn">
+                    <view>
+                        <image style="width:30rpx;height:30rpx" src="../../dist/icon/share.png" />
                     </view>
-                </swiper-item>
-            </block>
-        </swiper>
-    </view>
-    <!-- tab -->
-    <view>
-        <scroll-view scroll-x="true" id="tab">
-            <block wx:for="{{activeArea}}" wx:key="index">
-                <view wx:for-item="item" wx:key="index" class="viewName {{active==item.id?'activeTab':''}}" catch:tap="activeTap" data-cateId="{{item.id}}">
-                    {{item.name}}
+                    <view>分享</view>
                 </view>
-            </block>
-        </scroll-view>
-        <view class="goodList" wx:for="{{activeList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-            <view class="goodS" catch:tap="detailtap" data-goodId="{{item.id}}">
-                <view class="good">
-                    <image style="width:100%" mode="widthFix" src="{{imgAddress+item.goods_img}}"></image>
+                <view class="person descSize" catch:tap="switchDot">
+                    <view>
+                        <image style="width:30rpx;height:30rpx" src="../../dist/icon/person-select.png" />
+                    </view>
+                    <view>附近团长</view>
                 </view>
-                <view class="goodName">{{item.goods_name}}</view>
-                <view class="goodCon">
-                    <view class="desc">
-                        <view class="time">预售时间:{{todayDate}}</view>
-                        <view class="descCon defaultColor descSize">
-                            已售{{item.goods_volume_false}}{{item.goods_spec}}
+            </view>
+        </view>
+        <!-- loop -->
+        <view class="loop">
+            <view class="bg"></view>
+            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: 150px;position: absolute;top: 0;width: 100%;">
+                <block wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
+                    <swiper-item class="sw">
+                        <view class="swiper-item">
+                            <image src="{{imgAddress+item.url}}" mode="aspectFit top center" />
                         </view>
+                    </swiper-item>
+                </block>
+            </swiper>
+        </view>
+        <!-- 通告栏 -->
+        <van-notice-bar left-icon="volume-o" text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。" />
+        <!-- tab -->
+        <view>
+            <scroll-view scroll-x="true" id="tab" class="tab {{tabFix}}" scroll-with-animation="true" scroll-left="{{ scrollLeft }}">
+                <block wx:for="{{activeArea}}" wx:key="index">
+                    <view wx:for-item="item" wx:key="index" class="viewName {{active==item.id?'activeTab':''}}" catch:tap="activeTap" data-cateId="{{item.id}}" id="id{{item.id}}">
+                        {{item.name}}
                     </view>
-                    <view class="desc">
-                        <view class="time">提货时间:{{tomorrowDate}}</view>
-                        <view class="descCon defaultColor descSize">
-                            限量{{item.limit_num}}{{item.goods_spec}}
+                </block>
+            </scroll-view>
+            <view class="goodList" wx:for="{{activeList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                <view class="goodS" catch:tap="detailtap" data-goodId="{{item.id}}">
+                    <view class="goodImg">
+                        <image class="img" src="{{imgAddress+item.goods_img}}" mode="aspectFit" lazy-load="true" binderror="" bindload="" />
+                    </view>
+                    <view class="goodCon">
+                        <view class="title">{{item.goods_name}}</view>
+                        <view class="tag">标签</view>
+                        <view class="volumn">
+                            已售{{item.goods_volume_false}}{{item.goods_spec}}/还剩{{item.goods_num}}{{item.goods_spec}}
                         </view>
-                    </view>
-                </view>
-                <view class="goodBottom">
-                    <view class="priceBox">
-                        <view>¥</view>
-                        <view class="price">{{item.present_price}}</view>
-                        <view class="orPrice defaultColor middleLine">
-                            ¥{{item.original_price}}
+                        <view class="price">
+                            <view class="left">
+                                <view class="priceBox">
+                                    <view class="redColor">¥</view>
+                                    <view class="redColor size">{{item.present_price}}</view>
+                                </view>
+                                <view>¥{{item.original_price}}</view>
+                            </view>
+                            <view class="right">
+                                <van-button size="small" round color="red" catch:tap="addCart" data-goodId="{{item.id}}">加入购物车</van-button>
+                            </view>
                         </view>
-                    </view>
-                    <view class="addBtn">
-                        <van-button round size="small" type="danger" custom-class="add" catch:tap="addCart" data-goodId="{{item.id}}" wx:if="{{!filter.countEnd(item.pt_start_time,item.pt_houres)}}">
-                            加入购物车
-                        </van-button>
                     </view>
                 </view>
             </view>

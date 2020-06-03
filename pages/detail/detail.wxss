@@ -25,18 +25,21 @@
     flex: 1;
     display: flex;
     align-items: baseline;
-
 }
-.topBottom>.right{
+
+.topBottom>.right {
     align-items: flex-end;
 }
+
 .prePrice {
     font-size: 42rpx;
     padding: 0 15rpx;
 }
-.van-count-down{
-    color: #fff!important;
+
+.van-count-down {
+    color: #fff !important;
 }
+
 .topBottom>.right {
     flex: 1;
 }
@@ -77,8 +80,7 @@
 
 /* middle */
 
-.middle>.title,
-.desc {
+.middle>.title, .desc {
     display: flex;
     height: 80rpx;
     background: #fff;
@@ -102,15 +104,15 @@
     height: 100%;
     display: flex;
     align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.middle>.desc>.time,
-.right {
+.middle>.desc>.time, .right {
     flex: 1;
     height: 100%;
     display: flex;
     align-items: center;
-
 }
 
 .middle {
@@ -133,6 +135,18 @@
     width: 100%;
     height: auto;
 }
-.disabled{
+
+.disabled {
     background: #ccc;
+}
+
+.btnShare {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    background: transparent;
 }

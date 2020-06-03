@@ -93,6 +93,32 @@ Page({
           });
         },
         fail() {
+          wx.getSetting({
+            success: function (res) {
+              if (!res.authSetting['scope.userLocation']) {
+                wx.showModal({
+                  title: '',
+                  content: '请允许e刻宅送获取您的定位',
+                  confirmText: '授权',
+                  success: function (res) {
+                    if (res.confirm) {
+                      wx.openSetting();
+                    } else {
+                      console.log('get location fail');
+                    }
+                  }
+                })
+              } else {
+                //用户已授权，但是获取地理位置失败，提示用户去系统设置中打开定位
+                wx.showModal({
+                  title: '',
+                  content: '请在系统设置中打开定位服务',
+                  confirmText: '确定',
+                  success: function (res) {}
+                })
+              }
+            }
+          })
           return
         }
       })
@@ -160,6 +186,17 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    // let pages = getCurrentPages(); //页面栈
+    // let beforePage = pages[pages.length - 2];
+    // wx.switchTab({
+    //   url: '/' + beforePage.route,
+    //   success: function () {
+    //     if (beforePage.route == 'pages/index/index') {
+    //       console.log(beforePage)
+    //       beforePage.onLoad()
+    //     }
+    //   }
+    // })
 
   },
 

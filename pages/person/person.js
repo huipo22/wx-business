@@ -38,6 +38,11 @@ Page({
       url: '../orderList/orderList?active=' + e.currentTarget.dataset.num,
     })
   },
+  callPhone() {
+    wx.makePhoneCall({
+      phoneNumber: '15735639898'
+    })
+  },
   /**
    * 用户点击右上角分享
    */

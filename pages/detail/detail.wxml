@@ -20,7 +20,7 @@
                 </view>
             </view>
             <view class="right">
-                <van-count-down style="color:#fff" time="{{ count }}" format="{{isflag==true?'已结束':'DD 天 HH 时 mm 分 ss 秒'}}"/>
+                <van-count-down style="color:#fff" time="{{ count }}" format="{{isflag==true?'已结束':'DD 天 HH 时 mm 分 ss 秒'}}" />
             </view>
         </view>
     </view>
@@ -28,7 +28,14 @@
     <view class="middle">
         <view class="title">
             <view class="name pleft">{{detailData.goods_name}}</view>
-            <view class="share">分享</view>
+            <view class="share">
+                <button open-type='share' class="btnShare">
+                    <view>
+                        <image style="width:30rpx;height:30rpx" src="../../dist/icon/share.png" />
+                    </view>
+                    <view class="defaultColor descSize">分享</view>
+                </button>
+            </view>
         </view>
         <view class="desc">
             <view class="time pleft">提货时间:{{tomorrowDay}}</view>
@@ -46,10 +53,12 @@
     </view>
     <!-- 底部 -->
     <van-goods-action>
-        <van-goods-action-icon icon="home-o" icon-class="wid" text="首页" catch:tap="homeLink"/>
-        <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartInfo==0?'':cartInfo}}" catch:tap="cartLink"/>
+        <van-goods-action-icon icon="home-o" icon-class="wid" text="首页" catch:tap="homeLink" />
+        <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartInfo==0?'':cartInfo}}" catch:tap="cartLink" />
         <view class="btnBox">
-            <view class="btn add {{isflag==true?'disabled':''}}" catch:tap="isflag==true?'':'addCart'" data-goodId="{{detailData.id}}">加入购物车</view>
+            <view class="btn add {{isflag==true?'disabled':''}}" catch:tap="isflag==true?'':'addCart'" data-goodId="{{detailData.id}}">
+                加入购物车
+            </view>
             <!-- <view class="btn submit">立即购买</view> -->
         </view>
     </van-goods-action>

@@ -1,11 +1,13 @@
 .container {}
 
-.share, .person {
+.share,
+.person {
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100%;
 }
 
 .post {
@@ -17,7 +19,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    flex: 3;
+    flex: 2;
 }
 
 .tuanImg {
@@ -27,35 +29,42 @@
 }
 
 .shareInfo {
-    flex: 1;
+    flex: 1.5;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 60rpx;
+    background: #fff;
 }
 
 .titleBox {
     display: flex;
-    background: #fff;
-    margin: 15rpx;
+    background: #e6b800;
+    /* margin: 15rpx; */
     box-sizing: border-box;
     padding: 15rpx 0;
+    height: 120rpx;
 }
 
 /* loop */
 
 .loop {
     width: 100%;
+    /* background: #008000; */
+    position: relative;
+    height: 150px;
     background: #fff;
 }
 
 .swiper-item {
     height: 100%;
+    width: 95%;
 }
 
 #tab {
     background: #fff;
-    height: 60rpx;
-    line-height: 50rpx;
+    height: 80rpx;
+    line-height: 80rpx;
     white-space: nowrap;
     width: 100%;
 }
@@ -65,86 +74,45 @@
     width: 28%;
     height: 100%;
     text-align: center;
+    box-sizing: border-box;
     /* line-height: 80rpx */
 }
 
-.goodList {
-    padding: 0 15rpx;
-    background: #fff;
-}
-
-.good {
-    height: 360rpx;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-}
-
-.goodBottom {
-    display: flex;
-    justify-content: space-between;
-    height: 80rpx;
-    align-items: center;
-}
-
-.add, .step {
-    height: 50rpx !important;
-}
-
-.desc {
-    display: flex;
-    justify-content: space-between;
-    font-size: 24rpx;
-}
-
-.desc>.time {
-    flex: 3;
-}
-
-.desc>.descCon {
-    flex: 1;
-}
+.goodList {}
 
 .price {
+    /* color: red; */
+    /* font-size: 46rpx; */
+    display: flex;
+}
+
+.price>.left,
+.right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.redColor {
     color: red;
+}
+
+.size {
     font-size: 46rpx;
 }
 
-.time {
-    color: #ffb380;
-}
-
-.goodName {
-    height: 80rpx;
-    align-items: center;
-    font-weight: bold;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 80rpx;
-    border-bottom: 1rpx solid #eee;
-}
-
-.goodCon {
-    height: 80rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.addBtn {
-    display: flex;
-    align-items: center;
-}
-
 .priceBox {
-    flex: 1;
     display: flex;
     align-items: baseline;
+    margin-right: 30rpx;
 }
 
 .activeTab {
-    color: red;
+    color: #e6b800;
+    border-radius: 40rpx;
+    border: 1rpx solid #e6b800;
 }
 
 /* 底部分享box */
@@ -176,21 +144,11 @@
 }
 
 .postE {
-    flex: 1;
+    flex: 2;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.postE>view {
-    background: red;
-    color: #fff;
-    width: 60%;
-    height: 60rpx;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 30rpx;
+    padding-left: 5%;
+    box-sizing: border-box;
 }
 
 button::after {
@@ -208,6 +166,10 @@ button {
     border-radius: 0;
 }
 
+.van-button--small {
+    height: 20px !important;
+}
+
 .weixinBox {
     display: flex;
     flex-direction: column;
@@ -215,6 +177,38 @@ button {
     background: transparent;
     font-size: 26rpx;
     color: #000;
+}
+
+.goodS {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 0 15rpx;
+    display: flex;
+    height: 120px;
+}
+
+.goodImg {
+    flex: 1;
+}
+
+.goodCon {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* align-items: center; */
+    justify-content: space-between;
+    padding: 15rpx;
+    box-sizing: border-box;
+}
+
+.goodImg>.img {
+    width: 100%;
+    height: 100%;
+}
+
+.goodS:first-child {
+    margin: 0 0 20rpx 0;
 }
 
 #poster {
@@ -248,6 +242,26 @@ button {
     border-radius: 30rpx;
     font-size: 28rpx;
 }
-.swiper-item>image{
+
+.swiper-item>image {
+    width: 100%;
     height: 100%;
+    border-radius: 15px;
+}
+
+.sw {
+    display: flex;
+    justify-content: center;
+}
+
+.bg {
+    height: 160rpx;
+    background: #e6b800;
+}
+
+.Fixed {
+    position: fixed;
+    top: 0;
+    margin-top: 0;
+    z-index: 99999;
 }

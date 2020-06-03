@@ -5,7 +5,9 @@ page {
   background: #eee;
   font-size: 32rpx;
 }
-
+.defaultBg{
+  background: #008000;
+}
 .container {
   height: 100%;
   display: flex;

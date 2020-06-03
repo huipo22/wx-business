@@ -1,6 +1,6 @@
 <view class="container">
     <!-- 团长 -->
-    <view class="title">
+    <view class="title" wx:if="{{postInfo}}">
         <view class="top">联系人 {{postInfo.user_true_name}} - {{postInfo.user_phone}}</view>
         <view class="top">自提地址 {{postInfo.user_address}}</view>
     </view>

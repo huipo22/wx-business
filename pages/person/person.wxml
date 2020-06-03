@@ -41,8 +41,12 @@
         <button open-type="contact">
             <van-cell title="团长信息" icon="{{tuanInfo}}"></van-cell>
         </button>
-        <van-cell title="团长申请" icon="{{tuanReq}}"></van-cell>
-        <van-cell title="意见反馈" icon="{{oneKefu}}"></van-cell>
-        <van-cell title="联系客服" icon="{{Kefu}}"></van-cell>
+        <van-cell title="团长申请" icon="{{tuanReq}}" catch:tap="callPhone"></van-cell>
+        <button open-type="contact">
+            <van-cell title="意见反馈" icon="{{oneKefu}}"></van-cell>
+        </button>
+        <button open-type="contact">
+            <van-cell title="联系客服" icon="{{Kefu}}"></van-cell>
+        </button>
     </van-cell-group>
 </view>

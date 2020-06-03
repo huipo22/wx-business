@@ -45,32 +45,32 @@ const login = () => {
           }).then((result) => {
             // 存缓存 token sessionKey
             wx.setStorageSync('token', result.token)
-            wx.setStorageSync('user_name',result.user.user_nickname)
+            wx.setStorageSync('user_name', result.user.user_nickname)
             wx.setStorageSync('sessionKey', result.sessionKey)
             // 查询购物车
             queryCart()
-            //默认进来最近的为自提点
-            if (!result.user.post_id) {
-              setDefault()
-            }else{
-              api.setDefault({
-                post_id: result.user.post_id
-              }, {
-                "Token": wx.getStorageSync("token"),
-                "Device-Type": "wxapp"
-              }).then(result => {
-                console.log(result)
-                wx.setStorage({
-                  key: "postInfo",
-                  data: result
-                })
-              })
-            }
+            // if (wx.getStorageSync('postId')) {
+            //   // 分享进来有团长信息
+            //   postId(wx.getStorageSync('postId'))
+            // } else {
+            //   // 个人信息有团长id
+            //   postId(result.user.post_id)
+            // }
+            // if (wx.getStorageSync('postId')) {
+            //   // 分享进来有团长信息
+            //   postId(wx.getStorageSync('postId'))
+            // } else if (!result.user.post_id) {
+            //   //默认进来最近的为自提点
+            //   setDefault()
+            // } else {
+            //   // 都没有
+            //   postId(result.user.post_id)
+            // }
             // 授权完返回上一页
             var pages = getCurrentPages();
             if (pages.length !== 1) {
               wx.navigateBack({
-                delta: 1
+                delta: 1,
               });
             }
           })
@@ -79,29 +79,45 @@ const login = () => {
     }
   })
 }
-// 设置自提点
-const setDefault = () => {
-  api.locationList({
-    from: wx.getStorageSync('locationString')
-  }, {
-    "Token": wx.getStorageSync("token"),
-    "Device-Type": "wxapp"
-  }).then(result => {
-    let addressId = result[0].id
-    api.setDefault({
-      post_id: addressId
-    }, {
-      "Token": wx.getStorageSync("token"),
-      "Device-Type": "wxapp"
-    }).then(result => {
-      console.log(result)
-      wx.setStorage({
-        key: "postInfo",
-        data: result
-      })
-    })
-  })
-}
+// // 自提点
+// const postId = (postId) => {
+//   api.setDefault({
+//     post_id: postId
+//   }, {
+//     "Token": wx.getStorageSync("token"),
+//     "Device-Type": "wxapp"
+//   }).then(result => {
+//     console.log(result)
+//     // wx.setStorage({
+//     //   key: "postInfo",
+//     //   data: result
+//     // })
+//     wx.setStorageSync('postInfo',result)
+//   })
+// }
+// // 设置自提点
+// const setDefault = () => {
+//   api.locationList({
+//     from: wx.getStorageSync('locationString')
+//   }, {
+//     "Token": wx.getStorageSync("token"),
+//     "Device-Type": "wxapp"
+//   }).then(result => {
+//     let addressId = result[0].id
+//     api.setDefault({
+//       post_id: addressId
+//     }, {
+//       "Token": wx.getStorageSync("token"),
+//       "Device-Type": "wxapp"
+//     }).then(result => {
+//       console.log(result)
+//       wx.setStorage({
+//         key: "postInfo",
+//         data: result
+//       })
+//     })
+//   })
+// }
 // 加入购物车接口
 const addCart = (e) => {
   const app = getApp();
@@ -159,6 +175,7 @@ const getCurrentPageArgs = () => {
   const options = currentPage.options;
   return options
 }
+
 module.exports = {
   formatDate: formatDate,
   formatTime: formatTime,
@@ -168,5 +185,5 @@ module.exports = {
   cartLink: cartLink,
   queryCart: queryCart,
   getCurrentPageArgs: getCurrentPageArgs,
-  setDefault: setDefault,
+  // setDefault: setDefault,
 }

@@ -23,21 +23,9 @@ const apiRequest = (url, method, data, header) => { //接收所需要的参数�
                             resolve(res.data.data); //根据业务需要resolve接口返回的json的数据
                             break;
                         case 10001:
-                            wx.showModal({
-                                title: '提示',
-                                content: '您未登录,是否登录',
-                                success(res) {
-                                    if (res.confirm) {
-                                        console.log('用户点击确定')
-                                        wx.navigateTo({
-                                            url: '../login/login'
-                                        });
-                                    } else if (res.cancel) {
-                                        console.log('用户点击取消')
-                                    }
-                                }
-                            })
-
+                            wx.navigateTo({
+                                url: '../login/login'
+                            });
                             break;
                         default:
                             wx.showToast({
@@ -135,7 +123,7 @@ let wxpay = (data, header) => {
     })
 }
 // 默认自提点
-let setDefault=(data, header) => {
+let setDefault = (data, header) => {
     return new Promise((resolve, reject) => {
         resolve(apiRequest(apiList.setDefault, 'post', data, header))
     })
@@ -170,24 +158,31 @@ let wheel = (data) => {
         resolve(apiRequest(apiList.wheel, 'get', data))
     })
 }
+// 轮播图
+let createCode = (data) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.createCode, 'post', data))
+    })
+}
 //最后需要将具体调用的函数暴露出，给具体业务调用
 export default {
     activeArea: activeArea,
     activeList: activeList,
-    detail:detail,
-    wxLogin:wxLogin,
+    detail: detail,
+    wxLogin: wxLogin,
     cartAdd: cartAdd,
     cartIndex: cartIndex,
     cartDelete: cartDelete,
     cartNum: cartNum,
-    cartAction:cartAction,
-    createOrder:createOrder,
-    locationList:locationList,
-    wxpay:wxpay,
-    setDefault:setDefault,
-    phoneGet:phoneGet,
-    getOrder:getOrder,
-    orderRefund:orderRefund,
-    personOrderInfo:personOrderInfo,
-    wheel:wheel
+    cartAction: cartAction,
+    createOrder: createOrder,
+    locationList: locationList,
+    wxpay: wxpay,
+    setDefault: setDefault,
+    phoneGet: phoneGet,
+    getOrder: getOrder,
+    orderRefund: orderRefund,
+    personOrderInfo: personOrderInfo,
+    wheel: wheel,
+    createCode: createCode
 }

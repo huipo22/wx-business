@@ -57,7 +57,15 @@
 		},
 		"miniprogram": {
 			"current": -1,
-			"list": []
+			"list": [
+				{
+					"id": 0,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "scene=post_id%3D27",
+					"scene": 1012
+				}
+			]
 		}
 	}
 }

@@ -100,9 +100,8 @@ Page({
       order_id: order.id,
       price: order.pay_price,
       post_id: order.post_id,
-      post_id: wx.getStorageSync("postInfo").id,
-      user_name: wx.getStorageSync('user_name'), //本人姓名
-      user_phone: wx.getStorageSync('user_phone'), //本人手机
+      user_name: order.user_name, //本人姓名
+      user_phone: order.user_phone, //本人手机
     }, {
       "Token": wx.getStorageSync("token"),
       "Device-Type": "wxapp"

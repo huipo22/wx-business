@@ -1,12 +1,11 @@
 //app.js
 let util = require('./utils/util')
+let api = require('./utils/request').default;
 App({
   onLaunch: function (options) {
-    if(!wx.getStorageSync("locationInfo")){
-      wx.navigateTo({
-        url: '/pages/switch/switch',
-      });
-    }
+    let addressString = decodeURIComponent(options.query.scene)
+    const postId = addressString.split('=')[1]
+    wx.setStorageSync('postId', postId);
     util.login()
   },
   autoUpdate: function () {
@@ -77,5 +76,6 @@ App({
     shopId: 1,
     imgAddress: "https://shop.jishanhengrui.com/upload/",
     locationInfo: null,
+    logoImg: 'https://hr.jishanhengrui.com/upload/service/logo.jpg',
   }
 })
