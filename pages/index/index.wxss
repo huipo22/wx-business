@@ -1,7 +1,6 @@
 .container {}
 
-.share,
-.person {
+.share, .person {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -86,13 +85,11 @@
     display: flex;
 }
 
-.price>.left,
-.right {
+.price>.left, .right {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .redColor {
@@ -264,4 +261,8 @@ button {
     top: 0;
     margin-top: 0;
     z-index: 99999;
+}
+
+.tag {
+    display: flex;
 }

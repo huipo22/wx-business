@@ -1,26 +1,3 @@
-.title {
-    background: #fff;
-    font-size: 32rpx;
-    box-sizing: border-box;
-    padding: 15rpx 20rpx;
-    height: 120rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-    width: 100%;
-
-}
-
-.title>.top {
-    flex: 1;
-    display: flex;
-    align-items: center;
-}
-
 .cart {
     background: #fff;
     display: flex;
@@ -28,8 +5,7 @@
     height: 160rpx;
 }
 
-.imgBox,
-.stepBox {
+.imgBox, .stepBox {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -84,4 +60,9 @@
     pointer-events: none;
     background: #ccc !important;
     cursor: not-allowed;
+}
+
+.radioBox {
+    display: flex;
+    align-items: center;
 }

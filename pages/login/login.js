@@ -12,11 +12,6 @@ Page({
   getUserInfoFun(e) {
     wx.getUserInfo({
       success: function (res) {
-        console.log(res);
-        wx.setStorage({
-          key: 'userData',
-          data: res.rawData,
-        });
         util.login()
       },
       fail: function (err) {

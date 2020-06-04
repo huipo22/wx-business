@@ -51,7 +51,7 @@ Page({
     api.wxpay({
       order_id: settResult.order_id,
       price: settResult.price,
-      post_id: wx.getStorageSync("postInfo").id, //自提点id
+      post_id: wx.getStorageSync("post").id, //自提点id
       user_name: this.data.pName, //本人姓名
       user_phone: this.data.pPhone, //本人手机
     }, {
@@ -86,16 +86,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if (wx.getStorageSync("user_phone")) {
-      this.setData({
-        flag: false,
-        pPhone: wx.getStorageSync("user_phone")
-      })
-    } else {
-      this.setData({
-        flag: true
-      })
-    }
     this.setData({
       orderInfo: JSON.parse(options.data)
     })
@@ -113,7 +103,7 @@ Page({
    */
   onShow: function () {
     this.setData({
-      pName: JSON.parse(wx.getStorageSync("userData")).nickName
+      post: wx.getStorageSync('post')
     })
   },
 

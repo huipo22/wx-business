@@ -13,14 +13,18 @@
         </swiper>
         <view class="topBottom">
             <view class="left">
-                <view>团购价</view>
+                <!-- <view>团购价</view> -->
                 <view class="prePrice">¥{{detailData.present_price}}</view>
                 <view style="font-size:28rpx" class="middleLine">
                     ¥{{detailData.original_price}}
                 </view>
             </view>
             <view class="right">
-                <van-count-down style="color:#fff" time="{{ count }}" format="{{isflag==true?'已结束':'DD 天 HH 时 mm 分 ss 秒'}}" />
+                <!-- <van-count-down style="color:#fff" time="{{ count }}" format="{{isflag==true?'已结束':'DD 天 HH 时 mm 分 ss 秒'}}" /> -->
+                <view class="title">距离结束仅剩</view>
+                <view class="time">
+                    <van-count-down time="{{ count }}" />
+                </view>
             </view>
         </view>
     </view>
@@ -43,6 +47,9 @@
                 已售{{detailData.goods_volume_false}}{{detailData.goods_spec}}. 仅剩{{detailData.goods_volume-detailData.goods_volume_false}}{{detailData.goods_spec}}
             </view>
         </view>
+        <view class="desc">
+            <view class="time pleft">配送:次日达</view>
+        </view>
     </view>
     <!-- 详情 -->
     <view class="detail">
@@ -56,10 +63,13 @@
         <van-goods-action-icon icon="home-o" icon-class="wid" text="首页" catch:tap="homeLink" />
         <van-goods-action-icon icon="cart-o" text="购物车" info="{{cartInfo==0?'':cartInfo}}" catch:tap="cartLink" />
         <view class="btnBox">
-            <view class="btn add {{isflag==true?'disabled':''}}" catch:tap="isflag==true?'':'addCart'" data-goodId="{{detailData.id}}">
+            <view class="btn add {{isflag==true?'disabled':''}}" catch:tap="{{isflag==true?'':'addCart'}}" data-goodId="{{detailData.id}}">
                 加入购物车
             </view>
-            <!-- <view class="btn submit">立即购买</view> -->
+            <view class="btn submit">立即购买</view>
         </view>
     </van-goods-action>
+    <view class="pannel" wx:if="{{pannelShow}}">
+        <van-icon name="cross" size="40rpx" class="close" catch:tap="closePannel"/>
+    </view>
 </view>

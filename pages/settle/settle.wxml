@@ -1,15 +1,36 @@
 <!-- pages/settle/settle.wxml -->
 <view class="container">
-    <!-- 接收人 -->
-    <view class="head mr">
-        <view class="name">收货人:</view>
-        <input type="text" value="{{pName}}" class="name1" bindblur="nameBlur" />
-        <view wx:if="{{flag}}" class="phone">
-            <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phonestyle" type="primary">
-                获取手机号
-            </button>
+    <!-- 团长信息 -->
+    <view class="top mb">
+        <view class="name">
+            <view class="left">团长:</view>
+            <view class="tuanName">{{post.user_true_name}}</view>
         </view>
-        <input type="text" value="{{pPhone}}" wx:else class="phone" placeholder="请输入手机号" bindblur="phoneBlur" />
+        <view class="address">
+            <view class="left">自提点:</view>
+            <view class="tuanName">{{post.user_address}}</view>
+        </view>
+    </view>
+    <!-- 个人信息 -->
+    <view class="second mb">
+        <view class="title">请填写你的地址</view>
+        <view class="con">
+            <view class="name">
+                <view class="left">收货人:</view>
+                <view class="tuanName">
+                    <input type="text" value="{{pName}}" class="inputBox" bindblur="nameBlur" />
+                </view>
+            </view>
+            <view class="name">
+                <view class="left">手机号:</view>
+                <view class="personInfo">
+                    <input type="text" value="{{pPhone}}" class="inputBox" placeholder="请输入手机号" bindblur="phoneBlur" />
+                    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phonestyle" type="primary">
+                        获取手机号
+                    </button>
+                </view>
+            </view>
+        </view>
     </view>
     <!-- 订单信息 -->
     <view class="order mb">

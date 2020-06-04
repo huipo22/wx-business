@@ -3,9 +3,9 @@ let util = require('./utils/util')
 let api = require('./utils/request').default;
 App({
   onLaunch: function (options) {
-    let addressString = decodeURIComponent(options.query.scene)
-    const postId = addressString.split('=')[1]
-    wx.setStorageSync('postId', postId);
+    // let addressString = decodeURIComponent(options.query.scene)
+    // const postId = addressString.split('=')[1]
+    // wx.setStorageSync('postId', postId);
     util.login()
   },
   autoUpdate: function () {

@@ -17,9 +17,14 @@ Page({
   },
 
   onShow() {
-    if (wx.getStorageSync("userData")) {
+    if (wx.getStorageSync("user")) {
       this.setData({
-        userData: JSON.parse(wx.getStorageSync("userData"))
+        userData: wx.getStorageSync("user")
+      })
+    }
+    if (wx.getStorageSync('post')) {
+      this.setData({
+        post: wx.getStorageSync('post')
       })
     }
     // 个人中心订单徽章

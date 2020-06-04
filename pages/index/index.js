@@ -3,7 +3,6 @@ const app = getApp();
 import util from '../../utils/util'
 let api = require('../../utils/request').default;
 import Poster from '../../dist/miniprogram_dist/poster/poster';
-let postInfo = wx.getStorageSync("postInfo")
 
 Page({
     data: {
@@ -15,7 +14,6 @@ Page({
         duration: 500,
         activeArea: null, //活动区域分类
         imgAddress: app.globalData.imgAddress,
-        addressInfo: null,
         shareFlag: false,
         imgUrls: [], //轮播图,
         scrollLeft: 0,
@@ -45,7 +43,7 @@ Page({
                         x: 113,
                         y: 61,
                         baseLine: 'middle',
-                        text: postInfo.user_true_name + "-" + postInfo.user_phone,
+                        text: String(this.data.postInfo.user_true_name) + '-' + String(this.data.postInfo.user_phone),
                         fontSize: 32,
                         color: '#fff',
                     },
@@ -53,7 +51,7 @@ Page({
                         x: 30,
                         y: 113,
                         baseLine: 'top',
-                        text: postInfo.user_address,
+                        text: String(this.data.postInfo.user_address),
                         fontSize: 38,
                         color: '#fff',
                     },
@@ -135,7 +133,7 @@ Page({
     // 切换代理点
     switchDot() {
         wx.navigateTo({
-            url: '../switch/switch',
+            url: '../switch/switch?postInfo=' + JSON.stringify(this.data.postInfo),
         });
     },
     // 加入购物车
@@ -189,8 +187,25 @@ Page({
         })
     },
     onShow() {
+        if (wx.getStorageSync('postId')) {
+            api.setDefault({
+                post_id: wx.getStorageSync('postId')
+            }, {
+                "Token": wx.getStorageSync("token"),
+                "Device-Type": "wxapp"
+            }).then(result => {
+                this.setData({
+                    postInfo: result
+                })
+                wx.setStorageSync('post', result);
+            })
+        }
+        //明天的时间
+        var day3 = new Date();
+        day3.setTime(day3.getTime() + 24 * 60 * 60 * 1000);
+        var s3 = (day3.getMonth() + 1) + "月" + day3.getDate() + "日";
         this.setData({
-            postInfo: wx.getStorageSync("postInfo")
+            tomorrowDay: s3
         })
     },
     onLoad() {
@@ -295,7 +310,7 @@ Page({
     createCode() {
         // 生成团长信息二维码
         api.createCode({
-            post_id: this.data.postInfo.id
+            post_id: wx.getStorageSync('postId')
         }).then(result => {
             this.setData({
                 code: this.data.imgAddress + result

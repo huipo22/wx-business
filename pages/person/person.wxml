@@ -2,9 +2,9 @@
     <!-- 个人信息 -->
     <view class="info">
         <view style="margin-left:6%">
-            <van-image width="3rem" height="3rem" round src="{{userData.avatarUrl}}" />
+            <van-image width="3rem" height="3rem" round src="{{userData.avatar}}" />
         </view>
-        <view style="margin-left:3%">{{userData.nickName}}</view>
+        <view style="margin-left:3%">{{userData.user_nickname}}</view>
     </view>
     <!-- 我的订单 -->
     <view class="myOrder mb">
@@ -36,17 +36,31 @@
             </van-col>
         </van-row>
     </view>
-    <!-- cell -->
-    <van-cell-group>
-        <button open-type="contact">
-            <van-cell title="团长信息" icon="{{tuanInfo}}"></van-cell>
-        </button>
-        <van-cell title="团长申请" icon="{{tuanReq}}" catch:tap="callPhone"></van-cell>
-        <button open-type="contact">
-            <van-cell title="意见反馈" icon="{{oneKefu}}"></van-cell>
-        </button>
-        <button open-type="contact">
-            <van-cell title="联系客服" icon="{{Kefu}}"></van-cell>
-        </button>
-    </van-cell-group>
+    <view class="tuanBox">
+        <view class="title">自提点信息</view>
+        <view class="con">
+            <view class="name">{{post.user_true_name}}</view>
+            <view class="address">{{post.user_address}}</view>
+            <view class="phone">{{post.user_phone}}</view>
+        </view>
+    </view>
+    <!-- grid -->
+    <view class="grid">
+        <view class="single">
+            <van-icon name="{{tuanReq}}" size="20px"></van-icon>
+            <view class="name">团长申请</view>
+        </view>
+        <view class="single">
+            <van-icon name="{{Kefu}}" size="20px"></van-icon>
+            <view class="name">联系客服</view>
+        </view>
+        <view class="single">
+            <van-icon name="{{tuanReq}}" size="20px" />
+            <view class="name">供应商申请</view>
+        </view>
+        <view class="single">
+            <van-icon name="{{Kefu}}" size="20px" />
+            <view class="name">服务电话</view>
+        </view>
+    </view>
 </view>

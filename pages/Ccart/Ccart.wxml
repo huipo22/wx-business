@@ -1,12 +1,10 @@
 <view class="container">
-    <!-- 团长 -->
-    <view class="title" wx:if="{{postInfo}}">
-        <view class="top">联系人 {{postInfo.user_true_name}} - {{postInfo.user_phone}}</view>
-        <view class="top">自提地址 {{postInfo.user_address}}</view>
-    </view>
     <!-- 购物车 -->
-    <view style="margin-top:120rpx;margin-bottom:80rpx;box-sizing:border-box">
+    <view style="margin-bottom:80rpx;box-sizing:border-box">
         <view class="cart" wx:for="{{carts}}" wx:for-item="item" wx:key="index" wx:for-index="index">
+            <view class="radioBox">
+                <radio checked="{{item.isSelect}}" catch:tap="switchSelect" data-index="{{index}}" data-id="{{index}}"/>
+            </view>
             <view class="imgBox">
                 <van-image width="4rem" height="4rem" src="{{imgAddress+item.goods_img}}" />
             </view>
@@ -28,6 +26,9 @@
     </view>
     <!-- bottom -->
     <view class="bottom">
+        <view class="radioBox" bindtap='selectAll'>
+            <radio checked="{{isAllSelect}}" />
+        </view>
         <view class="total">共{{totalMoney}}</view>
         <view class="btn {{carts.length==0?'disabled':''}}" catch:tap="endTap">选好了</view>
     </view>

@@ -16,8 +16,9 @@ Page({
     rich: null,
     count: null,
     cartInfo: 0,
-    flag:false,
-    isflag:false
+    flag:false,//页面是否加载完成
+    isflag:false,//是否可以购买
+    pannelShow:false,//遮罩层是否显示
   },
 
   /**
@@ -35,25 +36,34 @@ Page({
       url: '/pages/Ccart/Ccart',
     });
   },
+  // 关闭遮罩层
+  closePannel(){
+    this.setData({
+      pannelShow:false
+    })
+  },
   // 加入购物车
   addCart(e) {
-    let goodId = e.currentTarget.dataset.goodid;
-    api.cartAdd({
-      goods_id: goodId,
-      shop_id: app.globalData.shopId
-    }, {
-      Token: wx.getStorageSync('token'),
-      "Device-Type": 'wxapp',
-    }).then((result) => {
-      wx.showToast({
-        title: '加入购物车成功',
-        icon: "none",
-        duration: 1000
-      })
-      // 查询购物车
-      util.queryCart(this)
-      this.cartQ(app)
+    this.setData({
+      pannelShow:true
     })
+    // let goodId = e.currentTarget.dataset.goodid;
+    // api.cartAdd({
+    //   goods_id: goodId,
+    //   shop_id: app.globalData.shopId
+    // }, {
+    //   Token: wx.getStorageSync('token'),
+    //   "Device-Type": 'wxapp',
+    // }).then((result) => {
+    //   wx.showToast({
+    //     title: '加入购物车成功',
+    //     icon: "none",
+    //     duration: 1000
+    //   })
+    //   // 查询购物车
+    //   util.queryCart(this)
+    //   this.cartQ(app)
+    // })
   },
   onLoad: function (options) {
     //明天的时间

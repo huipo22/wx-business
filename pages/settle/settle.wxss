@@ -44,7 +44,8 @@
     height: 140rpx;
 }
 
-.orderCon>.img, .orderRight {
+.orderCon>.img,
+.orderRight {
     flex: 1;
 }
 
@@ -58,7 +59,8 @@
     justify-content: center;
 }
 
-.orderMid>.title, .desc {
+.orderMid>.title,
+.desc {
     flex: 1;
     display: flex;
     align-items: center;
@@ -120,4 +122,51 @@
     line-height: 50rpx;
     font-size: 24rpx;
     color: #fff;
+    width: 50%;
+}
+
+.top {
+    height: 120rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #fff;
+}
+
+.top>.name,
+.address {
+    display: flex;
+}
+
+.left {
+    flex: 1;
+}
+
+.tuanName {
+    flex: 4;
+}
+
+.con {
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 120rpx;
+}
+
+.con>.name {
+    display: flex;
+    flex: 1;
+}
+
+.personInfo {
+    flex: 4;
+    display: flex;
+}
+
+.second {
+    background: #fff;
+}
+
+.inputBox {
+    border: 1rpx solid #eee;
 }

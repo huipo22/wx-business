@@ -36,17 +36,10 @@ Page({
   // 设为默认地址
   setDefault(e) {
     let addressId = e.currentTarget.dataset.addressid;
-    api.setDefault({
-      post_id: addressId
-    }, {
-      "Token": wx.getStorageSync("token"),
-      "Device-Type": "wxapp"
-    }).then(result => {
-      wx.setStorageSync("postInfo", result)
-      wx.navigateBack({
-        delta: 1
-      });
-    })
+    wx.setStorageSync('postId', addressId)
+    wx.navigateBack({
+      delta: 1
+    });
   },
   // 登录链接
   linkLogin() {
@@ -57,7 +50,8 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  default () {
+  // 获取授权地理位置
+  defaultAddress() {
     if (!wx.getStorageSync("locationInfo")) {
       let that = this
       wx.getLocation({
@@ -129,19 +123,14 @@ Page({
     }
   },
   onLoad: function (options) {
-
+    if (options) {
+      this.setData({
+        postInfo: JSON.parse(options.postInfo),
+        addressInfo: wx.getStorageSync('locationInfo')
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
+  // 自提点列表
   getLocation() {
     api.locationList({
       from: wx.getStorageSync('locationString')
@@ -154,24 +143,22 @@ Page({
       })
     })
   },
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+
   onShow: function () {
     if (wx.getStorageSync("locationInfo")) {
       this.getLocation()
-      let that = this
-      setTimeout(function () {
-        wx.getStorage({
-          key: 'postInfo',
-          success(res) {
-            console.log(res)
-            that.setData({
-              addressInfo: wx.getStorageSync("locationInfo"),
-              postInfo: res.data
-            })
-          }
-        })
-      }, 1000)
     } else {
-      this.default()
+      this.defaultAddress()
     }
   },
 
@@ -186,17 +173,6 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    // let pages = getCurrentPages(); //页面栈
-    // let beforePage = pages[pages.length - 2];
-    // wx.switchTab({
-    //   url: '/' + beforePage.route,
-    //   success: function () {
-    //     if (beforePage.route == 'pages/index/index') {
-    //       console.log(beforePage)
-    //       beforePage.onLoad()
-    //     }
-    //   }
-    // })
 
   },
 

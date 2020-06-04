@@ -115,6 +115,10 @@
     align-items: center;
 }
 
+.topBottom>.right {
+    flex-direction: column;
+}
+
 .middle {
     margin-bottom: 10rpx;
 }
@@ -149,4 +153,20 @@
     justify-content: center;
     line-height: 1;
     background: transparent;
+}
+
+.pannel {
+    width: 100%;
+    height: 150px;
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    background: #fff;
+    z-index: 99;
+}
+
+.close {
+    position: absolute;
+    right: 0;
+    top: -5px;
 }

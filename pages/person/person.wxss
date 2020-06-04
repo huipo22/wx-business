@@ -6,15 +6,18 @@
     color: #fff;
     font-size: 32rpx;
 }
-.myOrder{
+
+.myOrder {
     width: 100%;
 }
-.order{
+
+.order {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.orderTitle{
+
+.orderTitle {
     background: #fff;
     font-size: 32rpx;
     height: 80rpx;
@@ -23,15 +26,33 @@
     border-bottom: 1rpx solid #eee;
     padding-left: 5%;
 }
-.row{
+
+.row {
     background: #fff;
     font-size: 24rpx;
     color: #999999;
     padding: 15rpx 0;
     box-sizing: border-box;
 }
+
 /* e0620d */
-.van-icon--image{
+
+.van-icon--image {
     width: 1.2em!important;
     height: 1.2em!important;
+}
+
+.grid {
+    display: flex;
+    height: 100rpx;
+}
+
+.grid>.single {
+    flex: 1;
+}
+
+.tuanBox {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
 }

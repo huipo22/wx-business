@@ -3,7 +3,8 @@
     "van-goods-action": "../dist/vant/goods-action/index",
     "van-goods-action-icon": "../dist/vant/goods-action-icon/index",
     "van-goods-action-button": "../dist/vant/goods-action-button/index",
-    "van-count-down": "../dist/vant/count-down/index"
+    "van-count-down": "../dist/vant/count-down/index",
+    "van-icon": "../dist/vant/icon/index"
   },
   "navigationBarTitleText": "商品详情"
 }

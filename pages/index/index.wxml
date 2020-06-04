@@ -86,7 +86,16 @@
                     </view>
                     <view class="goodCon">
                         <view class="title">{{item.goods_name}}</view>
-                        <view class="tag">标签</view>
+                        <view class="tag">
+                            <view>仅剩:</view>
+                            <view>
+                                <van-count-down time="{{filter.countEnd(item)}}" />
+                            </view>
+                        </view>
+                        <view class="tag">
+                            <view>取货时间:</view>
+                            <view>{{tomorrowDay}}</view>
+                        </view>
                         <view class="volumn">
                             已售{{item.goods_volume_false}}{{item.goods_spec}}/还剩{{item.goods_num}}{{item.goods_spec}}
                         </view>
@@ -99,7 +108,9 @@
                                 <view>¥{{item.original_price}}</view>
                             </view>
                             <view class="right">
-                                <van-button size="small" round color="red" catch:tap="addCart" data-goodId="{{item.id}}">加入购物车</van-button>
+                                <van-button size="small" round color="red" catch:tap="addCart" data-goodId="{{item.id}}">
+                                    加入购物车
+                                </van-button>
                             </view>
                         </view>
                     </view>
