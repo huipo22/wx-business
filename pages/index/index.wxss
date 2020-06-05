@@ -25,6 +25,7 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .shareInfo {
@@ -38,7 +39,7 @@
 
 .titleBox {
     display: flex;
-    background: #e6b800;
+    background: #ff9733;
     /* margin: 15rpx; */
     box-sizing: border-box;
     padding: 15rpx 0;
@@ -99,7 +100,7 @@
 }
 
 .redColor {
-    color: red;
+    color: #e65a00;
 }
 
 .size {
@@ -113,9 +114,9 @@
 }
 
 .activeTab {
-    color: #e6b800;
+    color: #ff9733;
     border-radius: 40rpx;
-    border: 1rpx solid #e6b800;
+    border: 1rpx solid #ff9733;
 }
 
 /* 底部分享box */
@@ -192,7 +193,7 @@ button {
 }
 
 .goodImg {
-    flex: 1;
+    flex: 2;
 }
 
 .goodCon {
@@ -204,6 +205,7 @@ button {
     justify-content: space-between;
     padding: 15rpx;
     box-sizing: border-box;
+    margin-left: 2%;
 }
 
 .goodImg>.img {
@@ -260,7 +262,7 @@ button {
 
 .bg {
     height: 160rpx;
-    background: #e6b800;
+    background: #ff9733;
 }
 
 .Fixed {
@@ -285,7 +287,7 @@ button {
 
 .van-count-down {
     font-size: 12px!important;
-    color: #ff9900!important;
+    color: #ff9733!important;
 }
 
 .volumnColor {
@@ -318,4 +320,11 @@ button {
     justify-content: center;
     opacity: .5;
     font-size: 40rpx;
+}
+
+.tuanImg>.switch {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background: #fff;
 }

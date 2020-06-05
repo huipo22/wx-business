@@ -21,7 +21,7 @@
             </view>
             <view class="right">
                 <!-- <van-count-down style="color:#fff" time="{{ count }}" format="{{isflag==true?'已结束':'DD 天 HH 时 mm 分 ss 秒'}}" /> -->
-                <view class="title smallF" style="color:#000">距结束还剩</view>
+                <view class="title smallF" style="color:#fff">距结束还剩</view>
                 <view class="time">
                     <van-count-down time="{{ count }}" />
                 </view>
@@ -81,13 +81,14 @@
             <view class="goodCon">
                 <view class="title">{{detailData.goods_name}}</view>
                 <view class="price">¥{{detailData.present_price}}</view>
+                <view class="volumn">规格:{{detailData.goods_spec}}</view>
                 <view class="volumn">库存:{{detailData.goods_volume}}</view>
             </view>
         </view>
         <view class="bottom">
             <view class="left">购买数量</view>
             <view class="right">
-                <van-stepper value="{{ goodnum }}" bind:change="onChange" />
+                <van-stepper value="{{ goodnum }}" bind:change="onChange" disable-input="true" custom-class="steper" input-width="20px" button-size="20px"/>
             </view>
         </view>
     </view>

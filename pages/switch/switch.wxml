@@ -1,18 +1,21 @@
 <!-- pages/switch/switch.wxml -->
 <view class="container">
     <view class="addressInfo" wx:if="{{postInfo}}">
-        <view class="postA">
-            <view class="img">
-                <van-image width="2.5rem" height="2.5rem" round src="{{imgAddress+postInfo.avatar}}" />
+        <view class="bg"></view>
+        <view class="con">
+            <view class="postA">
+                <view class="img">
+                    <van-image width="2.5rem" height="2.5rem" round src="{{imgAddress+postInfo.avatar}}" />
+                </view>
+                <view class="name">{{postInfo.user_true_name}}</view>
+                <view class="address">{{postInfo.user_address}}</view>
             </view>
-            <view class="name">{{postInfo.user_true_name}}</view>
-            <view class="address">{{postInfo.user_address}}</view>
-        </view>
-        <view class="defaultColor descSize">您当前的位置</view>
-        <view class="address">
-            <view class="left">{{addressInfo}}</view>
-            <view class="right" catch:tap="openAddress">
-                <view>精准定位</view>
+            <view class="defaultColor descSize addressTile">您当前的位置</view>
+            <view class="address">
+                <view class="left">{{addressInfo}}</view>
+                <view class="right" catch:tap="openAddress">
+                    <view>精准定位</view>
+                </view>
             </view>
         </view>
     </view>

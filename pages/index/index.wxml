@@ -28,8 +28,11 @@
         <!-- 定位信息 -->
         <view class="titleBox">
             <view class="post" wx:if="{{postInfo}}">
-                <view class="tuanImg">
+                <view class="tuanImg" catch:tap="switchDot">
                     <van-image width="40" height="40" src="{{imgAddress+postInfo.avatar}}" round />
+                    <view class="switch">
+                        <image src="../../dist/icon/switch.png" style="width:30rpx;height:30rpx" />
+                    </view>
                 </view>
                 <view class="tuanInfo">
                     <view class="titleName">{{postInfo.user_true_name}}</view>
@@ -43,13 +46,13 @@
             <view class="shareInfo">
                 <view class="share descSize" catch:tap="shareBtn">
                     <view>
-                        <image style="width:30rpx;height:30rpx" src="../../dist/icon/share.png" />
+                        <image style="width:40rpx;height:40rpx" src="../../dist/icon/share.png" />
                     </view>
                     <view>分享</view>
                 </view>
                 <view class="person descSize" catch:tap="switchDot">
                     <view>
-                        <image style="width:30rpx;height:30rpx" src="../../dist/icon/person-select.png" />
+                        <image style="width:40rpx;height:40rpx" src="../../dist/icon/person-select.png" />
                     </view>
                     <view>附近团长</view>
                 </view>
@@ -62,7 +65,7 @@
                 <block wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
                     <swiper-item class="sw">
                         <view class="swiper-item">
-                            <image src="{{imgAddress+item.url}}" mode="aspectFit top center" />
+                            <image src="{{imgAddress+item.url}}" mode="aspectFit top center" catch:tap="tiaozhuan" />
                         </view>
                     </swiper-item>
                 </block>
@@ -113,7 +116,7 @@
                             </view>
                         </view>
                         <view class="right">
-                            <van-button size="small" round color="red" catch:tap="addCart" data-goodId="{{item.id}}">
+                            <van-button size="small" round color="#ff9733" catch:tap="addCart" data-goodId="{{item.id}}">
                                 加入购物车
                             </van-button>
                         </view>

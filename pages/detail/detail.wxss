@@ -25,7 +25,7 @@
     flex: 2;
     display: flex;
     align-items: center;
-    background: #e6b800;
+    background: #ff9733;
 }
 
 .topBottom>.right {
@@ -68,7 +68,7 @@
 }
 
 .add {
-    background: #e6b800;
+    background: #ff9733;
 }
 
 .submit {
@@ -110,7 +110,8 @@
     border-left: 1rpx solid #eee;
 }
 
-.middle>.desc>.time, .right {
+.middle>.desc>.time,
+.right {
     flex: 1;
     height: 100%;
     display: flex;
@@ -119,7 +120,7 @@
 
 .topBottom>.right {
     flex-direction: column;
-    background: #ffe680;
+    background: #e65a00;
     justify-content: center;
     align-items: center;
 }
@@ -164,16 +165,23 @@
     left: 0;
     background: #fff;
     z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
 }
 
 .close {
     position: absolute;
     right: 0;
-    top: -5px;
+    top: 0;
+    background: #ccc;
+    border-radius: 50%;
+    color: #fff;
+
 }
 
 .van-count-down {
-    color: #000 !important;
+    color: #fff !important;
     font-size: 26rpx !important;
 }
 
@@ -244,10 +252,12 @@
     height: 100%;
 }
 
-.pannel>.bottom {
+.pannel>.bottom,
+.pannel>.middle {
     display: flex;
     align-items: center;
     height: 80rpx;
+    padding-left: 5%;
 }
 
 .pannel>.bottom>.left {
@@ -260,3 +270,7 @@
 .pannel>.bottom>.right {
     flex: 1;
 }
+
+/* .steper>.van-stepper__minus,.steper>.van-stepper__plus,.steper>.van-stepper__input--disabled {
+    background: #e6b800;
+} */

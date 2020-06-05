@@ -5,7 +5,8 @@
     height: 160rpx;
 }
 
-.imgBox, .stepBox {
+.imgBox,
+.stepBox {
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -35,6 +36,8 @@
     display: flex;
     align-items: center;
     background: #fff;
+    padding-left: 3%;
+    box-sizing: border-box;
 }
 
 .bottom>.total {
@@ -42,7 +45,6 @@
     height: 100%;
     display: flex;
     align-items: center;
-    padding-left: 15%;
     color: #ff704d;
 }
 
@@ -52,7 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #00a046;
+    background: #ff9733;
     color: #fff;
 }
 

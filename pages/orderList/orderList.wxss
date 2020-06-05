@@ -12,17 +12,20 @@
     background: #fff;
     margin: 20rpx 0;
 }
+.Box:first-child{
+    margin:0 0 20rpx 0;
+}
 
 .van-tab__pane {
     background: #efefef!important;
 }
 
 .van-tab--active {
-    color: #00a046 !important
+    color: #e65a00 !important
 }
 
 .van-tabs__line {
-    background: #00a046 !important
+    background: #e65a00 !important
 }
 
 .goodInfo {
@@ -99,7 +102,7 @@
 }
 
 .redColor {
-    color: red;
+    color: #e65a00;
 }
 
 .redPrice {

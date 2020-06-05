@@ -2,7 +2,7 @@
     height: 240rpx;
     display: flex;
     align-items: center;
-    background: #ff704d;
+    background: #ff9733;
     color: #fff;
     font-size: 32rpx;
 }
@@ -54,7 +54,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
 }
 
 .tuanBox {
@@ -88,4 +87,13 @@
     height: 100%;
     display: flex;
     align-items: center;
+}
+
+.btnBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    line-height: 100%;
 }

@@ -109,7 +109,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #00a046;
+    background: #ff9733;
     color: #fff;
 }
 
@@ -118,11 +118,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 50rpx;
+    height: 95%;
     line-height: 50rpx;
     font-size: 24rpx;
     color: #fff;
     width: 50%;
+    background: #ff9733;
 }
 
 .top {

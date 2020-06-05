@@ -55,19 +55,21 @@
     </view>
     <!-- grid -->
     <view class="grid">
-        <view class="single">
+        <view class="single" catch:tap="tuanRequest">
             <van-icon name="{{one}}" size="20px"></van-icon>
             <view class="name descSize">团长申请</view>
         </view>
         <view class="single">
-            <van-icon name="{{Kefu}}" size="20px"></van-icon>
-            <view class="name descSize">联系客服</view>
+            <button open-type="contact" class="btnBox">
+                <van-icon name="{{Kefu}}" size="20px"></van-icon>
+                <view class="name descSize">联系客服</view>
+            </button>
         </view>
-        <view class="single">
-            <van-icon name="{{three}}" size="20px" />
+        <view class="single" catch:tap="callPhone">
+            <van-icon name="{{three}}" size="20px"/>
             <view class="name descSize">供应商申请</view>
         </view>
-        <view class="single">
+        <view class="single" catch:tap="callPhone">
             <van-icon name="{{four}}" size="20px" />
             <view class="name descSize">服务电话</view>
         </view>

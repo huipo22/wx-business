@@ -25,8 +25,8 @@
                 <view class="left">手机号:</view>
                 <view class="personInfo">
                     <input type="text" value="{{pPhone}}" class="inputBox" placeholder="请输入手机号" bindblur="phoneBlur" />
-                    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phonestyle" type="primary">
-                        获取手机号
+                    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" class="phonestyle">
+                        使用微信手机号
                     </button>
                 </view>
             </view>

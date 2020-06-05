@@ -186,6 +186,19 @@ Page({
             this.loadActiveList(result[0].id)
         })
     },
+    tiaozhuan() {
+        wx.navigateToMiniProgram({
+            appId: 'wx1c2c5d708d0c4ea9',
+            path: '',
+            envVersion: 'release', // 打开正式版
+            success(res) {
+                // 打开成功
+            },
+            fail: function (err) {
+                console.log(err);
+            }
+        })
+    },
     onShow() {
         if (wx.getStorageSync('postId')) {
             api.setDefault({

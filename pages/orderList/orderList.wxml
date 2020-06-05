@@ -2,7 +2,7 @@
 <view class="container">
     <view style="width: 100%;background: #fff">
         <van-tabs active="{{ orderActive }}" bind:change="orderChange" sticky>
-            <van-tab title="{{item.title}}" wx:for="{{orderListTab}}" wx:for-item="item" wx:key="unique" name="{{item.name}}" color="#00a046">
+            <van-tab title="{{item.title}}" wx:for="{{orderListTab}}" wx:for-item="item" wx:key="unique" name="{{item.name}}" color="#ff9733">
                 <view class="load" wx:if="{{loadFlag==true}}">
                     <van-loading size="24px" color="#00a046">加载中...</van-loading>
                 </view>
@@ -30,17 +30,17 @@
                                 </van-col>
                                 <!-- 1 -->
                                 <van-col span="10" custom-class="bottomColBtn" wx:if="{{orderActive==1}}">
-                                    <van-button round type="info" size="mini" id="{{order.id}}" bindtap="cancel" custom-class="btn" plain>
+                                    <van-button round color="#ff9733" size="mini" id="{{order.id}}" bindtap="cancel" custom-class="btn" plain>
                                         取消
                                     </van-button>
-                                    <van-button round type="info" size="mini" data-order="{{order}}" bindtap="pay" custom-class="btn" plain>
+                                    <van-button round color="#ff9733" size="mini" data-order="{{order}}" bindtap="pay" custom-class="btn" plain>
                                         付款
                                     </van-button>
                                 </van-col>
                                 <!-- 2 -->
                                 <van-col span="6" offset="4" custom-class="bottomColBtn" wx:if="{{orderActive==2}}">
                                     <button open-type="contact" style="line-height:0">
-                                        <van-button round type="info" size="mini" id="{{order.id}}" custom-class="btn" plain>
+                                        <van-button round color="#ff9733" size="mini" id="{{order.id}}" custom-class="btn" plain>
                                             退款
                                         </van-button>
                                     </button>

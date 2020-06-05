@@ -16,7 +16,7 @@
   },
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#e6b800",
+    "navigationBarBackgroundColor": "#ff9733",
     "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false,
@@ -28,8 +28,7 @@
     "selectedColor": "#e6b800",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "./dist/icon/index.png",
@@ -48,5 +47,8 @@
         "selectedIconPath": "./dist/icon/person-select.png"
       }
     ]
-  }
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx1c2c5d708d0c4ea9"
+  ]
 }
