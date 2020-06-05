@@ -310,7 +310,9 @@ Page({
     },
     onShow: function () {
         //查询购物车数据
-        this.cartQuery()
+        if (wx.getStorageSync('token')) {
+            this.cartQuery()
+        }
     },
     /**
      * 用户点击右上角分享

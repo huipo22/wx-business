@@ -79,39 +79,43 @@
                     </view>
                 </block>
             </scroll-view>
-            <view class="goodList" wx:for="{{activeList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-                <view class="goodS" catch:tap="detailtap" data-goodId="{{item.id}}">
-                    <view class="goodImg">
-                        <image class="img" src="{{imgAddress+item.goods_img}}" mode="aspectFit" lazy-load="true" binderror="" bindload="" />
-                    </view>
-                    <view class="goodCon">
-                        <view class="title">{{item.goods_name}}</view>
-                        <view class="tag">
-                            <view>仅剩:</view>
-                            <view>
-                                <van-count-down time="{{filter.countEnd(item)}}" />
-                            </view>
+            <view class="goodList">
+                <view class="goodSing {{filter.countStatus(item.pt_start_time,item.pt_houres)==true?'':'disable'}}" wx:for="{{activeList}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                    <view class="goodS" catch:tap="detailtap" data-goodId="{{item.id}}">
+                        <view class="goodImg">
+                            <image class="img" src="{{imgAddress+item.goods_img}}" mode="aspectFit" lazy-load="true" binderror="" bindload="" />
                         </view>
-                        <view class="tag">
-                            <view>取货时间:</view>
-                            <view>{{tomorrowDay}}</view>
-                        </view>
-                        <view class="volumn">
-                            已售{{item.goods_volume_false}}{{item.goods_spec}}/还剩{{item.goods_num}}{{item.goods_spec}}
-                        </view>
-                        <view class="price">
-                            <view class="left">
-                                <view class="priceBox">
-                                    <view class="redColor">¥</view>
-                                    <view class="redColor size">{{item.present_price}}</view>
+                        <view class="goodCon">
+                            <view class="title">{{item.goods_name}}</view>
+                            <view class="tag smallF">
+                                <view>仅剩:</view>
+                                <view>
+                                    <van-count-down time="{{filter.countEnd(item)}}" />
                                 </view>
-                                <view>¥{{item.original_price}}</view>
                             </view>
-                            <view class="right">
-                                <van-button size="small" round color="red" catch:tap="addCart" data-goodId="{{item.id}}">
-                                    加入购物车
-                                </van-button>
+                            <view class="tag smallF">
+                                <view>取货时间:</view>
+                                <view>{{tomorrowDay}}</view>
                             </view>
+                            <view class="volumn smallF volumnColor">
+                                已售{{item.goods_volume_false}}{{item.goods_spec}}/还剩{{item.goods_num}}{{item.goods_spec}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="price">
+                        <view class="left">
+                            <view class="priceBox">
+                                <view class="redColor">团购价¥</view>
+                                <view class="redColor size">{{item.present_price}}</view>
+                            </view>
+                            <view class="smallF volumnColor textLine">
+                                ¥{{item.original_price}}
+                            </view>
+                        </view>
+                        <view class="right">
+                            <van-button size="small" round color="red" catch:tap="addCart" data-goodId="{{item.id}}">
+                                加入购物车
+                            </van-button>
                         </view>
                     </view>
                 </view>

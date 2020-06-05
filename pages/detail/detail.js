@@ -16,9 +16,10 @@ Page({
     rich: null,
     count: null,
     cartInfo: 0,
-    flag:false,//页面是否加载完成
-    isflag:false,//是否可以购买
-    pannelShow:false,//遮罩层是否显示
+    flag: false, //页面是否加载完成
+    isflag: false, //是否可以购买
+    pannelShow: false, //遮罩层是否显示,
+    goodnum: 1, //商品数量默认1
   },
 
   /**
@@ -37,33 +38,61 @@ Page({
     });
   },
   // 关闭遮罩层
-  closePannel(){
+  closePannel() {
     this.setData({
-      pannelShow:false
+      pannelShow: false
     })
+  },
+  // 购物数量更改
+  onChange(event) {
+    this.setData({
+      goodnum: event.detail
+    })
+  },
+  // 立即购买
+  endTap(e) {
+    if (this.data.pannelShow) {
+      var obj = this.data.detailData;
+      api.createOrder(
+        [{
+          goods_id: obj.id,
+          present_price: obj.present_price,
+          num: this.data.goodnum,
+        }], {
+          "Token": wx.getStorageSync("token"),
+          "Device-Type": 'wxapp',
+          "content-type": "application/json"
+        }).then((result) => {
+        wx.navigateTo({
+          url: "../settle/settle?data=" + JSON.stringify(result),
+        })
+
+      })
+    } else {
+      this.setData({
+        pannelShow: true
+      })
+    }
   },
   // 加入购物车
   addCart(e) {
-    this.setData({
-      pannelShow:true
+    let goodId = e.currentTarget.dataset.goodid;
+    api.cartAdd({
+      goods_id: goodId,
+      shop_id: app.globalData.shopId
+    }, {
+      Token: wx.getStorageSync('token'),
+      "Device-Type": 'wxapp',
+    }).then((result) => {
+      wx.showToast({
+        title: '加入购物车成功',
+        icon: "none",
+        duration: 1000
+      })
+      // 查询购物车
+      util.queryCart(this)
+      this.cartQ(app)
     })
-    // let goodId = e.currentTarget.dataset.goodid;
-    // api.cartAdd({
-    //   goods_id: goodId,
-    //   shop_id: app.globalData.shopId
-    // }, {
-    //   Token: wx.getStorageSync('token'),
-    //   "Device-Type": 'wxapp',
-    // }).then((result) => {
-    //   wx.showToast({
-    //     title: '加入购物车成功',
-    //     icon: "none",
-    //     duration: 1000
-    //   })
-    //   // 查询购物车
-    //   util.queryCart(this)
-    //   this.cartQ(app)
-    // })
   },
   onLoad: function (options) {
     //明天的时间
@@ -87,15 +116,15 @@ Page({
         detailData: result,
         rich: rich,
         count: endTime - nowTime,
-        flag:true
+        flag: true
       })
-      if((endTime-nowTime<=0)){
+      if ((endTime - nowTime <= 0)) {
         this.setData({
-          isflag:true
+          isflag: true
         })
-      }else{
+      } else {
         this.setData({
-          isflag:false
+          isflag: false
         })
       }
     })
@@ -125,22 +154,28 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // 查询购物车数量
-    this.cartQ(app)
+    if (wx.getStorageSync('token')) {
+      // 查询购物车数量
+      this.cartQ(app)
+    }
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    util.queryCart()
+    if (wx.getStorageSync('token')) {
+      util.queryCart()
+    }
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    util.queryCart()
+    if (wx.getStorageSync('token')) {
+      util.queryCart()
+    }
   },
 
   /**

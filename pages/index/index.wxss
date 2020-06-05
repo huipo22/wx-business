@@ -83,13 +83,19 @@
     /* color: red; */
     /* font-size: 46rpx; */
     display: flex;
+    height: 80rpx;
 }
 
 .price>.left, .right {
     flex: 1;
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
+    padding-left: 3%;
+}
+
+.price>.right {
+    justify-content: center;
 }
 
 .redColor {
@@ -182,6 +188,7 @@ button {
     padding: 0 15rpx;
     display: flex;
     height: 120px;
+    border-bottom: 1rpx solid #eee;
 }
 
 .goodImg {
@@ -204,9 +211,9 @@ button {
     height: 100%;
 }
 
-.goodS:first-child {
+/* .goodSing:first-child {
     margin: 0 0 20rpx 0;
-}
+} */
 
 #poster {
     z-index: 999999999;
@@ -265,4 +272,50 @@ button {
 
 .tag {
     display: flex;
+    align-items: center;
+}
+
+.goodSing {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    position: relative;
+    margin-bottom: 15rpx;
+}
+
+.van-count-down {
+    font-size: 12px!important;
+    color: #ff9900!important;
+}
+
+.volumnColor {
+    color: #000;
+}
+
+.goodCon>.title, .volumn {
+    flex: 2;
+}
+
+.goodCon>.tag {
+    flex: 1;
+}
+
+.volumn {
+    display: flex;
+    align-items: center;
+}
+
+.disable::after {
+    content: '已结束';
+    height: 100%;
+    background: #000;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .5;
+    font-size: 40rpx;
 }

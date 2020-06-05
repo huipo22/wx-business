@@ -21,7 +21,7 @@
             </view>
             <view class="right">
                 <!-- <van-count-down style="color:#fff" time="{{ count }}" format="{{isflag==true?'已结束':'DD 天 HH 时 mm 分 ss 秒'}}" /> -->
-                <view class="title">距离结束仅剩</view>
+                <view class="title smallF" style="color:#000">距结束还剩</view>
                 <view class="time">
                     <van-count-down time="{{ count }}" />
                 </view>
@@ -35,20 +35,21 @@
             <view class="share">
                 <button open-type='share' class="btnShare">
                     <view>
-                        <image style="width:30rpx;height:30rpx" src="../../dist/icon/share.png" />
+                        <image style="width:25px;height:25px" src="../../dist/icon/share.png" />
                     </view>
                     <view class="defaultColor descSize">分享</view>
                 </button>
             </view>
         </view>
-        <view class="desc">
-            <view class="time pleft">提货时间:{{tomorrowDay}}</view>
-            <view class="right">
-                已售{{detailData.goods_volume_false}}{{detailData.goods_spec}}. 仅剩{{detailData.goods_volume-detailData.goods_volume_false}}{{detailData.goods_spec}}
-            </view>
+        <view class="descTitle smallFs pleft">
+            <view class="left">{{detailData.remark}}</view>
+            <view class="right"></view>
         </view>
-        <view class="desc">
-            <view class="time pleft">配送:次日达</view>
+        <view class="descBox">
+            <view class="desc smallFs pleft">
+                <view style="color:#808080">配送 :</view>
+                <view>次日达</view>
+            </view>
         </view>
     </view>
     <!-- 详情 -->
@@ -66,10 +67,28 @@
             <view class="btn add {{isflag==true?'disabled':''}}" catch:tap="{{isflag==true?'':'addCart'}}" data-goodId="{{detailData.id}}">
                 加入购物车
             </view>
-            <view class="btn submit">立即购买</view>
+            <view class="btn submit {{isflag==true?'disabled':''}}" catch:tap="{{isflag==true?'':'endTap'}}" data-goodId="{{detailData.id}}">
+                立即购买
+            </view>
         </view>
     </van-goods-action>
     <view class="pannel" wx:if="{{pannelShow}}">
-        <van-icon name="cross" size="40rpx" class="close" catch:tap="closePannel"/>
+        <van-icon name="cross" size="40rpx" class="close" catch:tap="closePannel" />
+        <view class="top">
+            <view class="goodImg">
+                <image class="img" src="{{imgAddress+detailData.goods_img}}" mode="aspectFit" lazy-load="true" binderror="" bindload="" />
+            </view>
+            <view class="goodCon">
+                <view class="title">{{detailData.goods_name}}</view>
+                <view class="price">¥{{detailData.present_price}}</view>
+                <view class="volumn">库存:{{detailData.goods_volume}}</view>
+            </view>
+        </view>
+        <view class="bottom">
+            <view class="left">购买数量</view>
+            <view class="right">
+                <van-stepper value="{{ goodnum }}" bind:change="onChange" />
+            </view>
+        </view>
     </view>
 </view>

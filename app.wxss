@@ -5,9 +5,11 @@ page {
   background: #eee;
   font-size: 32rpx;
 }
-.defaultBg{
+
+.defaultBg {
   background: #008000;
 }
+
 .container {
   height: 100%;
   display: flex;
@@ -16,13 +18,32 @@ page {
   justify-content: space-between; */
   box-sizing: border-box;
 }
-/* 默认样式 */
-.descSize {
-  font-size: 28rpx;
+
+/* 字体大小 */
+
+.smallF {
+  font-size: 26rpx;
+  color: #ff9900;
 }
+
+.smallFs {
+  font-size: 26rpx;
+}
+
+.textLine {
+  text-decoration: line-through;
+}
+
+/* 默认样式 */
+
+.descSize {
+  font-size: 26rpx;
+}
+
 .defaultColor {
   color: #999999
 }
+
 /* button 默认 */
 
 button {

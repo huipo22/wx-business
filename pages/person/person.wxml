@@ -1,3 +1,4 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
 <view class="container">
     <!-- 个人信息 -->
     <view class="info">
@@ -36,31 +37,39 @@
             </van-col>
         </van-row>
     </view>
-    <view class="tuanBox">
-        <view class="title">自提点信息</view>
+    <view class="tuanBox mb" wx:if="{{post}}">
+        <view class="title">
+            <view class="left">当前自提点信息</view>
+            <view class="right" catch:tap="switchDot">
+                <view>切换自提点</view>
+                <view class="iconBox">
+                    <van-icon name="arrow" />
+                </view>
+            </view>
+        </view>
         <view class="con">
             <view class="name">{{post.user_true_name}}</view>
-            <view class="address">{{post.user_address}}</view>
-            <view class="phone">{{post.user_phone}}</view>
+            <view class="address">地址:{{post.user_address}}</view>
+            <view class="phone">电话:{{filter.phonePass(post.user_phone)}}</view>
         </view>
     </view>
     <!-- grid -->
     <view class="grid">
         <view class="single">
-            <van-icon name="{{tuanReq}}" size="20px"></van-icon>
-            <view class="name">团长申请</view>
+            <van-icon name="{{one}}" size="20px"></van-icon>
+            <view class="name descSize">团长申请</view>
         </view>
         <view class="single">
             <van-icon name="{{Kefu}}" size="20px"></van-icon>
-            <view class="name">联系客服</view>
+            <view class="name descSize">联系客服</view>
         </view>
         <view class="single">
-            <van-icon name="{{tuanReq}}" size="20px" />
-            <view class="name">供应商申请</view>
+            <van-icon name="{{three}}" size="20px" />
+            <view class="name descSize">供应商申请</view>
         </view>
         <view class="single">
-            <van-icon name="{{Kefu}}" size="20px" />
-            <view class="name">服务电话</view>
+            <van-icon name="{{four}}" size="20px" />
+            <view class="name descSize">服务电话</view>
         </view>
     </view>
 </view>

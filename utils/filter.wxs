@@ -12,10 +12,31 @@ var filter = {
         var nowTime = getDate().getTime()
         // 结束时间
         var endTime = getDate(count).getTime()
-        return endTime-nowTime
+        return endTime - nowTime
+    },
+    // 倒计时结束状态
+    countStatus: function (value1, value2) {
+        var count = getDate(value1 * 1000).getTime() + value2 * 3600 * 1000
+        // 倒计时
+        var nowTime = getDate().getTime()
+        // 结束时间
+        var endTime = getDate(count).getTime()
+        if ((endTime - nowTime <= 0)) {
+            return false
+        } else {
+            return true
+        }
+    },
+    // 手机号加密
+    phonePass:function(value){
+        var start = value.slice(0, 3)
+        var end = value.slice(-4)
+        return start+"****"+end
     },
 }
 module.exports = {
     priceFilter: filter.priceFilter,
-    countEnd: filter.countEnd
+    countEnd: filter.countEnd,
+    countStatus: filter.countStatus,
+    phonePass:filter.phonePass
 }

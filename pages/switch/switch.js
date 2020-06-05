@@ -158,7 +158,8 @@ Page({
     if (wx.getStorageSync("locationInfo")) {
       this.getLocation()
     } else {
-      this.defaultAddress()
+      this.defaultAddress
+      ()
     }
   },
 

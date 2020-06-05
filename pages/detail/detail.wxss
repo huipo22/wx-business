@@ -3,28 +3,29 @@
 .loop {
     width: 100%;
     background: #fff;
-    position: relative;
+    /* position: relative; */
 }
 
 .topBottom {
     z-index: 99999;
-    position: absolute;
+    /* position: absolute;
     bottom: 0;
-    left: 0;
+    left: 0; */
     width: 100%;
     height: 80rpx;
     display: flex;
-    align-items: flex-end;
+    /* align-items: flex-end; */
     color: #fff;
-    background: red;
-    padding: 0 0 15rpx 15rpx;
+    /* background: red; */
+    /* padding: 0 0 15rpx 15rpx; */
     box-sizing: border-box;
 }
 
 .topBottom>.left {
-    flex: 1;
+    flex: 2;
     display: flex;
-    align-items: baseline;
+    align-items: center;
+    background: #e6b800;
 }
 
 .topBottom>.right {
@@ -67,11 +68,11 @@
 }
 
 .add {
-    background: red;
+    background: #e6b800;
 }
 
 .submit {
-    background: green;
+    background: #e65a00;
 }
 
 .wid {
@@ -80,9 +81,9 @@
 
 /* middle */
 
-.middle>.title, .desc {
+.middle>.title {
     display: flex;
-    height: 80rpx;
+    height: 100rpx;
     background: #fff;
     align-items: center;
 }
@@ -93,7 +94,7 @@
 }
 
 .middle>.title>.name {
-    flex: 3;
+    flex: 5;
     height: 100%;
     display: flex;
     align-items: center;
@@ -106,6 +107,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    border-left: 1rpx solid #eee;
 }
 
 .middle>.desc>.time, .right {
@@ -117,10 +119,9 @@
 
 .topBottom>.right {
     flex-direction: column;
-}
-
-.middle {
-    margin-bottom: 10rpx;
+    background: #ffe680;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 详情 */
@@ -157,7 +158,7 @@
 
 .pannel {
     width: 100%;
-    height: 150px;
+    height: 220px;
     position: fixed;
     bottom: 50px;
     left: 0;
@@ -169,4 +170,93 @@
     position: absolute;
     right: 0;
     top: -5px;
+}
+
+.van-count-down {
+    color: #000 !important;
+    font-size: 26rpx !important;
+}
+
+.descBox {
+    margin: 10rpx 0;
+    height: 100rpx;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+
+.descBox>.desc {
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.descTitle {
+    background: #fff;
+    height: 80rpx;
+    display: flex;
+}
+
+.descTitle>.left {
+    flex: 5;
+    align-items: center;
+    display: flex;
+    color: #808080;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    height: 95%;
+}
+
+.descTitle>.right {
+    flex: 1;
+}
+
+.pannel>.top {
+    display: flex;
+    height: 100px;
+}
+
+.pannel>.top>.goodImg {
+    flex: 1;
+    padding: 15rpx;
+    box-sizing: border-box;
+}
+
+.pannel>.top>.goodCon {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.pannel>.top>.goodCon>view {
+    flex: 1;
+    display: flex;
+    align-items: center;
+}
+
+.goodImg>image {
+    width: 100%;
+    height: 100%;
+}
+
+.pannel>.bottom {
+    display: flex;
+    align-items: center;
+    height: 80rpx;
+}
+
+.pannel>.bottom>.left {
+    display: flex;
+    flex: 2;
+    align-items: center;
+    height: 100%;
+}
+
+.pannel>.bottom>.right {
+    flex: 1;
 }
