@@ -61,6 +61,21 @@
         <!-- loop -->
         <view class="loop">
             <view class="bg"></view>
+            <!-- 弹幕 -->
+            <!-- <view class="doommview">
+                <block wx:for="{{doommData}}" wx:key="id">
+                    <text wx:if="{{item.display}}" class="aon" style="animation: first {{item.time}}s linear forwards;top:{{item.top}}%;color:{{item.color}};">
+                        {{item.text}}
+                    </text>
+                </block>
+            </view> -->
+            <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+                <block wx:for="{{msgList}}">
+                    <swiper-item>
+                        <view class="swiper_item">{{item.title}}</view>
+                    </swiper-item>
+                </block>
+            </swiper>
             <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: 150px;position: absolute;top: 0;width: 100%;">
                 <block wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
                     <swiper-item class="sw">
@@ -80,6 +95,9 @@
                     <view wx:for-item="item" wx:key="index" class="viewName {{active==item.id?'activeTab':''}}" catch:tap="activeTap" data-cateId="{{item.id}}" id="id{{item.id}}">
                         {{item.name}}
                     </view>
+                </block>
+                <block>
+                    <view class="viewName" catch:tap="tiaozhuan">更多</view>
                 </block>
             </scroll-view>
             <view class="goodList">

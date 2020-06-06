@@ -1,6 +1,7 @@
 .container {}
 
-.share, .person {
+.share,
+.person {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -87,7 +88,8 @@
     height: 80rpx;
 }
 
-.price>.left, .right {
+.price>.left,
+.right {
     flex: 1;
     display: flex;
     /* justify-content: center; */
@@ -286,15 +288,16 @@ button {
 }
 
 .van-count-down {
-    font-size: 12px!important;
-    color: #ff9733!important;
+    font-size: 12px !important;
+    color: #ff9733 !important;
 }
 
 .volumnColor {
     color: #000;
 }
 
-.goodCon>.title, .volumn {
+.goodCon>.title,
+.volumn {
     flex: 2;
 }
 
@@ -327,4 +330,45 @@ button {
     right: 0;
     bottom: 0;
     background: #fff;
+}
+
+.aon {
+    position: absolute;
+    white-space: nowrap;
+    /* 防止向下换行*/
+    animation-timing-function: linear;
+    animation-fill-mode: none;
+}
+
+.doommview {
+    z-index: 3;
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    bottom: 10%;
+}
+
+@keyframes first {
+    from {
+        left: 100%;
+    }
+
+    to {
+        left: -100%;
+    }
+}
+
+.swiper_container {
+    height: 55rpx;
+    width: 80vw;
+    position: absolute;
+    z-index: 9999999;
+}
+
+.swiper_item {
+    font-size: 25rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 2px;
 }

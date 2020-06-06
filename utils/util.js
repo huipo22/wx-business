@@ -47,7 +47,7 @@ const login = () => {
             wx.setStorageSync('token', result.token)
             wx.setStorageSync('sessionKey', result.sessionKey)
             wx.setStorageSync('postId', result.user.post_id)
-            wx.setStorageSync('user',result.user)
+            wx.setStorageSync('user', result.user)
             // 查询购物车
             queryCart()
             // 授权完返回上一页
@@ -69,7 +69,19 @@ const login = () => {
     }
   })
 }
-
+const switchSmall = () => {
+  wx.navigateToMiniProgram({
+    appId: 'wx1c2c5d708d0c4ea9',
+    path: '',
+    envVersion: 'release', // 打开正式版
+    success(res) {
+      // 打开成功
+    },
+    fail: function (err) {
+      console.log(err);
+    }
+  })
+}
 // 加入购物车接口
 const addCart = (e) => {
   const app = getApp();
@@ -137,4 +149,5 @@ module.exports = {
   cartLink: cartLink,
   queryCart: queryCart,
   getCurrentPageArgs: getCurrentPageArgs,
+  switchSmall:switchSmall
 }

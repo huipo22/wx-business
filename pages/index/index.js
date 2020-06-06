@@ -4,6 +4,36 @@ import util from '../../utils/util'
 let api = require('../../utils/request').default;
 import Poster from '../../dist/miniprogram_dist/poster/poster';
 
+// var that = undefined;
+// var doommList = [];
+// var i = 0;
+// var ids = 0;
+// var cycle = null //计时器
+
+// // 弹幕参数
+// class Doomm {
+//     constructor(text, top, time, color) { //内容，顶部距离，运行时间，颜色（参数可自定义增加）
+//         this.text = text;
+//         this.top = top;
+//         this.time = time;
+//         this.color = color;
+//         this.display = true;
+//         this.id = i++;
+//     }
+// }
+// // 弹幕字体颜色
+// function getRandomColor() {
+//     let rgb = []
+//     for (let i = 0; i < 3; ++i) {
+//         let color = Math.floor(Math.random() * 256).toString(16)
+//         color = color.length == 1 ? '0' + color : color
+//         rgb.push(color)
+//     }
+//     return '#' + rgb.join('')
+// }
+// 小程序connectSocket连接初始化
+
+
 Page({
     data: {
         background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
@@ -18,6 +48,8 @@ Page({
         imgUrls: [], //轮播图,
         scrollLeft: 0,
         flag: true,
+        // doommData: [],
+        // arr: ['胡 下单成功', 1, 2, 3, '胡1 下单成功', '胡2 下单成功', '胡4 下单成功', 7, 8, 9, 10]
     },
     // 异步创建海报
     onCreatePoster() {
@@ -187,17 +219,7 @@ Page({
         })
     },
     tiaozhuan() {
-        wx.navigateToMiniProgram({
-            appId: 'wx1c2c5d708d0c4ea9',
-            path: '',
-            envVersion: 'release', // 打开正式版
-            success(res) {
-                // 打开成功
-            },
-            fail: function (err) {
-                console.log(err);
-            }
-        })
+        util.switchSmall()
     },
     onShow() {
         if (wx.getStorageSync('postId')) {
@@ -220,6 +242,43 @@ Page({
         this.setData({
             tomorrowDay: s3
         })
+        this.setData({
+            msgList: [{
+                    title: '232323'
+                },
+                {
+                    title: '232323'
+                }
+            ]
+        })
+    },
+    startConnect() {
+        // 本地测试使用 ws协议 ,正式上线使用 wss 协议, 此地址为后端规定,可在其后面直接拼接参数
+        // 例如: ws://192.168.0.1:8080?member_id=45&schedule_id=1&nickname=777
+        let url = 'wss://shop.jishanhengrui.com';
+        // 创建实例
+        this.wxst = wx.connectSocket({
+            url: url,
+            method: "GET"
+        });
+        // 连接成功回调
+        this.wxst.onOpen(res => {
+            console.log('连接打开成功');
+        });
+        // 连接失败回调
+        this.wxst.onError(res => {
+            console.log('连接失败:', res);
+        });
+        // 服务端返回信息
+        this.wxst.onMessage(res => {
+            console.log('服务端返回信息:', res);
+        });
+        // 连接关闭回调
+        this.wxst.onClose(() => {
+            console.log('连接关闭啦');
+            // 连接断开重连
+            this.startConnect();
+        });
     },
     onLoad() {
         let me = this;
@@ -240,7 +299,48 @@ Page({
         }).then(() => {
             this.activeType()
         })
+        // this.startConnect()
+        // that = this;
+        // cycle = setInterval(function () {
+        //     let arr = that.data.arr
+        //     if (arr[ids] == undefined) {
+        //         ids = 0
+        //         // 1.循环一次，清除计时器
+        //         // doommList = []
+        //         // clearInterval(cycle)
+
+        //         // 2.无限循环弹幕
+        //         doommList.push(new Doomm(arr[ids], Math.ceil(Math.random() * 100), 5, getRandomColor()));
+        //         if (doommList.length > 5) { //删除运行过后的dom
+        //             doommList.splice(0, 1)
+        //         }
+        //         that.setData({
+        //             doommData: doommList
+        //         })
+        //         ids++
+        //     } else {
+        //         doommList.push(new Doomm(arr[ids], Math.ceil(Math.random() * 100), 5, getRandomColor()));
+        //         if (doommList.length > 5) {
+        //             doommList.splice(0, 1)
+        //         }
+        //         that.setData({
+        //             doommData: doommList
+        //         })
+        //         ids++
+        //     }
+        // }, 1000)
     },
+    // onHide() {
+    //     clearInterval(cycle)
+    //     ids = 0;
+    //     doommList = []
+    // },
+    // onUnload() {
+    //     clearInterval(cycle)
+    //     ids = 0;
+    //     doommList = []
+    // },
+
     onReady() {},
     // 下载图片
     downloadfile() {

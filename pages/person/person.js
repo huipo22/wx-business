@@ -51,7 +51,7 @@ Page({
   // 团长申请页面链接
   tuanRequest(){
     wx.navigateTo({
-      url:"../request/request"
+      url:"../tuanRequest/tuanRequest"
     })
   },
   // 切换代理点

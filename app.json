@@ -7,7 +7,8 @@
     "pages/detail/detail",
     "pages/settle/settle",
     "pages/orderList/orderList",
-    "pages/switch/switch"
+    "pages/switch/switch",
+    "pages/tuanRequest/tuanRequest"
   ],
   "permission": {
     "scope.userLocation": {
@@ -28,7 +29,8 @@
     "selectedColor": "#e6b800",
     "backgroundColor": "#ffffff",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "./dist/icon/index.png",
