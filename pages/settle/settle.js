@@ -35,7 +35,7 @@ Page({
     this.setData({
       pName: name
     })
-    wx.setStorageSync('user_name', that.data.pName)
+    wx.setStorageSync('user_name', this.data.pName)
   },
   // 收货人手机号
   phoneBlur(e) {
@@ -43,7 +43,14 @@ Page({
     this.setData({
       pPhone: phone
     })
-    wx.setStorageSync('user_phone', that.data.pPhone)
+    wx.setStorageSync('user_phone', this.data.pPhone)
+  },
+  // 备注
+  remarkBlur(e) {
+    let remark = e.detail.value
+    this.setData({
+      remark: remark
+    })
   },
   // 结算事件
   btnTap() {
@@ -54,6 +61,7 @@ Page({
       post_id: wx.getStorageSync("post").id, //自提点id
       user_name: this.data.pName, //本人姓名
       user_phone: this.data.pPhone, //本人手机
+      remark:this.data.remark,//备注
     }, {
       "Token": wx.getStorageSync("token"),
       "Device-Type": "wxapp"
@@ -103,7 +111,9 @@ Page({
    */
   onShow: function () {
     this.setData({
-      post: wx.getStorageSync('post')
+      post: wx.getStorageSync('post'),
+      pName:wx.getStorageSync('user_name'),
+      pPhone:wx.getStorageSync('user_phone')
     })
   },
 

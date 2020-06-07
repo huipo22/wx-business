@@ -45,7 +45,13 @@
                                         </van-button>
                                     </button>
                                 </van-col>
-                                <!-- 3 4 -->
+                                <!-- 4 -->
+                                <van-col span="6" offset="4" custom-class="bottomColBtn" wx:if="{{orderActive==4}}">
+                                    <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
+                                        查看详情
+                                    </van-button>
+                                </van-col>
+                                <!-- 3 -->
                                 <van-col custom-class="bottomColBtn" wx:else></van-col>
                             </van-row>
                         </view>
@@ -76,9 +82,7 @@
                     </van-row>
                 </scroll-view>
                 <van-row custom-class="row">
-                    <van-col span="23" offset="1" custom-class="col">
-                        合计：￥{{evenPrice}}
-                    </van-col>
+                    <van-col span="23" offset="1" custom-class="col">合计：￥{{evenPrice}}</van-col>
                 </van-row>
             </view>
         </van-popup>

@@ -8,7 +8,8 @@
     "pages/settle/settle",
     "pages/orderList/orderList",
     "pages/switch/switch",
-    "pages/tuanRequest/tuanRequest"
+    "pages/tuanRequest/tuanRequest",
+    "pages/orderDetail/orderDetail"
   ],
   "permission": {
     "scope.userLocation": {

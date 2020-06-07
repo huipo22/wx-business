@@ -46,8 +46,18 @@ const login = () => {
             // 存缓存 token sessionKey
             wx.setStorageSync('token', result.token)
             wx.setStorageSync('sessionKey', result.sessionKey)
-            wx.setStorageSync('postId', result.user.post_id)
+            if (result.user.post_id) {
+              wx.setStorageSync('postId', result.user.post_id)
+            }
             wx.setStorageSync('user', result.user)
+            api.setDefault({
+              post_id: wx.getStorageSync('postId')
+            }, {
+              "Token": wx.getStorageSync("token"),
+              "Device-Type": "wxapp"
+            }).then(result => {
+              wx.setStorageSync('post', result);
+            })
             // 查询购物车
             queryCart()
             // 授权完返回上一页
@@ -149,5 +159,5 @@ module.exports = {
   cartLink: cartLink,
   queryCart: queryCart,
   getCurrentPageArgs: getCurrentPageArgs,
-  switchSmall:switchSmall
+  switchSmall: switchSmall
 }

@@ -46,6 +46,11 @@
             <view class="orderRight">x{{item.goods_num}} ¥{{item.goods_price}}</view>
         </view>
     </view>
+    <!-- 备注 -->
+    <view class="remark">
+        <view class="name">备注:</view>
+        <view class="remarkInput"><input type="text" placeholder="请输入备注内容" bindblur="remarkBlur"/></view>
+    </view>
     <!-- bottom -->
     <view class="bottom">
         <view class="total">

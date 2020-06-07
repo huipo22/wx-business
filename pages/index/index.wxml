@@ -30,12 +30,12 @@
             <view class="post" wx:if="{{postInfo}}">
                 <view class="tuanImg" catch:tap="switchDot">
                     <van-image width="40" height="40" src="{{imgAddress+postInfo.avatar}}" round />
-                    <view class="switch">
-                        <image src="../../dist/icon/switch.png" style="width:30rpx;height:30rpx" />
-                    </view>
                 </view>
                 <view class="tuanInfo">
-                    <view class="titleName">{{postInfo.user_true_name}}</view>
+                    <view class="titleName">
+                        <view>{{postInfo.user_true_name}}</view>
+                        <view class="swiclass" catch:tap="switchDot">切换></view>
+                    </view>
                     <view class="titleDesc descSize">{{postInfo.user_address}}</view>
                 </view>
             </view>
@@ -50,11 +50,11 @@
                     </view>
                     <view>分享</view>
                 </view>
-                <view class="person descSize" catch:tap="switchDot">
+                <view class="person descSize" catch:tap="tiaozhuan">
                     <view>
-                        <image style="width:40rpx;height:40rpx" src="../../dist/icon/person-select.png" />
+                        <image style="width:40rpx;height:40rpx" src="../../dist/icon/more.png" />
                     </view>
-                    <view>附近团长</view>
+                    <view>更多商品</view>
                 </view>
             </view>
         </view>
@@ -62,17 +62,10 @@
         <view class="loop">
             <view class="bg"></view>
             <!-- 弹幕 -->
-            <!-- <view class="doommview">
-                <block wx:for="{{doommData}}" wx:key="id">
-                    <text wx:if="{{item.display}}" class="aon" style="animation: first {{item.time}}s linear forwards;top:{{item.top}}%;color:{{item.color}};">
-                        {{item.text}}
-                    </text>
-                </block>
-            </view> -->
-            <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+            <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000" wx:if="{{pullShow}}">
                 <block wx:for="{{msgList}}">
                     <swiper-item>
-                        <view class="swiper_item">{{item.title}}</view>
+                        <view class="swiper_item">{{item.str}}</view>
                     </swiper-item>
                 </block>
             </swiper>
@@ -80,14 +73,14 @@
                 <block wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
                     <swiper-item class="sw">
                         <view class="swiper-item">
-                            <image src="{{imgAddress+item.url}}" mode="aspectFit top center" catch:tap="tiaozhuan" />
+                            <image src="{{imgAddress+item.url}}" mode="aspectFit top center" catch:tap="{{index==2?'zhaomu':(index==1?'tiaozhuan':'')}}" />
                         </view>
                     </swiper-item>
                 </block>
             </swiper>
         </view>
         <!-- 通告栏 -->
-        <van-notice-bar left-icon="volume-o" text="足协杯战线连续第2年上演广州德比战，上赛季半决赛上恒大以两回合5-3的总比分淘汰富力。" />
+        <van-notice-bar left-icon="volume-o" text="{{take}}" />
         <!-- tab -->
         <view>
             <scroll-view scroll-x="true" id="tab" class="tab {{tabFix}}" scroll-with-animation="true" scroll-left="{{ scrollLeft }}">

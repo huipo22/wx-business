@@ -164,6 +164,18 @@ let createCode = (data) => {
         resolve(apiRequest(apiList.createCode, 'post', data))
     })
 }
+// 全局手机号
+let globalPhone = (data) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.globalPhone, 'get', data))
+    })
+}
+// 弹幕消息
+let getPull = (data,header) => {
+    return new Promise((resolve, reject) => {
+        resolve(apiRequest(apiList.getPull, 'get',data, header))
+    })
+}
 //最后需要将具体调用的函数暴露出，给具体业务调用
 export default {
     activeArea: activeArea,
@@ -184,5 +196,7 @@ export default {
     orderRefund: orderRefund,
     personOrderInfo: personOrderInfo,
     wheel: wheel,
-    createCode: createCode
+    createCode: createCode,
+    globalPhone:globalPhone,
+    getPull:getPull
 }

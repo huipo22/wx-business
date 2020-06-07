@@ -20,7 +20,7 @@ Page({
       },
       {
         name: 3,
-        title: "待收货"
+        title: "待提货"
       },
       {
         name: 4,
@@ -50,6 +50,14 @@ Page({
         loadFlag: false
       })
     })
+  },
+  // 查看详情
+  goDetail(e){
+    console.log(e)
+    let order=JSON.stringify(e.currentTarget.dataset.order)
+    wx.navigateTo({
+      url: '../orderDetail/orderDetail?orderData='+order,
+    });
   },
   // 订单选项卡改变事件
   orderChange(event) {

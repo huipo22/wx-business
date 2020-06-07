@@ -1,0 +1,56 @@
+/* pages/orderDetail/orderDetail.wxss */
+
+.info1 {
+    background: #fff;
+    margin: 15rpx;
+    border-radius: 5px;
+}
+
+.info1>.title {
+    height: 60rpx;
+    display: flex;
+    align-items: center;
+    padding: 0 0 0 15rpx;
+}
+
+.sing {
+    display: flex;
+    height: 60rpx;
+    align-items: center;
+}
+
+.sing>.name {
+    flex: 1;
+    color: #ccc;
+}
+
+.sing>.detail {
+    flex: 3;
+}
+
+.phoneBox {
+    display: flex;
+    align-items: center;
+}
+.phoneBox>.name{
+    flex:1;
+}
+.phoneBox>.phone{
+    flex: 2;
+}
+.con {
+    padding: 15rpx;
+    font-size: 28rpx;
+    box-sizing: border-box;
+}
+
+.phoneB {
+    display: flex;
+    border: 1rpx solid #ccc;
+    border-radius: 30rpx;
+    width: 80px;
+    justify-content: center;
+    align-items: center;
+    height: 45rpx;
+    margin-left: 5%;
+}

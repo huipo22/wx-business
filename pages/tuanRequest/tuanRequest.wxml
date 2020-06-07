@@ -1,2 +1,8 @@
 <!--pages/tuanRequest/tuanRequest.wxml-->
-<text>pages/tuanRequest/tuanRequest.wxml</text>
+<view class="container">
+    <view class="img">
+        <image class="" src="../../dist/icon/haibao.jpg" mode="aspectFit" lazy-load="true" catch:tap="callPhone">
+            
+        </image>
+    </view>
+</view>

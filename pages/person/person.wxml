@@ -66,12 +66,16 @@
             </button>
         </view>
         <view class="single" catch:tap="callPhone">
-            <van-icon name="{{three}}" size="20px"/>
+            <van-icon name="{{three}}" size="20px" />
             <view class="name descSize">供应商申请</view>
         </view>
         <view class="single" catch:tap="callPhone">
             <van-icon name="{{four}}" size="20px" />
             <view class="name descSize">服务电话</view>
+        </view>
+        <view class="single" catch:tap="tiaozhuan">
+            <van-icon name="{{five}}" size="20px" />
+            <view class="name descSize">更多商品</view>
         </view>
     </view>
 </view>

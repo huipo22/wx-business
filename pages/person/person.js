@@ -13,6 +13,7 @@ Page({
     order2: app.globalData.imgAddress + "/ioc/daipeisong.png",
     order3: app.globalData.imgAddress + "/ioc/daitihuo.png",
     order4: app.globalData.imgAddress + "/ioc/wancheng.png",
+    five: app.globalData.imgAddress + "/ioc/more.png",
     smallList: []
   },
 
@@ -69,6 +70,10 @@ Page({
     wx.makePhoneCall({
       phoneNumber: '15735639898'
     })
+  },
+  // 跳转小程序
+  tiaozhuan(){
+    util.switchSmall()
   },
   /**
    * 用户点击右上角分享

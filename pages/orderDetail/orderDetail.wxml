@@ -1,0 +1,51 @@
+<!-- pages/orderDetail/orderDetail.wxml -->
+<view class="container">
+    <!-- 自提点信息 -->
+    <view class="info1">
+        <view class="title">提货信息</view>
+        <view class="con">
+            <view class="sing">
+                <view class="name">提货人</view>
+                <view class="detail">
+                    {{order.post_info.user_true_name}}-{{order.post_info.user_phone}}
+                </view>
+            </view>
+            <view class="sing">
+                <view class="name">提货地点</view>
+                <view class="detail">{{order.post_info.user_address}}</view>
+            </view>
+            <view class="sing">
+                <view class="name">自提店信息</view>
+                <view class="detail phoneBox">
+                    <view class="name">{{order.post_info.user_true_name}}</view>
+                    <view class="phone" >
+                        <view class="phoneB" catch:tap="callPhone" data-phone="{{order.post_info.user_phone}}">
+                            <view style="width:40rpx;height:40rpx">
+                                <image class="" src="../../dist/icon/phone.png" mode="aspectFit" style="width:40rpx;height:40rpx" />
+                            </view>
+                            <view>联系电话</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <!-- 订单信息 -->
+    <view class="info1">
+        <view class="title">订单信息</view>
+        <view class="con">
+            <view class="sing">
+                <view class="name">订单编号</view>
+                <view class="detail">{{order.order_number}}</view>
+            </view>
+            <view class="sing">
+                <view class="name">下单时间</view>
+                <view class="detail">{{order.add_time}}</view>
+            </view>
+            <view class="sing">
+                <view class="name">支付时间</view>
+                <view class="detail">{{order.pay_time}}</view>
+            </view>
+        </view>
+    </view>
+</view>

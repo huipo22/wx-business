@@ -4,42 +4,13 @@ import util from '../../utils/util'
 let api = require('../../utils/request').default;
 import Poster from '../../dist/miniprogram_dist/poster/poster';
 
-// var that = undefined;
-// var doommList = [];
-// var i = 0;
-// var ids = 0;
-// var cycle = null //计时器
-
-// // 弹幕参数
-// class Doomm {
-//     constructor(text, top, time, color) { //内容，顶部距离，运行时间，颜色（参数可自定义增加）
-//         this.text = text;
-//         this.top = top;
-//         this.time = time;
-//         this.color = color;
-//         this.display = true;
-//         this.id = i++;
-//     }
-// }
-// // 弹幕字体颜色
-// function getRandomColor() {
-//     let rgb = []
-//     for (let i = 0; i < 3; ++i) {
-//         let color = Math.floor(Math.random() * 256).toString(16)
-//         color = color.length == 1 ? '0' + color : color
-//         rgb.push(color)
-//     }
-//     return '#' + rgb.join('')
-// }
-// 小程序connectSocket连接初始化
-
 
 Page({
     data: {
         background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
         indicatorDots: true,
         vertical: false,
-        autoplay: false,
+        autoplay: true,
         interval: 2000,
         duration: 500,
         activeArea: null, //活动区域分类
@@ -48,8 +19,6 @@ Page({
         imgUrls: [], //轮播图,
         scrollLeft: 0,
         flag: true,
-        // doommData: [],
-        // arr: ['胡 下单成功', 1, 2, 3, '胡1 下单成功', '胡2 下单成功', '胡4 下单成功', 7, 8, 9, 10]
     },
     // 异步创建海报
     onCreatePoster() {
@@ -62,15 +31,15 @@ Page({
                 backgroundColor: '#000',
                 debug: true,
                 pixelRatio: 1,
-                blocks: [{
-                    width: 690,
-                    height: 500,
-                    x: 30,
-                    y: 183,
-                    borderWidth: 2,
-                    borderColor: '#fff',
-                    borderRadius: 20,
-                }, ],
+                // blocks: [{
+                //     width: 690,
+                //     height: 500,
+                //     x: 30,
+                //     y: 183,
+                //     borderWidth: 2,
+                //     borderColor: '#fff',
+                //     borderRadius: 20,
+                // }, ],
                 texts: [{
                         x: 113,
                         y: 61,
@@ -80,22 +49,21 @@ Page({
                         color: '#fff',
                     },
                     {
-                        x: 30,
-                        y: 113,
+                        x: 114,
+                        y: 80,
                         baseLine: 'top',
                         text: String(this.data.postInfo.user_address),
-                        fontSize: 38,
+                        fontSize: 32,
                         color: '#fff',
                     },
-                    {
-                        x: 360,
-                        y: 750,
-                        baseLine: 'top',
-                        text: '长按识别小程序码',
-                        fontSize: 38,
-                        color: '#fff',
-                    },
-
+                    // {
+                    //     x: 360,
+                    //     y: 750,
+                    //     baseLine: 'top',
+                    //     text: '长按识别小程序码',
+                    //     fontSize: 38,
+                    //     color: '#fff',
+                    // },
                 ],
                 images: [{
                         width: 80,
@@ -103,9 +71,17 @@ Page({
                         x: 30,
                         y: 30,
                         borderRadius: 62,
-                        url: "https://shop.jishanhengrui.com/upload/admin/20200526/9fb20871d438a991a733976deeb73571.jpg",
+                        url: 'https://shop.jishanhengrui.com/upload/' + this.data.postInfo.avatar
                     },
+                    {
+                        width: 690,
+                        height: 830,
+                        x: 30,
+                        y: 120,
+                        borderRadius: 62,
+                        url: "https://shop.jishanhengrui.com/upload/ioc/haibao.jpg",
 
+                    },
                     {
                         width: 200,
                         height: 200,
@@ -127,13 +103,20 @@ Page({
     },
     // 创建海报成功
     onPosterSuccess(e) {
+        if (!wx.getStorageSync('postId')) {
+            wx.showToast({
+                title: '无团长信息,无法分享',
+                duration: 2000
+            })
+            return
+        }
         const {
             detail
         } = e;
-        // wx.previewImage({
-        //     current: detail,
-        //     urls: [detail]
-        // })
+        wx.previewImage({
+            current: detail,
+            urls: [detail]
+        })
         this.setData({
             aImg: detail
         })
@@ -142,6 +125,12 @@ Page({
     onPosterFail(err) {
         console.error(err + "请重新生成");
         console.log(err)
+    },
+    // 团长招募
+    zhaomu() {
+        wx.makePhoneCall({
+            phoneNumber: '15735639898'
+        })
     },
     // 商品详情
     detailtap(e) {
@@ -240,45 +229,9 @@ Page({
         day3.setTime(day3.getTime() + 24 * 60 * 60 * 1000);
         var s3 = (day3.getMonth() + 1) + "月" + day3.getDate() + "日";
         this.setData({
-            tomorrowDay: s3
+            tomorrowDay: s3,
+            postInfo: wx.getStorageSync('post')
         })
-        this.setData({
-            msgList: [{
-                    title: '232323'
-                },
-                {
-                    title: '232323'
-                }
-            ]
-        })
-    },
-    startConnect() {
-        // 本地测试使用 ws协议 ,正式上线使用 wss 协议, 此地址为后端规定,可在其后面直接拼接参数
-        // 例如: ws://192.168.0.1:8080?member_id=45&schedule_id=1&nickname=777
-        let url = 'wss://shop.jishanhengrui.com';
-        // 创建实例
-        this.wxst = wx.connectSocket({
-            url: url,
-            method: "GET"
-        });
-        // 连接成功回调
-        this.wxst.onOpen(res => {
-            console.log('连接打开成功');
-        });
-        // 连接失败回调
-        this.wxst.onError(res => {
-            console.log('连接失败:', res);
-        });
-        // 服务端返回信息
-        this.wxst.onMessage(res => {
-            console.log('服务端返回信息:', res);
-        });
-        // 连接关闭回调
-        this.wxst.onClose(() => {
-            console.log('连接关闭啦');
-            // 连接断开重连
-            this.startConnect();
-        });
     },
     onLoad() {
         let me = this;
@@ -295,52 +248,41 @@ Page({
         }).then(() => {
             this.createCode()
         }).then(() => {
+            this.take()
             // util.queryCart()
         }).then(() => {
             this.activeType()
+        }).then(() => {
+            this.getPull()
         })
-        // this.startConnect()
-        // that = this;
-        // cycle = setInterval(function () {
-        //     let arr = that.data.arr
-        //     if (arr[ids] == undefined) {
-        //         ids = 0
-        //         // 1.循环一次，清除计时器
-        //         // doommList = []
-        //         // clearInterval(cycle)
-
-        //         // 2.无限循环弹幕
-        //         doommList.push(new Doomm(arr[ids], Math.ceil(Math.random() * 100), 5, getRandomColor()));
-        //         if (doommList.length > 5) { //删除运行过后的dom
-        //             doommList.splice(0, 1)
-        //         }
-        //         that.setData({
-        //             doommData: doommList
-        //         })
-        //         ids++
-        //     } else {
-        //         doommList.push(new Doomm(arr[ids], Math.ceil(Math.random() * 100), 5, getRandomColor()));
-        //         if (doommList.length > 5) {
-        //             doommList.splice(0, 1)
-        //         }
-        //         that.setData({
-        //             doommData: doommList
-        //         })
-        //         ids++
-        //     }
-        // }, 1000)
     },
-    // onHide() {
-    //     clearInterval(cycle)
-    //     ids = 0;
-    //     doommList = []
-    // },
-    // onUnload() {
-    //     clearInterval(cycle)
-    //     ids = 0;
-    //     doommList = []
-    // },
-
+    // 弹幕消息
+    getPull() {
+        this.setData({
+            pullShow: false
+        })
+        if (wx.getStorageSync('token')) {
+            api.getPull({}, {
+                Token: wx.getStorageSync('token'),
+                "Device-Type": 'wxapp',
+            }).then((result) => {
+                this.setData({
+                    msgList: result,
+                    pullShow: true
+                })
+            })
+        }
+    },
+    // 通告栏
+    take() {
+        api.globalPhone({
+            shop_id: app.globalData.shopId
+        }).then((result) => {
+            this.setData({
+                take: result.take,
+            })
+        })
+    },
     onReady() {},
     // 下载图片
     downloadfile() {

@@ -1,4 +1,4 @@
-// pages/tuanRequest/tuanRequest.js
+// pages/orderDetail/orderDetail.js
 Page({
 
   /**
@@ -7,18 +7,22 @@ Page({
   data: {
 
   },
-  callPhone() {
-    wx.makePhoneCall({
-      phoneNumber: '15735639898'
-    })
-  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let order = JSON.parse(options.orderData)
+    this.setData({
+      order: order
+    })
   },
-
+  callPhone(e) {
+    console.log(e)
+    wx.makePhoneCall({
+      phoneNumber: e.currentTarget.dataset.phone,
+    });
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

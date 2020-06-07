@@ -10,23 +10,15 @@
                 <view class="name">{{postInfo.user_true_name}}</view>
                 <view class="address">{{postInfo.user_address}}</view>
             </view>
-            <view class="defaultColor descSize addressTile">您当前的位置</view>
-            <view class="address">
-                <view class="left">{{addressInfo}}</view>
-                <view class="right" catch:tap="openAddress">
-                    <view>精准定位</view>
-                </view>
+            <view class="currentAddress">
+                <view class="defaultColor descSize addressTile">您当前的位置</view>
+                <view class="address">{{addressInfo}}</view>
             </view>
         </view>
     </view>
     <view wx:else class="btnBox">
         <view class="title defaultColor descSize">您当前的位置</view>
-        <view class="address" wx:if="{{addressInfo}}">
-            <view class="left">{{addressInfo}}</view>
-            <view class="right" catch:tap="openAddress">
-                <view>精准定位</view>
-            </view>
-        </view>
+        <view class="address" wx:if="{{addressInfo}}">{{addressInfo}}</view>
         <button open-type="openSetting" catchtap="changeModalCancel" class="setting" wx:else>
             前去设置
         </button>
