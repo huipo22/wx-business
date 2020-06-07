@@ -4,6 +4,7 @@
         <view class="bg"></view>
         <view class="con">
             <view class="postA">
+                <view class="descSize addressTile addressColor">当前自提点</view>
                 <view class="img">
                     <van-image width="2.5rem" height="2.5rem" round src="{{imgAddress+postInfo.avatar}}" />
                 </view>
@@ -11,7 +12,7 @@
                 <view class="address">{{postInfo.user_address}}</view>
             </view>
             <view class="currentAddress">
-                <view class="defaultColor descSize addressTile">您当前的位置</view>
+                <!-- <view class="defaultColor descSize addressTile">您当前的位置</view> -->
                 <view class="address">{{addressInfo}}</view>
             </view>
         </view>

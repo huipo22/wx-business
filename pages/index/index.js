@@ -3,8 +3,6 @@ const app = getApp();
 import util from '../../utils/util'
 let api = require('../../utils/request').default;
 import Poster from '../../dist/miniprogram_dist/poster/poster';
-
-
 Page({
     data: {
         background: ['demo-text-1', 'demo-text-2', 'demo-text-3'],
@@ -270,6 +268,22 @@ Page({
                     msgList: result,
                     pullShow: true
                 })
+                // var that = this;
+                // var times = 0;
+                // that.setData({
+                //     msgList: setInterval(function () {
+                //         times++;
+                //         if (times >= 60) {
+                //             clearInterval(that.data.msgList); //关闭定时任务
+                //         } else {
+                //             //业务逻辑
+                //             that.setData({
+                //                 msgList: result[Math.floor((Math.random()*result.length))],
+                //                 pullShow: true
+                //             })
+                //         }
+                //     }, 5000) //定时间隔时间 这里是1秒
+                // })
             })
         }
     },

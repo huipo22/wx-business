@@ -1,6 +1,7 @@
 .container {}
 
-.share, .person {
+.share,
+.person {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -87,7 +88,8 @@
     height: 80rpx;
 }
 
-.price>.left, .right {
+.price>.left,
+.right {
     flex: 1;
     display: flex;
     /* justify-content: center; */
@@ -294,7 +296,8 @@ button {
     color: #000;
 }
 
-.goodCon>.title, .volumn {
+.goodCon>.title,
+.volumn {
     flex: 2;
 }
 
@@ -349,6 +352,7 @@ button {
     from {
         left: 100%;
     }
+
     to {
         left: -100%;
     }
@@ -356,15 +360,21 @@ button {
 
 .swiper_container {
     height: 55rpx;
-    width: 60vw;
     position: absolute;
+    top: 0;
     left: 5%;
     z-index: 9999999;
     color: #fff;
     background: #000;
     opacity: .5;
     line-height: 55rpx;
-    animation: bounceInLeft 5s infinite cubic-bezier(0.215, 0.610, 0.355, 1.000)
+    animation: bounceInLeft 6s infinite cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    border-radius: 26.5rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 40%;
+    max-width: 60%;
 }
 
 .swiper_item {
@@ -391,16 +401,20 @@ button {
         opacity: 0;
         transform: translate3d(-3000px, 0, 0);
     }
+
     60% {
         opacity: 1;
         transform: translate3d(25px, 0, 0);
     }
+
     75% {
         transform: translate3d(-10px, 0, 0);
     }
+
     90% {
         transform: translate3d(5px, 0, 0);
     }
+
     100% {
         transform: none;
     }

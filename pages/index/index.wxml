@@ -62,6 +62,7 @@
         <view class="loop">
             <view class="bg"></view>
             <!-- 弹幕 -->
+            <!-- <view class="swiper_container">{{msgList.str}}</view> -->
             <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000" wx:if="{{pullShow}}">
                 <block wx:for="{{msgList}}">
                     <swiper-item>
