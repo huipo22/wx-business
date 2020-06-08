@@ -1,4 +1,6 @@
-.container {}
+.container {
+    position: relative;
+}
 
 .share,
 .person {
@@ -325,6 +327,19 @@ button {
     font-size: 40rpx;
 }
 
+.container1::after {
+    content: '';
+    height: 100%;
+    background: #000;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: .5;
+}
 .tuanImg>.switch {
     position: absolute;
     right: 0;

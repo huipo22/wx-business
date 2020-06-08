@@ -221,8 +221,11 @@ Page({
                     postInfo: result
                 })
                 wx.setStorageSync('post', result);
+            }).then(() => {
+                this.getPull()
+            }).then(() => {
+                this.createCode()
             })
-            this.getPull()
         }
         //明天的时间
         var day3 = new Date();
@@ -246,7 +249,7 @@ Page({
                 imgUrls: result
             })
         }).then(() => {
-            this.createCode()
+            // this.createCode()
         }).then(() => {
             this.take()
             // util.queryCart()

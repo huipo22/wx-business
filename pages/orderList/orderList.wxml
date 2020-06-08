@@ -1,5 +1,5 @@
 <!-- pages/orderList/orderList.wxml -->
-<view class="container">
+<view class="container" >
     <view style="width: 100%;background: #fff">
         <van-tabs active="{{ orderActive }}" bind:change="orderChange" sticky>
             <van-tab title="{{item.title}}" wx:for="{{orderListTab}}" wx:for-item="item" wx:key="unique" name="{{item.name}}" color="#ff9733">
@@ -36,23 +36,33 @@
                                     <van-button round color="#ff9733" size="mini" data-order="{{order}}" bindtap="pay" custom-class="btn" plain>
                                         付款
                                     </van-button>
+                                    <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
+                                        详情
+                                    </van-button>
                                 </van-col>
                                 <!-- 2 -->
-                                <van-col span="6" offset="4" custom-class="bottomColBtn" wx:if="{{orderActive==2}}">
+                                <van-col span="10" offset="1" custom-class="bottomColBtn" wx:elif="{{orderActive==2}}">
                                     <button open-type="contact" style="line-height:0">
                                         <van-button round color="#ff9733" size="mini" id="{{order.id}}" custom-class="btn" plain>
                                             退款
                                         </van-button>
                                     </button>
-                                </van-col>
-                                <!-- 4 -->
-                                <van-col span="6" offset="4" custom-class="bottomColBtn" wx:if="{{orderActive==4}}">
                                     <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
-                                        查看详情
+                                        详情
                                     </van-button>
                                 </van-col>
+                                <!-- 4 -->
+                                <!-- <van-col span="6" offset="4" custom-class="bottomColBtn" wx:if="{{orderActive==4}}">
+                                    <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
+                                        详情
+                                    </van-button>
+                                </van-col> -->
                                 <!-- 3 -->
-                                <van-col custom-class="bottomColBtn" wx:else></van-col>
+                                <van-col span="10" offset="1" custom-class="bottomColBtn" wx:else>
+                                    <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
+                                        详情
+                                    </van-button>
+                                </van-col>
                             </van-row>
                         </view>
                     </view>

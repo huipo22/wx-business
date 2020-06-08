@@ -1,5 +1,5 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-<view class="container">
+<view class="container {{shareFlag==true?'container1':''}}">
     <view class="saveImg" wx:if="{{showSave}}" class="saveBtns" catch:tap="saveImg">
         <view class="text">保存到本地</view>
     </view>

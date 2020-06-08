@@ -64,7 +64,14 @@
 					"id": -1,
 					"name": "pages/index/index",
 					"pathName": "pages/index/index",
-					"query": "scene=post_id%3D0",
+					"query": "scene=post_id%3D6",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/index/index",
+					"pathName": "pages/index/index",
+					"query": "scene=post_id%3D49",
 					"scene": null
 				}
 			]

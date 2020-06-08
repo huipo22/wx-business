@@ -5,6 +5,7 @@ App({
   onLaunch: function (options) {
     let addressString = decodeURIComponent(options.query.scene)
     const postId = addressString.split('=')[1]
+    console.log(addressString)
     wx.setStorageSync('postId', postId);
     util.login()
   },

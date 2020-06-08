@@ -46,7 +46,8 @@ const login = () => {
             // 存缓存 token sessionKey
             wx.setStorageSync('token', result.token)
             wx.setStorageSync('sessionKey', result.sessionKey)
-            if (result.user.post_id) {
+            console.log(result.user.post_id)
+            if (!wx.getStorageSync('postId')) {
               wx.setStorageSync('postId', result.user.post_id)
             }
             wx.setStorageSync('user', result.user)
