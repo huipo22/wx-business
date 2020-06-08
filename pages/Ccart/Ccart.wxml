@@ -3,7 +3,7 @@
     <view style="margin-bottom:80rpx;box-sizing:border-box">
         <view class="cart" wx:for="{{carts}}" wx:for-item="item" wx:key="index" wx:for-index="index">
             <view class="radioBox">
-                <radio checked="{{item.isSelect}}" catch:tap="switchSelect" data-index="{{index}}" data-id="{{index}}"/>
+                <radio checked="{{item.isSelect}}" catch:tap="switchSelect" data-index="{{index}}" data-id="{{index}}" />
             </view>
             <view class="imgBox">
                 <van-image width="4rem" height="4rem" src="{{imgAddress+item.goods_img}}" />
@@ -23,7 +23,9 @@
                 </view>
             </view>
         </view>
+        <view class="mimiswitch" catch:tap="tiaozhuan" wx:if="{{carts.length!==0}}">更多商品</view>
     </view>
+    
     <!-- bottom -->
     <view class="bottom">
         <view class="radioBox" bindtap='selectAll'>

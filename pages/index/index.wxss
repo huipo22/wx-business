@@ -368,21 +368,23 @@ button {
     background: #000;
     opacity: .5;
     line-height: 55rpx;
-    animation: bounceInLeft 6s infinite cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    animation: bounceInLeft 5s infinite cubic-bezier(0.215, 0.610, 0.355, 1.000);
     border-radius: 26.5rpx;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-width: 40%;
-    max-width: 60%;
+    min-width: 48%;
+    max-width: 65%;
 }
 
 .swiper_item {
     font-size: 25rpx;
+    width:100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     letter-spacing: 2px;
+    display: flex;
 }
 
 .titleName {

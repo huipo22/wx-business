@@ -141,6 +141,11 @@ Page({
       this.setData({
         locationList: result
       })
+      if (wx.getStorageSync('post')) {
+        this.setData({
+          postInfo: wx.getStorageSync('post')
+        })
+      }
     })
   },
   /**
@@ -158,8 +163,7 @@ Page({
     if (wx.getStorageSync("locationInfo")) {
       this.getLocation()
     } else {
-      this.defaultAddress
-      ()
+      this.defaultAddress()
     }
   },
 

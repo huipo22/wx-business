@@ -66,11 +66,16 @@
             <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000" wx:if="{{pullShow}}">
                 <block wx:for="{{msgList}}">
                     <swiper-item>
-                        <view class="swiper_item">{{item.str}}</view>
+                        <view class="swiper_item">
+                            <view class="img">
+                                <image src="{{item.avatar}}" mode="aspectFit" style="width:50rpx;height:50rpx;border-radius:50%" />
+                            </view>
+                            <view>{{item.str}}</view>
+                        </view>
                     </swiper-item>
                 </block>
             </swiper>
-            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" style="height: 150px;position: absolute;top: 0;width: 100%;">
+            <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" circular="true" style="height: 150px;position: absolute;top: 0;width: 100%;">
                 <block wx:for="{{imgUrls}}" wx:key="index" wx:for-item="item">
                     <swiper-item class="sw">
                         <view class="swiper-item">
@@ -135,6 +140,9 @@
                     </view>
                 </view>
             </view>
+        </view>
+        <view class="mimiswitch" catch:tap="tiaozhuan" wx:if="{{activeList.length!==0}}">
+            更多商品
         </view>
     </view>
 </view>

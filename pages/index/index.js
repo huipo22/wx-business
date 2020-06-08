@@ -9,8 +9,8 @@ Page({
         indicatorDots: true,
         vertical: false,
         autoplay: true,
-        interval: 2000,
-        duration: 500,
+        interval: 4000,
+        duration: 1000,
         activeArea: null, //活动区域分类
         imgAddress: app.globalData.imgAddress,
         shareFlag: false,
@@ -72,19 +72,20 @@ Page({
                         url: 'https://shop.jishanhengrui.com/upload/' + this.data.postInfo.avatar
                     },
                     {
-                        width: 690,
-                        height: 830,
-                        x: 30,
+                        width: 539,
+                        height: 800,
+                        x: 100,
                         y: 120,
                         borderRadius: 62,
                         url: "https://shop.jishanhengrui.com/upload/ioc/haibao.jpg",
 
                     },
                     {
-                        width: 200,
-                        height: 200,
-                        x: 92,
-                        y: 700,
+                        width: 150,
+                        height: 150,
+                        x: 290,
+                        y: 450,
+                        borderRadius: 150,
                         url: String(this.data.code),
                     },
 
@@ -101,26 +102,26 @@ Page({
     },
     // 创建海报成功
     onPosterSuccess(e) {
-        if (!wx.getStorageSync('postId')) {
-            wx.showToast({
-                title: '无团长信息,无法分享',
-                duration: 2000
-            })
-            return
-        }
         const {
             detail
         } = e;
-        wx.previewImage({
-            current: detail,
-            urls: [detail]
-        })
+        // wx.previewImage({
+        //     current: detail,
+        //     urls: [detail]
+        // })
         this.setData({
             aImg: detail
         })
     },
     // 创建海报失败
     onPosterFail(err) {
+        if (!wx.getStorageSync('postId')) {
+            wx.showToast({
+                title: '无团长信息',
+                duration: 2000
+            })
+            return
+        }
         console.error(err + "请重新生成");
         console.log(err)
     },
@@ -221,6 +222,7 @@ Page({
                 })
                 wx.setStorageSync('post', result);
             })
+            this.getPull()
         }
         //明天的时间
         var day3 = new Date();
