@@ -18,6 +18,7 @@ Page({
         scrollLeft: 0,
         flag: true,
     },
+
     // 异步创建海报
     onCreatePoster() {
         console.log(this.data.code)
@@ -29,52 +30,40 @@ Page({
                 backgroundColor: '#000',
                 debug: true,
                 pixelRatio: 1,
-                // blocks: [{
-                //     width: 690,
-                //     height: 500,
-                //     x: 30,
-                //     y: 183,
-                //     borderWidth: 2,
-                //     borderColor: '#fff',
-                //     borderRadius: 20,
-                // }, ],
+
                 texts: [{
-                        x: 113,
-                        y: 61,
+                        x: 210,
+                        y: 175,
                         baseLine: 'middle',
                         text: String(this.data.postInfo.user_true_name) + '-' + String(this.data.postInfo.user_phone),
-                        fontSize: 32,
-                        color: '#fff',
+                        fontSize: 30,
+                        color: '#000',
+                        zIndex: 9999999
                     },
                     {
-                        x: 114,
-                        y: 80,
+                        x: 210,
+                        y: 195,
                         baseLine: 'top',
                         text: String(this.data.postInfo.user_address),
-                        fontSize: 32,
-                        color: '#fff',
+                        fontSize: 30,
+                        color: '#000',
+                        zIndex: 9999999
                     },
-                    // {
-                    //     x: 360,
-                    //     y: 750,
-                    //     baseLine: 'top',
-                    //     text: '长按识别小程序码',
-                    //     fontSize: 38,
-                    //     color: '#fff',
-                    // },
+
                 ],
                 images: [{
                         width: 80,
                         height: 80,
-                        x: 30,
-                        y: 30,
-                        borderRadius: 62,
+                        x: 120,
+                        y: 150,
+                        zIndex: 999,
+                        borderRadius: 80,
                         url: 'https://shop.jishanhengrui.com/upload/' + this.data.postInfo.avatar
                     },
                     {
-                        width: 539,
-                        height: 800,
-                        x: 100,
+                        width: 639,
+                        height: 950,
+                        x: 60,
                         y: 120,
                         borderRadius: 62,
                         url: "https://shop.jishanhengrui.com/upload/ioc/haibao.jpg",
@@ -95,8 +84,10 @@ Page({
         }, () => {
             Poster.create(true, this);
         });
+        wx.showLoading({
+            title: '生成海报中...',
+        });
         this.setData({
-            showSave: true,
             shareFlag: false
         })
     },
@@ -105,12 +96,13 @@ Page({
         const {
             detail
         } = e;
-        // wx.previewImage({
-        //     current: detail,
-        //     urls: [detail]
-        // })
-        this.setData({
-            aImg: detail
+
+        wx.previewImage({
+            current: detail,
+            urls: [detail],
+            complete: function () {
+                wx.hideLoading();
+            }
         })
     },
     // 创建海报失败
@@ -122,7 +114,7 @@ Page({
             })
             return
         }
-        console.error(err + "请重新生成");
+        console.error(err);
         console.log(err)
     },
     // 团长招募
@@ -210,6 +202,8 @@ Page({
         util.switchSmall()
     },
     onShow() {
+        console.log(123)
+
         if (wx.getStorageSync('postId')) {
             api.setDefault({
                 post_id: wx.getStorageSync('postId')
@@ -233,7 +227,7 @@ Page({
         var s3 = (day3.getMonth() + 1) + "月" + day3.getDate() + "日";
         this.setData({
             tomorrowDay: s3,
-            postInfo: wx.getStorageSync('post')
+            postInfo: wx.getStorageSync('post'),
         })
     },
     onLoad() {
@@ -273,24 +267,13 @@ Page({
                     msgList: result,
                     pullShow: true
                 })
-                // var that = this;
-                // var times = 0;
-                // that.setData({
-                //     msgList: setInterval(function () {
-                //         times++;
-                //         if (times >= 60) {
-                //             clearInterval(that.data.msgList); //关闭定时任务
-                //         } else {
-                //             //业务逻辑
-                //             that.setData({
-                //                 msgList: result[Math.floor((Math.random()*result.length))],
-                //                 pullShow: true
-                //             })
-                //         }
-                //     }, 5000) //定时间隔时间 这里是1秒
-                // })
             })
         }
+    },
+    closeHai() {
+        this.setData({
+            isS: false
+        })
     },
     // 通告栏
     take() {
@@ -304,82 +287,76 @@ Page({
     },
     onReady() {},
     // 下载图片
-    downloadfile() {
-        var that = this;
-        wx.saveImageToPhotosAlbum({
-            filePath: that.data.aImg,
-            success(res) {
-                wx.showToast("保存至相册成功")
-                wx.previewImage({
-                    current: that.data.aImg,
-                    urls: [that.data.aImg]
-                })
-            },
-            fail() {
-                wx.showToast("保存至相册失败")
-            }
-        })
-    },
+    // downloadfile() {
+    //     var that = this;
+    //     wx.saveImageToPhotosAlbum({
+    //         filePath: that.data.aImg,
+    //         success(res) {
+    //             wx.showToast("保存至相册成功")
+    //             wx.previewImage({
+    //                 current: that.data.aImg,
+    //                 urls: [that.data.aImg]
+    //             })
+    //         },
+    //         fail() {
+    //             wx.showToast("保存至相册失败")
+    //         }
+    //     })
+    // },
     // 保存图片
-    saveImg() {
-        var that = this;
-        wx.getSetting({
-            success(res) {
-                wx.hideLoading();
-                if (!res.authSetting['scope.writePhotosAlbum']) {
-                    //请求授权
-                    wx.authorize({
-                        scope: 'scope.writePhotosAlbum',
-                        success() {
-                            //获得授权，开始下载
-                            that.downloadfile()
-                        },
-                        fail() {
-                            wx.showModal({
-                                title: '',
-                                content: '保存到系统相册需要授权',
-                                confirmText: '授权',
-                                success(res) {
-                                    if (res.confirm) {
-                                        wx.openSetting({
-                                            success(res) {
-                                                if (res.authSetting['scope.writePhotosAlbum'] === true) {
-                                                    that.downloadfile()
+    // saveImg() {
+    //     var that = this;
+    //     wx.getSetting({
+    //         success(res) {
+    //             wx.hideLoading();
+    //             if (!res.authSetting['scope.writePhotosAlbum']) {
+    //                 //请求授权
+    //                 wx.authorize({
+    //                     scope: 'scope.writePhotosAlbum',
+    //                     success() {
+    //                         //获得授权，开始下载
+    //                         that.downloadfile()
+    //                     },
+    //                     fail() {
+    //                         wx.showModal({
+    //                             title: '',
+    //                             content: '保存到系统相册需要授权',
+    //                             confirmText: '授权',
+    //                             success(res) {
+    //                                 if (res.confirm) {
+    //                                     wx.openSetting({
+    //                                         success(res) {
+    //                                             if (res.authSetting['scope.writePhotosAlbum'] === true) {
+    //                                                 that.downloadfile()
 
-                                                }
-                                            }
-                                        })
-                                    }
-                                },
-                                fail() {
-                                    wx.showToast({
-                                        title: '打开设置页失败',
-                                        icon: 'none',
-                                    })
-                                }
-                            })
-                        }
-                    })
-                } else {
-                    //已有授权
-                    that.downloadfile()
-                }
-            },
-            fail() {
-                wx.hideLoading();
-                wx.showToast({
-                    title: '获取授权失败',
-                    icon: 'none',
-                })
-            }
-        })
-    },
-    // 关闭海报
-    closeHaibao() {
-        this.setData({
-            showSave: false
-        })
-    },
+    //                                             }
+    //                                         }
+    //                                     })
+    //                                 }
+    //                             },
+    //                             fail() {
+    //                                 wx.showToast({
+    //                                     title: '打开设置页失败',
+    //                                     icon: 'none',
+    //                                 })
+    //                             }
+    //                         })
+    //                     }
+    //                 })
+    //             } else {
+    //                 //已有授权
+    //                 that.downloadfile()
+    //             }
+    //         },
+    //         fail() {
+    //             wx.hideLoading();
+    //             wx.showToast({
+    //                 title: '获取授权失败',
+    //                 icon: 'none',
+    //             })
+    //         }
+    //     })
+    // },
     // 创建二维码
     createCode() {
         // 生成团长信息二维码

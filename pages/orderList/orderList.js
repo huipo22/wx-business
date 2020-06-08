@@ -16,7 +16,7 @@ Page({
       },
       {
         name: 2,
-        title: "待发货"
+        title: "待配送"
       },
       {
         name: 3,

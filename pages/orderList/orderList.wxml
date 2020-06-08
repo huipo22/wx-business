@@ -36,12 +36,12 @@
                                     <van-button round color="#ff9733" size="mini" data-order="{{order}}" bindtap="pay" custom-class="btn" plain>
                                         付款
                                     </van-button>
-                                    <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
+                                    <!-- <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
                                         详情
-                                    </van-button>
+                                    </van-button> -->
                                 </van-col>
                                 <!-- 2 -->
-                                <van-col span="10" offset="1" custom-class="bottomColBtn" wx:elif="{{orderActive==2}}">
+                                <van-col span="10" custom-class="bottomColBtn" wx:elif="{{orderActive==2}}">
                                     <button open-type="contact" style="line-height:0">
                                         <van-button round color="#ff9733" size="mini" id="{{order.id}}" custom-class="btn" plain>
                                             退款
@@ -58,7 +58,7 @@
                                     </van-button>
                                 </van-col> -->
                                 <!-- 3 -->
-                                <van-col span="10" offset="1" custom-class="bottomColBtn" wx:else>
+                                <van-col span="10" custom-class="bottomColBtn" wx:else>
                                     <van-button round color="#ff9733" size="mini" data-order="{{order}}" custom-class="btn" plain catch:tap="goDetail">
                                         详情
                                     </van-button>

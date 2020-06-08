@@ -23,7 +23,7 @@
                             <view style="width:40rpx;height:40rpx">
                                 <image class="" src="../../dist/icon/phone.png" mode="aspectFit" style="width:40rpx;height:40rpx" />
                             </view>
-                            <view>联系电话</view>
+                            <view>联系自提店</view>
                         </view>
                     </view>
                 </view>

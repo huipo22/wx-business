@@ -1,7 +1,7 @@
 <!-- pages/tuanRequest/tuanRequest.wxml -->
 <view class="container box">
     <view class="img">
-        <image class="" src="../../dist/icon/zhaomu.png" mode="aspectFit" lazy-load="true"></image>
-        <view class="btn" catch:tap="callPhone">立即拨打电话</view>
+        <image class="" src="../../dist/icon/zhaomu.png" mode="aspectFilt" lazy-load="true"></image>
+        <view class="btn" catch:tap="callPhone">立即申请团长</view>
     </view>
 </view>
