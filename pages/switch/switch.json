@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "自提点列表",
   "usingComponents": {
     "van-image": "../dist/vant/image/index",
     "van-button": "../dist/vant/button/index"

@@ -1,5 +1,5 @@
 <wxs module="filter" src="../../utils/filter.wxs"></wxs>
-<poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" bind:tap="closeHai"></poster>
+<poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail" ></poster>
 <view class="container {{shareFlag==true?'container1':''}}">
     <!-- 分享区域 -->
     <view class="shareBox" wx:if="{{shareFlag}}">
