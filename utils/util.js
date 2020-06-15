@@ -52,7 +52,7 @@ const login = () => {
             }
             wx.setStorageSync('user', result.user)
             api.setDefault({
-              post_id: wx.getStorageSync('postId')
+              post_id: Number(wx.getStorageSync('postId'))
             }, {
               "Token": wx.getStorageSync("token"),
               "Device-Type": "wxapp"

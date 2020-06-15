@@ -21,9 +21,9 @@ Page({
 
     // 异步创建海报
     onCreatePoster() {
-        this.createCode()
+        // this.createCode()
         console.log(this.data.code + '33333333')
-
+        let codeR = this.data.code
         if (wx.getStorageSync('postId') !== '') {
             // setData配置数据
             this.setData({
@@ -39,6 +39,15 @@ Page({
                             baseLine: 'middle',
                             text: String(this.data.postInfo.user_true_name) + '-' + String(this.data.postInfo.user_phone),
                             fontSize: 26,
+                            color: '#000',
+                            zIndex: 9999999
+                        },
+                        {
+                            x: 0,
+                            y: 1000,
+                            baseLine: 'middle',
+                            text: String(this.data.code) ,
+                            fontSize: 20,
                             color: '#000',
                             zIndex: 9999999
                         },
@@ -80,7 +89,7 @@ Page({
                             x: 480,
                             y: 1372,
                             // borderRadius: 140,
-                            url: String(this.data.code),
+                            url: String(codeR),
                         },
 
                     ]
@@ -219,10 +228,9 @@ Page({
         util.switchSmall()
     },
     onShow() {
-
         if (wx.getStorageSync('postId')) {
             api.setDefault({
-                post_id: wx.getStorageSync('postId')
+                post_id: Number(wx.getStorageSync('postId'))
             }, {
                 "Token": wx.getStorageSync("token"),
                 "Device-Type": "wxapp"
