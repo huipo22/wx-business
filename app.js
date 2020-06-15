@@ -3,6 +3,14 @@ let util = require('./utils/util')
 let api = require('./utils/request').default;
 App({
   onLaunch: function (options) {
+    // console.log(options)
+    // var scene = decodeURIComponent(options.query.scene);
+    // const postId = scene.split('=')[1]
+    // // const postId = options.query.post_id
+    // wx.setStorageSync('postId', Number(postId));
+    // util.login()
+  },
+  onShow: function (options) {
     console.log(options)
     var scene = decodeURIComponent(options.query.scene);
     const postId = scene.split('=')[1]

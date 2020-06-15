@@ -42,15 +42,24 @@ Page({
                             color: '#000',
                             zIndex: 9999999
                         },
-                        {
-                            x: 0,
-                            y: 1000,
-                            baseLine: 'middle',
-                            text: String(this.data.code) ,
-                            fontSize: 20,
-                            color: '#000',
-                            zIndex: 9999999
-                        },
+                        // {
+                        //     x: 0,
+                        //     y: 1000,
+                        //     baseLine: 'middle',
+                        //     text: String(this.data.code),
+                        //     fontSize: 20,
+                        //     color: '#000',
+                        //     zIndex: 9999999
+                        // },
+                        // {
+                        //     x: 80,
+                        //     y: 1200,
+                        //     baseLine: 'middle',
+                        //     text: String(wx.getStorageSync('postId')),
+                        //     fontSize: 40,
+                        //     color: '#000',
+                        //     zIndex: 9999999
+                        // },
                         {
                             x: 210,
                             y: 1500,
@@ -239,14 +248,14 @@ Page({
                     postInfo: result
                 })
                 wx.setStorageSync('post', result);
+                this.createCode(result.id)
             }).then(() => {
                 this.getPull()
-            }).then(() => {
-                // this.createCode()
-            })
+            }).then(() => {})
+        } else {
+            this.createCode(wx.getStorageSync('post').id)
         }
         this.getPull()
-        this.createCode()
         //明天的时间
         var day3 = new Date();
         day3.setTime(day3.getTime() + 24 * 60 * 60 * 1000);
@@ -255,9 +264,15 @@ Page({
             tomorrowDay: s3,
             postInfo: wx.getStorageSync('post'),
         })
-        let that = this
     },
-    onLoad() {
+    onLoad(options) {
+        console.log(options)
+        if (options.scene) {
+            var scene = decodeURIComponent(options.scene);
+            const postId = scene.split('=')[1]
+            // const postId = options.query.post_id
+            wx.setStorageSync('postId', Number(postId));
+        }
         let me = this;
         const query = wx.createSelectorQuery();
         query.select("#tab").boundingClientRect(function (res) {
@@ -310,11 +325,11 @@ Page({
     },
     onReady() {},
     // 创建二维码
-    createCode() {
+    createCode(postId) {
+        console.log(postId)
         // 生成团长信息二维码
-        console.log(typeof wx.getStorageSync('postId'))
         api.createCode({
-            post_id: Number(wx.getStorageSync('postId'))
+            post_id: postId
         }).then(result => {
             this.setData({
                 code: this.data.imgAddress + result
