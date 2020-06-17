@@ -65,6 +65,9 @@ Page({
             }
         })
     },
+    tiaozhuan() {
+        util.switchSmall()
+    },
     // 购物车删除
     cartDelete(shoppingId, index, e) {
         api.cartDelete({
